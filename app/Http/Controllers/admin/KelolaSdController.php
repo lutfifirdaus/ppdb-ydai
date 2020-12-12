@@ -3,20 +3,20 @@
 namespace App\Http\Controllers\admin;
 
 use App\Http\Controllers\Controller;
-use App\Models\CalonSiswaSma;
+use App\Models\CalonSiswaSd;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 
-class KelolaSmaController extends Controller
+class KelolaSdController extends Controller
 {
 
     public function index()
     {
-        $calon_siswa_smas = CalonSiswaSma::paginate(10);
+        $calon_siswa_sds = CalonSiswaSd::paginate(10);
 
-        return view('admin.sma.verifikasi', [
-            'calon_siswa_smas' => $calon_siswa_smas,
+        return view('admin.sd.verifikasi', [
+            'calon_siswa_sds' => $calon_siswa_sds,
         ]);
     }
 
@@ -36,8 +36,6 @@ class KelolaSmaController extends Controller
             $no_billing = null;
         }
 
-        // dd($user->no_registrasi);
-
         DB::table('billings')->insert([
             'no_registrasi' => $user->no_registrasi,
             'no_billing' => $no_billing,
@@ -50,19 +48,19 @@ class KelolaSmaController extends Controller
 
     public function tabelVerifikasi()
     {
-        $calon_siswa_smas = CalonSiswaSma::paginate(10);
+        $calon_siswa_sds = CalonSiswaSd::paginate(10);
 
-        return view('admin.sma.verifikasi', [
-            'calon_siswa_smas' => $calon_siswa_smas,
+        return view('admin.sd.verifikasi', [
+            'calon_siswa_sds' => $calon_siswa_sds,
         ]);
     }
 
     public function tabelBayar()
     {
-        $calon_siswa_smas = CalonSiswaSma::paginate(10);
+        $calon_siswa_sds = CalonSiswaSd::paginate(10);
 
-        return view('admin.sma.verifikasi', [
-            'calon_siswa_smas' => $calon_siswa_smas,
+        return view('admin.sd.verifikasi', [
+            'calon_siswa_sds' => $calon_siswa_sds,
         ]);
     }
 }

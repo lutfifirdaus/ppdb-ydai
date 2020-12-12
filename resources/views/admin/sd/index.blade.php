@@ -70,11 +70,11 @@
                 </tr>
                 </thead>
                 <tbody>
-                @foreach ($calon_siswa_smas as $pesertadidik)
+                @foreach ($calon_siswa_sds as $pesertadidik)
                     <tr>
-                    <td>{{ $pesertadidik->id . $pesertadidik->created_at->format("dmy") }}</td>
-                    <td>{{ $pesertadidik->nisn }}</td>
-                    <td><a href="/{{ $pesertadidik->nisn }}">{{ $pesertadidik->nama_pd }}</a></td>
+                    <td>{{ $pesertadidik->user()->no_registrasi }}</td>
+                    <td>{{ $pesertadidik->nik }}</td>
+                    <td><a href="/{{ $pesertadidik->nik }}">{{ $pesertadidik->nama_pd }}</a></td>
                     <td>{{ $pesertadidik->jenis_kelamin }}</td>
                     <td>{{ $pesertadidik->alamat_pd }}</td>
                     <td>

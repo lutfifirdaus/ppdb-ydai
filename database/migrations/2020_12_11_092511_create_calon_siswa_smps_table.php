@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateCalonSiswaSmasTable extends Migration
+class CreateCalonSiswaSmpsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,9 +13,9 @@ class CreateCalonSiswaSmasTable extends Migration
      */
     public function up()
     {
-        Schema::create('calon_siswa_smas', function (Blueprint $table) {
+        Schema::create('calon_siswa_smps', function (Blueprint $table) {
             $table->foreignId('user_id')->constrained()->cascadeOnDelete;
-            $table->char('nisn', 10)->unique();
+            $table->char('nisn')->unique();
             $table->string('nama_pd');
             $table->string('ttl');
             $table->enum('jenis_kelamin', ['Laki-laki', 'Perempuan']);
@@ -54,6 +54,6 @@ class CreateCalonSiswaSmasTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('calon_siswa_smas');
+        Schema::dropIfExists('calon_siswa_smps');
     }
 }

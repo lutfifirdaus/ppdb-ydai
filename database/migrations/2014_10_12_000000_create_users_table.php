@@ -22,7 +22,7 @@ class CreateUsersTable extends Migration
             $table->rememberToken();
             $table->enum('status', [0, 1, 2, 3, 4])->default(0);
             $table->enum('is_data_verified', [0, 1, 2, 3])->default(0);
-            $table->boolean('is_bayar')->nullable();
+            $table->char('no_registrasi')->nullable();
             $table->timestamps();
         });
     }

@@ -2,29 +2,29 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\CalonSiswaSma;
+use App\Models\CalonSiswaSmp;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
 use Intervention\Image\Facades\Image;
 
-class CalonSiswaSmaController extends Controller
+class CalonSiswaSmpController extends Controller
 {
     public function index()
     {
-        return view('user.calon-sma.index', [
+        return view('user.calon-smp.index', [
             'user' => Auth::user(),
         ]);
     }
 
     public function create()
     {
-        $calon_siswa_smas = DB::select('select * from calon_siswa_smas');
+        $calon_siswa_smps = DB::select('select * from calon_siswa_smps');
 
-        return view('user.calon-sma.formulir', [
+        return view('user.calon-smp.formulir', [
             'user' => Auth::user(),
-            'calon_siswa_smas' => $calon_siswa_smas,
+            'calon_siswa_smps' => $calon_siswa_smps,
         ]);
     }
 
@@ -33,7 +33,7 @@ class CalonSiswaSmaController extends Controller
         // dd($request);
 
         $attr = $request->validate([
-            'nisn' => 'required|digits:10|unique:calon_siswa_smas,nisn',
+            'nisn' => 'required|digits:10|unique:calon_siswa_smps,nisn',
             'nama_pd' => 'required',
             'ttl' => 'required',
             'jenis_kelamin' => 'required',
@@ -41,7 +41,7 @@ class CalonSiswaSmaController extends Controller
             'anak_ke' => 'required',
             'status_dalam_keluarga' => 'required',
             'alamat_pd' => 'required',
-            'telp_pd' => 'required|digits_between:12,15|unique:calon_siswa_smas,telp_pd',
+            'telp_pd' => 'required|digits_between:12,15|unique:calon_siswa_smps,telp_pd',
             'nama_asal_sekolah' => 'required',
             'alamat_asal_sekolah' => 'required',
             'tahun_ijazah' => 'required|digits:4|integer|min:1900|max:' . (date('Y') + 1),
@@ -64,7 +64,7 @@ class CalonSiswaSmaController extends Controller
         if ($request->hasFile('foto_pd')) {
             $foto = $request->file('foto_pd');
             $namafoto = $request->nisn . "-pas-foto" . "." . $foto->extension();
-            $location = public_path('dokumen/sma/' . $namafoto);
+            $location = public_path('dokumen/smp/' . $namafoto);
             Image::make($foto)->resize(300, 400)->save($location);
             $attr['foto_pd'] = $namafoto;
         }
@@ -72,7 +72,7 @@ class CalonSiswaSmaController extends Controller
         if ($request->hasFile('scan_ijazah')) {
             $ijazah = $request->file('scan_ijazah');
             $namaijazah = $request->nisn . "-scan-ijazah" . "." . $ijazah->extension();
-            $location = public_path('dokumen/sma/' . $namaijazah);
+            $location = public_path('dokumen/smp/' . $namaijazah);
             Image::make($foto)->resize(700, 1200)->save($location);
             $attr['scan_ijazah'] = $namaijazah;
         }
@@ -80,12 +80,12 @@ class CalonSiswaSmaController extends Controller
         if ($request->hasFile('scan_skhun')) {
             $skhun = $request->file('scan_skhun');
             $namaskhun = $request->nisn . "-scan-skhun" . "." . $skhun->extension();
-            $location = public_path('dokumen/sma/' . $namaskhun);
+            $location = public_path('dokumen/smp/' . $namaskhun);
             Image::make($skhun)->resize(700, 1200)->save($location);
             $attr['scan_skhun'] = $namaskhun;
         }
 
-        $form = new CalonSiswaSma($attr);
+        $form = new CalonSiswaSmp($attr);
 
         $userId = Auth::id();
         $user = User::findOrFail($userId);
@@ -94,16 +94,16 @@ class CalonSiswaSmaController extends Controller
         // dd($request);
 
         $user->save();
-        $user->csSma()->save($form);
+        $user->csSmp()->save($form);
 
         // session()->flash('success', 'Data telah ditambahkan!');
-        return redirect()->route('calon.sma');
+        return redirect()->route('calon.smp');
     }
 
-    public function update(Request $request, CalonSiswaSma $calon_siswa_sma)
+    public function update(Request $request, CalonSiswaSmp $calon_siswa_smp)
     {
         $attr = $request->validate([
-            'nisn' => 'required|digits:10|unique:calon_siswa_smas,nisn',
+            'nisn' => 'required|digits:10|unique:calon_siswa_smps,nisn',
             'nama_pd' => 'required',
             'ttl' => 'required',
             'jenis_kelamin' => 'required',
@@ -111,7 +111,7 @@ class CalonSiswaSmaController extends Controller
             'anak_ke' => 'required',
             'status_dalam_keluarga' => 'required',
             'alamat_pd' => 'required',
-            'telp_pd' => 'required|digits_between:12,15|unique:calon_siswa_smas,telp_pd',
+            'telp_pd' => 'required|digits_between:12,15|unique:calon_siswa_smps,telp_pd',
             'nama_asal_sekolah' => 'required',
             'alamat_asal_sekolah' => 'required',
             'tahun_ijazah' => 'required|digits:4|integer|min:1900|max:' . (date('Y') + 1),
@@ -134,7 +134,7 @@ class CalonSiswaSmaController extends Controller
         if ($request->hasFile('foto_pd')) {
             $foto = $request->file('foto_pd');
             $namafoto = $request->nisn . "-pas-foto" . "." . $foto->extension();
-            $location = public_path('dokumen/sma/' . $namafoto);
+            $location = public_path('dokumen/smp/' . $namafoto);
             Image::make($foto)->resize(300, 400)->save($location);
             $attr['foto_pd'] = $namafoto;
         }
@@ -142,7 +142,7 @@ class CalonSiswaSmaController extends Controller
         if ($request->hasFile('scan_ijazah')) {
             $ijazah = $request->file('scan_ijazah');
             $namaijazah = $request->nisn . "-scan-ijazah" . "." . $ijazah->extension();
-            $location = public_path('dokumen/sma/' . $namaijazah);
+            $location = public_path('dokumen/smp/' . $namaijazah);
             Image::make($foto)->resize(700, 1200)->save($location);
             $attr['scan_ijazah'] = $namaijazah;
         }
@@ -150,11 +150,11 @@ class CalonSiswaSmaController extends Controller
         if ($request->hasFile('scan_skhun')) {
             $skhun = $request->file('scan_skhun');
             $namaskhun = $request->nisn . "-scan-skhun" . "." . $skhun->extension();
-            $location = public_path('dokumen/sma/' . $namaskhun);
+            $location = public_path('dokumen/smp/' . $namaskhun);
             Image::make($skhun)->resize(700, 1200)->save($location);
             $attr['scan_skhun'] = $namaskhun;
         }
 
-        $calon_siswa_sma->update($attr);
+        $calon_siswa_smp->update($attr);
     }
 }

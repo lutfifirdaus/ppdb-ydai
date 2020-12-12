@@ -2,29 +2,29 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\CalonSiswaSma;
+use App\Models\CalonSiswaSd;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
-use Illuminate\Support\Facades\DB;
 use Intervention\Image\Facades\Image;
+use Illuminate\Support\Facades\DB;
 
-class CalonSiswaSmaController extends Controller
+class CalonSiswaSdController extends Controller
 {
     public function index()
     {
-        return view('user.calon-sma.index', [
+        return view('user.calon-sd.index', [
             'user' => Auth::user(),
         ]);
     }
 
     public function create()
     {
-        $calon_siswa_smas = DB::select('select * from calon_siswa_smas');
+        $calon_siswa_sds = DB::select('select * from calon_siswa_sds');
 
-        return view('user.calon-sma.formulir', [
+        return view('user.calon-sd.formulir', [
             'user' => Auth::user(),
-            'calon_siswa_smas' => $calon_siswa_smas,
+            'calon_siswa_sds' => $calon_siswa_sds,
         ]);
     }
 
@@ -33,7 +33,7 @@ class CalonSiswaSmaController extends Controller
         // dd($request);
 
         $attr = $request->validate([
-            'nisn' => 'required|digits:10|unique:calon_siswa_smas,nisn',
+            'nik' => 'required|digits:16|unique:calon_siswa_sds,nik',
             'nama_pd' => 'required',
             'ttl' => 'required',
             'jenis_kelamin' => 'required',
@@ -41,14 +41,11 @@ class CalonSiswaSmaController extends Controller
             'anak_ke' => 'required',
             'status_dalam_keluarga' => 'required',
             'alamat_pd' => 'required',
-            'telp_pd' => 'required|digits_between:12,15|unique:calon_siswa_smas,telp_pd',
+            'telp_pd' => 'required|digits_between:12,15|unique:calon_siswa_sds,telp_pd',
             'nama_asal_sekolah' => 'required',
             'alamat_asal_sekolah' => 'required',
             'tahun_ijazah' => 'required|digits:4|integer|min:1900|max:' . (date('Y') + 1),
             'nomor_ijazah' => 'required',
-            'tahun_skhun' => 'required|digits:4|integer|min:1900|max:' . (date('Y') + 1),
-            'nomor_skhun' => 'required',
-            'nomor_peserta_un' => 'required',
             'nama_ayah' => 'required',
             'nama_ibu' => 'required',
             'alamat_ortu' => 'required',
@@ -63,29 +60,37 @@ class CalonSiswaSmaController extends Controller
                 
         if ($request->hasFile('foto_pd')) {
             $foto = $request->file('foto_pd');
-            $namafoto = $request->nisn . "-pas-foto" . "." . $foto->extension();
-            $location = public_path('dokumen/sma/' . $namafoto);
+            $namafoto = $request->nik . "-pas-foto" . "." . $foto->extension();
+            $location = public_path('dokumen/sd' . $namafoto);
             Image::make($foto)->resize(300, 400)->save($location);
             $attr['foto_pd'] = $namafoto;
         }
 
         if ($request->hasFile('scan_ijazah')) {
             $ijazah = $request->file('scan_ijazah');
-            $namaijazah = $request->nisn . "-scan-ijazah" . "." . $ijazah->extension();
-            $location = public_path('dokumen/sma/' . $namaijazah);
+            $namaijazah = $request->nik . "-scan-ijazah" . "." . $ijazah->extension();
+            $location = public_path('dokumen/sd' . $namaijazah);
             Image::make($foto)->resize(700, 1200)->save($location);
             $attr['scan_ijazah'] = $namaijazah;
         }
 
-        if ($request->hasFile('scan_skhun')) {
-            $skhun = $request->file('scan_skhun');
-            $namaskhun = $request->nisn . "-scan-skhun" . "." . $skhun->extension();
-            $location = public_path('dokumen/sma/' . $namaskhun);
-            Image::make($skhun)->resize(700, 1200)->save($location);
-            $attr['scan_skhun'] = $namaskhun;
+        if ($request->hasFile('scan_akta')) {
+            $akta = $request->file('scan_akta');
+            $namaakta = $request->nik . "-scan-akta" . "." . $akta->extension();
+            $location = public_path('dokumen/sd' . $namaakta);
+            Image::make($akta)->resize(700, 1200)->save($location);
+            $attr['scan_akta'] = $namaakta;
         }
 
-        $form = new CalonSiswaSma($attr);
+        if ($request->hasFile('scan_kk')) {
+            $kk = $request->file('scan_kk');
+            $namakk = $request->nik . "-scan-kk" . "." . $kk->extension();
+            $location = public_path('dokumen/sd' . $namakk);
+            Image::make($kk)->resize(700, 1200)->save($location);
+            $attr['scan_kk'] = $namakk;
+        }
+
+        $form = new CalonSiswaSd($attr);
 
         $userId = Auth::id();
         $user = User::findOrFail($userId);
@@ -94,16 +99,16 @@ class CalonSiswaSmaController extends Controller
         // dd($request);
 
         $user->save();
-        $user->csSma()->save($form);
+        $user->csSd()->save($form);
 
         // session()->flash('success', 'Data telah ditambahkan!');
-        return redirect()->route('calon.sma');
+        return redirect()->route('calon.sd');
     }
 
-    public function update(Request $request, CalonSiswaSma $calon_siswa_sma)
+    public function update(Request $request, CalonSiswaSd $calon_siswa_sd)
     {
         $attr = $request->validate([
-            'nisn' => 'required|digits:10|unique:calon_siswa_smas,nisn',
+            'nik' => 'required|digits:16|unique:calon_siswa_sds,nik',
             'nama_pd' => 'required',
             'ttl' => 'required',
             'jenis_kelamin' => 'required',
@@ -111,14 +116,11 @@ class CalonSiswaSmaController extends Controller
             'anak_ke' => 'required',
             'status_dalam_keluarga' => 'required',
             'alamat_pd' => 'required',
-            'telp_pd' => 'required|digits_between:12,15|unique:calon_siswa_smas,telp_pd',
+            'telp_pd' => 'required|digits_between:12,15|unique:calon_siswa_sds,telp_pd',
             'nama_asal_sekolah' => 'required',
             'alamat_asal_sekolah' => 'required',
             'tahun_ijazah' => 'required|digits:4|integer|min:1900|max:' . (date('Y') + 1),
             'nomor_ijazah' => 'required',
-            'tahun_skhun' => 'required|digits:4|integer|min:1900|max:' . (date('Y') + 1),
-            'nomor_skhun' => 'required',
-            'nomor_peserta_un' => 'required',
             'nama_ayah' => 'required',
             'nama_ibu' => 'required',
             'alamat_ortu' => 'required',
@@ -133,28 +135,36 @@ class CalonSiswaSmaController extends Controller
                 
         if ($request->hasFile('foto_pd')) {
             $foto = $request->file('foto_pd');
-            $namafoto = $request->nisn . "-pas-foto" . "." . $foto->extension();
-            $location = public_path('dokumen/sma/' . $namafoto);
+            $namafoto = $request->nik . "-pas-foto" . "." . $foto->extension();
+            $location = public_path('dokumen/sd' . $namafoto);
             Image::make($foto)->resize(300, 400)->save($location);
             $attr['foto_pd'] = $namafoto;
         }
 
         if ($request->hasFile('scan_ijazah')) {
             $ijazah = $request->file('scan_ijazah');
-            $namaijazah = $request->nisn . "-scan-ijazah" . "." . $ijazah->extension();
-            $location = public_path('dokumen/sma/' . $namaijazah);
+            $namaijazah = $request->nik . "-scan-ijazah" . "." . $ijazah->extension();
+            $location = public_path('dokumen/sd' . $namaijazah);
             Image::make($foto)->resize(700, 1200)->save($location);
             $attr['scan_ijazah'] = $namaijazah;
         }
 
-        if ($request->hasFile('scan_skhun')) {
-            $skhun = $request->file('scan_skhun');
-            $namaskhun = $request->nisn . "-scan-skhun" . "." . $skhun->extension();
-            $location = public_path('dokumen/sma/' . $namaskhun);
-            Image::make($skhun)->resize(700, 1200)->save($location);
-            $attr['scan_skhun'] = $namaskhun;
+        if ($request->hasFile('scan_akta')) {
+            $akta = $request->file('scan_akta');
+            $namaakta = $request->nik . "-scan-akta" . "." . $akta->extension();
+            $location = public_path('dokumen/sd' . $namaakta);
+            Image::make($akta)->resize(700, 1200)->save($location);
+            $attr['scan_akta'] = $namaakta;
         }
 
-        $calon_siswa_sma->update($attr);
+        if ($request->hasFile('scan_kk')) {
+            $kk = $request->file('scan_kk');
+            $namakk = $request->nik . "-scan-kk" . "." . $kk->extension();
+            $location = public_path('dokumen/sd' . $namakk);
+            Image::make($kk)->resize(700, 1200)->save($location);
+            $attr['scan_kk'] = $namakk;
+        }
+
+        $calon_siswa_sd->update($attr);
     }
 }

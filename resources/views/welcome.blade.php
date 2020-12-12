@@ -7,7 +7,9 @@
             .carousel
             .carousel-inner
             img {
-                height: 400px;
+                height:500px; 
+                object-fit:cover; 
+                object-position: center
             }
 
             .mb-3 {
@@ -16,6 +18,10 @@
 
             .navbar-dark .navbar-nav .nav-link {
                 color: white;
+            }
+
+            body {
+                font-size: 14px
             }
         </style>
     </head>

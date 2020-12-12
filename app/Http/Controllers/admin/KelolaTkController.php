@@ -3,20 +3,20 @@
 namespace App\Http\Controllers\admin;
 
 use App\Http\Controllers\Controller;
-use App\Models\CalonSiswaSma;
+use App\Models\CalonSiswaTk;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 
-class KelolaSmaController extends Controller
+class KelolaTkController extends Controller
 {
 
     public function index()
     {
-        $calon_siswa_smas = CalonSiswaSma::paginate(10);
+        $calon_siswa_tks = CalonSiswaTk::paginate(10);
 
-        return view('admin.sma.verifikasi', [
-            'calon_siswa_smas' => $calon_siswa_smas,
+        return view('admin.tk.verifikasi', [
+            'calon_siswa_tks' => $calon_siswa_tks,
         ]);
     }
 
@@ -48,21 +48,21 @@ class KelolaSmaController extends Controller
         return redirect()->back();
     }
 
-    public function tabelVerifikasi()
+    public function tabel()
     {
-        $calon_siswa_smas = CalonSiswaSma::paginate(10);
+        $calon_siswa_tks = CalonSiswaTk::paginate(10);
 
-        return view('admin.sma.verifikasi', [
-            'calon_siswa_smas' => $calon_siswa_smas,
+        return view('admin.tk.verifikasi', [
+            'calon_siswa_tks' => $calon_siswa_tks,
         ]);
     }
 
     public function tabelBayar()
     {
-        $calon_siswa_smas = CalonSiswaSma::paginate(10);
+        $calon_siswa_tks = CalonSiswaTk::paginate(10);
 
-        return view('admin.sma.verifikasi', [
-            'calon_siswa_smas' => $calon_siswa_smas,
+        return view('admin.tk.verifikasi', [
+            'calon_siswa_tks' => $calon_siswa_tks,
         ]);
     }
 }

@@ -46,4 +46,24 @@ class User extends Authenticatable implements MustVerifyEmail
     {
         return $this->hasOne(CalonSiswaSma::class);
     }
+
+    public function csSmp()
+    {
+        return $this->hasOne(CalonSiswaSmp::class);
+    }
+
+    public function csSd()
+    {
+        return $this->hasOne(CalonSiswaSd::class);
+    }
+
+    public function csTk()
+    {
+        return $this->hasOne(CalonSiswaTk::class);
+    }
+
+    public function billing()
+    {
+        return $this->hasOne(Billing::class);
+    }
 }
