@@ -59,7 +59,8 @@ class User extends Authenticatable implements MustVerifyEmail
 
     public function csTk()
     {
-        return $this->hasOne(CalonSiswaTk::class);
+        return $this->hasOne(CalonSiswaTk
+        ::class);
     }
 
     public function billing()

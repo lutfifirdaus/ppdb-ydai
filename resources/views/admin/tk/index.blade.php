@@ -1,7 +1,7 @@
 @extends('admin.layouts.app')
 
 @section('header.content')
-<h2 class="text-center mt-3">Daftar Calon Peserta Didik sd Dharma Karya</h2>
+<h2 class="text-center mt-3">Daftar Calon Peserta Didik SMA Dharma Karya</h2>
 @endsection
 
 @section('main.content')
@@ -65,34 +65,25 @@
                     <th scope="col">ID Registrasi</th>
                     <th scope="col">NISN</th>
                     <th scope="col">Nama Lengkap</th>
-                    <th scope="col">Gender</th>
+                    <th scope="col">Jenis Kelamin</th>
                     <th scope="col">Alamat</th>
-                    <th scope="col">Data Terverifikasi</th>
                 </tr>
                 </thead>
                 <tbody>
-                @foreach ($calon_siswa_sds as $pesertadidik)
+                @foreach ($calon_siswa_tks as $pesertadidik)
                     <tr>
-                    <td>{{ $pesertadidik->id . $pesertadidik->created_at->format("dmy") }}</td>
-                    <td>{{ $pesertadidik->nisn }}</td>
-                    <td><a href="/{{ $pesertadidik->nisn }}">{{ $pesertadidik->nama_pd }}</a></td>
+                    <td>{{ $pesertadidik->user()->no_registrasi }}</td>
+                    <td>{{ $pesertadidik->nik }}</td>
+                    <td><a href="/{{ $pesertadidik->nik }}">{{ $pesertadidik->nama_pd }}</a></td>
                     <td>{{ $pesertadidik->jenis_kelamin }}</td>
                     <td>{{ $pesertadidik->alamat_pd }}</td>
                     <td>
-                        @if ($pesertadidik->user->is_data_verified == 1)
+                        @if ($pesertadidik->user->is_data_verified == 0)
                             <!-- Button trigger modal -->
                             <button type="button" class="btn btn-warning" data-toggle="modal" data-target="#exampleModalLong">
                                 Belum Terverifikasi
                             </button>
-                        @elseif($pesertadidik->user->is_data_verified == 2)
-                            <button type="button" class="btn btn-warning" data-toggle="modal" data-target="#exampleModalLong">
-                            Terverifikasi
-                            </button>
-                        @elseif($pesertadidik->user->is_data_verified == 3)
-                            <button type="button" class="btn btn-warning" data-toggle="modal" data-target="#exampleModalLong">
-                            Kesalahan data
-                            </button>
-                        @endif
+                            
                             <!-- Modal -->
                             <div class="modal fade" id="exampleModalLong" tabindex="-1" role="dialog" aria-labelledby="exampleModalLongTitle" aria-hidden="true">
                                 <div class="modal-dialog modal-lg" role="document">
@@ -233,13 +224,13 @@
                                         </div>
                                         </div>
                                     <div class="modal-footer">
-                                        <form action="/admin/sd/verifikasi-data/{{ $pesertadidik->user->id }}" method="POST">
+                                        <form action="/admin/sma/verifikasi-data/{{ $pesertadidik->user->id }}" method="POST">
                                         @csrf
                                         @method('PUT')
                                         <select name="is_data_verified" id="is_data_verified">    
-                                                <option @if($pesertadidik->user->is_data_verified == 1) selected @endif value=1>Belum terverifikas</option>
-                                                <option @if($pesertadidik->user->is_data_verified == 2) selected @endif value=2>Terverifikas</option>
-                                                <option @if($pesertadidik->user->is_data_verified == 3) selected @endif value=3>Data salah</option>
+                                                <option @if($pesertadidik->user->is_data_verified == 0) selected @endif value=0>Belum terverifikas</option>
+                                                <option @if($pesertadidik->user->is_data_verified == 1) selected @endif value=1>Terverifikas</option>
+                                                <option @if($pesertadidik->user->is_data_verified == 2) selected @endif value=2>Data salah</option>
                                         </select>
                                         <button type="button submit" class="btn btn-primary">Save changes</button>
                                         </form>
@@ -247,6 +238,15 @@
                                 </div>
                                 </div>
                             </div>
+                        @elseif($pesertadidik->user->is_data_verified == 1)
+                            <button class="btn btn-success">
+                            Terverifikasi
+                            </button>
+                        @elseif($pesertadidik->user->is_data_verified == 2)
+                            <button class="btn btn-success">
+                            Kesalahan data
+                            </button>
+                        @endif
                     </td>
                     <td class="text-center">
                     @endforeach
@@ -255,7 +255,7 @@
                 </tbody>
             </table>
             <div class="d-flex justify-content-center">
-                {{ $calon_siswa_sds->links() }}
+                {{ $calon_siswa_smas->links() }}
             </div>
         </div>
     </div>

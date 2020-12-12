@@ -1,10 +1,14 @@
 <?php
 
-use App\Http\Controllers\admin\DataVerified;
 use App\Http\Controllers\admin\KelolaSmaController;
+use App\Http\Controllers\admin\KelolaSmpController;
+use App\Http\Controllers\admin\KelolaSdController;
+use App\Http\Controllers\admin\KelolaTkController;
 use App\Http\Controllers\CalonSiswaSmaController;
+use App\Http\Controllers\CalonSiswaSmpController;
+use App\Http\Controllers\CalonSiswaSdController;
+use App\Http\Controllers\CalonSiswaTkController;
 use App\Http\Controllers\UserController;
-use App\Models\CalonSiswaSma;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 

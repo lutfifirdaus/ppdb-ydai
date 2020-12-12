@@ -1,7 +1,7 @@
 @extends('admin.layouts.app')
 
 @section('header.content')
-<h2 class="text-center mt-3">Daftar Calon Peserta Didik sd Dharma Karya</h2>
+<h2 class="text-center mt-3">Daftar Calon Peserta Didik SMA Dharma Karya</h2>
 @endsection
 
 @section('main.content')
@@ -71,7 +71,7 @@
                 </tr>
                 </thead>
                 <tbody>
-                @foreach ($calon_siswa_sds as $pesertadidik)
+                @foreach ($calon_siswa_tks as $pesertadidik)
                     <tr>
                     <td>{{ $pesertadidik->id . $pesertadidik->created_at->format("dmy") }}</td>
                     <td>{{ $pesertadidik->nisn }}</td>
@@ -233,7 +233,7 @@
                                         </div>
                                         </div>
                                     <div class="modal-footer">
-                                        <form action="/admin/sd/verifikasi-data/{{ $pesertadidik->user->id }}" method="POST">
+                                        <form action="/admin/sma/verifikasi-data/{{ $pesertadidik->user->id }}" method="POST">
                                         @csrf
                                         @method('PUT')
                                         <select name="is_data_verified" id="is_data_verified">    
@@ -255,7 +255,7 @@
                 </tbody>
             </table>
             <div class="d-flex justify-content-center">
-                {{ $calon_siswa_sds->links() }}
+                {{ $calon_siswa_tks->links() }}
             </div>
         </div>
     </div>

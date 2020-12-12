@@ -48,7 +48,7 @@ class KelolaTkController extends Controller
         return redirect()->back();
     }
 
-    public function tabel()
+    public function tabelVerifikasi()
     {
         $calon_siswa_tks = CalonSiswaTk::paginate(10);
 
