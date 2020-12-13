@@ -32,18 +32,18 @@ class KelolaTkController extends Controller
         {
             $get_id = DB::SELECT("select no_registrasi from users where id='$id' ");
             $no_billing = date('Y').$get_id[0]->no_registrasi;
-        } else {
-            $no_billing = null;
+        
+            DB::table('billings')->insert([
+                'user_id' => $id,
+                'no_registrasi' => $user->no_registrasi,
+                'no_billing' => $no_billing,
+                ]);
         }
 
         // dd($user->no_registrasi);
         // $userId = Auth::id();
 
-        DB::table('billings')->insert([
-        'user_id' => $id,
-        'no_registrasi' => $user->no_registrasi,
-        'no_billing' => $no_billing,
-        ]);
+        
 
         $user->save();
 

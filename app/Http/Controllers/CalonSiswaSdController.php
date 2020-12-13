@@ -41,7 +41,6 @@ class CalonSiswaSdController extends Controller
             'anak_ke' => 'required',
             'status_dalam_keluarga' => 'required',
             'alamat_pd' => 'required',
-            'telp_pd' => 'required|digits_between:12,15|unique:calon_siswa_sds,telp_pd',
             'nama_asal_sekolah' => 'required',
             'alamat_asal_sekolah' => 'required',
             'tahun_ijazah' => 'required|digits:4|integer|min:1900|max:' . (date('Y') + 1),
@@ -108,7 +107,7 @@ class CalonSiswaSdController extends Controller
     public function update(Request $request, CalonSiswaSd $calon_siswa_sd)
     {
         $attr = $request->validate([
-            'nik' => 'required|digits:16|unique:calon_siswa_sds,nik',
+            'nik' => 'required|digits:16',
             'nama_pd' => 'required',
             'ttl' => 'required',
             'jenis_kelamin' => 'required',
@@ -116,7 +115,6 @@ class CalonSiswaSdController extends Controller
             'anak_ke' => 'required',
             'status_dalam_keluarga' => 'required',
             'alamat_pd' => 'required',
-            'telp_pd' => 'required|digits_between:12,15|unique:calon_siswa_sds,telp_pd',
             'nama_asal_sekolah' => 'required',
             'alamat_asal_sekolah' => 'required',
             'tahun_ijazah' => 'required|digits:4|integer|min:1900|max:' . (date('Y') + 1),
@@ -165,6 +163,15 @@ class CalonSiswaSdController extends Controller
             $attr['scan_kk'] = $namakk;
         }
 
-        $calon_siswa_sd->update($attr);
+        $userId = Auth::id();
+        $user = User::findOrFail($userId);
+        
+        $user->is_data_verified = $request->is_data_verified;
+        // dd($request);
+
+        $user->save();
+        $user->csSd()->update($attr);
+
+        return redirect()->route('calon.sd');
     }
 }

@@ -85,13 +85,6 @@
                                     <div class="text-danger mt-2 col-sm-3">{{ $message }}</div>
                                 @enderror
                             </div>
-                            <div class="form-group row ml-3">
-                                <label for="telp_pd" class="col-sm-3 col-form-label">Telp/HP</label>
-                                :<input type="number" name="telp_pd" id="telp_pd" class="form-control col-sm-8" value="{{ old('telp_pd') }}">
-                                @error('telp_pd')
-                                    <div class="text-danger mt-2 col-sm-3">{{ $message }}</div>
-                                @enderror
-                            </div>
                         </div>
                         <div class="mb-3 ml-3"><b><h4>Sekolah Asal</h4></b>
                             <div class="form-group row ml-3">
@@ -103,7 +96,7 @@
                             </div>
                             <div class="form-group row ml-3">
                                 <label for="alamat_asal_sekolah" class="col-sm-3 col-form-label">Alamat Sekolah</label>
-                                :<textarea rows="3" name="alamat_asal_sekolah" id="alamat_asal_sekolah" class="form-control col-sm-8" value="{{ old('alamat_asal_sekolah') }}">
+                                :<textarea rows="3" name="alamat_asal_sekolah" id="alamat_asal_sekolah" class="form-control col-sm-8">{{ old('alamat_asal_sekolah') }}</textarea>
                                 @error('alamat_asal_sekolah')
                                     <div class="text-danger mt-2 col-sm-3">{{ $message }}</div>
                                 @enderror
@@ -251,7 +244,7 @@
                             </div>
                             <div class="form-group row ml-3">
                                 <label for="ttl" class="col-sm-3 col-form-label">Tempat, Tanggal Lahir</label>
-                                :<textarea rows="3" name="ttl" id="ttl" class="form-control col-sm-8" value="{{ $pesertadidik->ttl }}"></textarea>
+                                :<input type="text" name="ttl" id="ttl" class="form-control col-sm-8" value="{{ $pesertadidik->ttl }}">
                                 @error('ttl')
                                     <div class="text-danger mt-2 col-sm-3">{{ $message }}</div>
                                 @enderror
@@ -298,15 +291,8 @@
                             </div>
                             <div class="form-group row ml-3">
                                 <label for="alamat_pd" class="col-sm-3 col-form-label">Alamat</label>
-                                :<textarea rows="3" name="alamat_pd" id="alamat_pd" class="form-control col-sm-8" value="{{ $pesertadidik->alamat_pd }}"></textarea>
+                                :<textarea rows="3" name="alamat_pd" id="alamat_pd" class="form-control col-sm-8">{{ $pesertadidik->alamat_pd }}</textarea>
                                 @error('alamat_pd')
-                                    <div class="text-danger mt-2 col-sm-3">{{ $message }}</div>
-                                @enderror
-                            </div>
-                            <div class="form-group row ml-3">
-                                <label for="telp_pd" class="col-sm-3 col-form-label">Telp/HP</label>
-                                :<input type="number" name="telp_pd" id="telp_pd" class="form-control col-sm-8" value="{{ $pesertadidik->telp_pd }}">
-                                @error('telp_pd')
                                     <div class="text-danger mt-2 col-sm-3">{{ $message }}</div>
                                 @enderror
                             </div>
@@ -321,7 +307,7 @@
                             </div>
                             <div class="form-group row ml-3">
                                 <label for="alamat_asal_sekolah" class="col-sm-3 col-form-label">Alamat Sekolah</label>
-                                :<textarea rows="3" name="alamat_asal_sekolah" id="alamat_asal_sekolah" class="form-control col-sm-8" value="{{ $pesertadidik->alamat_asal_sekolah }}"></textarea>
+                                :<textarea rows="3" name="alamat_asal_sekolah" id="alamat_asal_sekolah" class="form-control col-sm-8" >{{ $pesertadidik->alamat_asal_sekolah }}</textarea>
                                 @error('alamat_asal_sekolah')
                                     <div class="text-danger mt-2 col-sm-3">{{ $message }}</div>
                                 @enderror
@@ -360,7 +346,7 @@
                             </div>
                             <div class="form-group row ml-3">
                                 <label for="alamat_ortu" class="col-sm-3 col-form-label">Alamat</label>
-                                :<textarea rows="3" name="alamat_ortu" id="alamat_ortu" class="form-control col-sm-8" value="{{ $pesertadidik->alamat_ortu }}"></textarea>
+                                :<textarea rows="3" name="alamat_ortu" id="alamat_ortu" class="form-control col-sm-8" >{{ $pesertadidik->alamat_ortu }}</textarea>
                                 @error('alamat_ortu')
                                     <div class="text-danger mt-2 col-sm-3">{{ $message }}</div>
                                 @enderror
@@ -397,7 +383,7 @@
                             </div>
                             <div class="form-group row ml-3">
                                 <label for="alamat_wali" class="col-sm-3 col-form-label">Alamat</label>
-                                :<textarea rows="3" name="alamat_wali" id="alamat_wali" class="form-control col-sm-8"value="{{ $pesertadidik->alamat_wali }}"></textarea>
+                                :<textarea rows="3" name="alamat_wali" id="alamat_wali" class="form-control col-sm-8">{{ $pesertadidik->alamat_wali }}</textarea>
                                 @error('alamat_wali')
                                     <div class="text-danger mt-2 col-sm-3">{{ $message }}</div>
                                 @enderror
@@ -411,9 +397,6 @@
                             </div>
                         </div>
                         <div class="mb-3 ml-3"><b><h4>Dokumen</h4></b>
-                            @if ($pesertadidik->foto_pd)
-                                <img class="d-flex mx-auto mb-3" src="{{ asset("dokumen/sd/" . $pesertadidik->foto_pd) }}" alt="{{ $pesertadidik->foto_pd }}">
-                            @endif
                             <div class="form-group row ml-3">
                                 <label for="foto_pd" class="col-sm-3 col-form-label">Pas Foto 3 X 4</label>
                                 :<input type="file" name="foto_pd" id="foto_pd" class="col-sm-3">
@@ -421,8 +404,8 @@
                                 <div class="text-danger mt-2">{{ $message }}</div>
                                 @enderror
                             </div>
-                            @if ($pesertadidik->scan_ijazah)
-                                <img class="d-flex mx-auto mb-3" src="{{ asset("dokumen/sd/" . $pesertadidik->scan_ijazah) }}" alt="{{ $pesertadidik->scan_ijazah }}">
+                            @if ($pesertadidik->foto_pd)
+                                <img class="d-flex mx-auto mb-3" src="{{ asset("dokumen/sd/" . $pesertadidik->foto_pd) }}" alt="{{ $pesertadidik->foto_pd }}">
                             @endif
                             <div class="form-group row ml-3">
                                 <label for="scan_ijazah" class="col-sm-3 col-form-label">Scan Ijazah PAUD/TK</label>
@@ -431,8 +414,8 @@
                                     <div class="text-danger mt-2">{{ $message }}</div>
                                 @enderror
                             </div>
-                            @if ($pesertadidik->scan_akta)
-                                <img class="d-flex mx-auto mb-3" src="{{ asset("dokumen/sd/" . $pesertadidik->scan_akta) }}" alt="{{ $pesertadidik->scan_akta }}">
+                            @if ($pesertadidik->scan_ijazah)
+                                <img class="d-flex mx-auto mb-3" src="{{ asset("dokumen/sd/" . $pesertadidik->scan_ijazah) }}" alt="{{ $pesertadidik->scan_ijazah }}">
                             @endif
                             <div class="form-group row ml-3">
                                 <label for="scan_akta" class="col-sm-3 col-form-label">Scan akta</label>
@@ -441,8 +424,8 @@
                                     <div class="text-danger mt-2">{{ $message }}</div>
                                 @enderror
                             </div>
-                            @if ($pesertadidik->scan_kk)
-                                <img class="d-flex mx-auto mb-3" src="{{ asset("dokumen/sd/" . $pesertadidik->scan_kk) }}" alt="{{ $pesertadidik->scan_kk }}">
+                            @if ($pesertadidik->scan_akta)
+                                <img class="d-flex mx-auto mb-3" src="{{ asset("dokumen/sd/" . $pesertadidik->scan_akta) }}" alt="{{ $pesertadidik->scan_akta }}">
                             @endif
                             <div class="form-group row ml-3">
                                 <label for="scan_kk" class="col-sm-3 col-form-label">Scan kk</label>
@@ -451,6 +434,9 @@
                                     <div class="text-danger mt-2">{{ $message }}</div>
                                 @enderror
                             </div>
+                            @if ($pesertadidik->scan_kk)
+                                <img class="d-flex mx-auto mb-3" src="{{ asset("dokumen/sd/" . $pesertadidik->scan_kk) }}" alt="{{ $pesertadidik->scan_kk }}">
+                            @endif
                         </div>
                         <input type="hidden" name="is_data_verified" value=1>
                         <div class="d-flex justify-content-end">

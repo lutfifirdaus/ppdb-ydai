@@ -178,7 +178,7 @@
                                         <div class="mt-2 text-left"><b><h5>Dokumen</h5></b>
                                         <div class="row mb-3">
                                             <div class="col-sm-3 ml-3 text-left">Pas Foto 3 X 4</div>
-                                            <img src="{{ asset('dokumen/tk/' . $pesertadidik->pas_foto) }}" alt="">
+                                            <img src="{{ asset('dokumen/tk/' . $pesertadidik->foto_pd) }}" alt="">
                                         </div>
                                         <div class="row mb-3">
                                             <div class="col-sm-3 ml-3 text-left">Scan Akta Kelahiran</div>

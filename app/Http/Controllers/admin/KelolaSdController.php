@@ -32,14 +32,14 @@ class KelolaSdController extends Controller
         {
             $get_id = DB::SELECT("select no_registrasi from users where id='$id' ");
             $no_billing = date('Y').$get_id[0]->no_registrasi;
-        } else {
-            $no_billing = null;
+
+            DB::table('billings')->insert([
+                'no_registrasi' => $user->no_registrasi,
+                'no_billing' => $no_billing,
+            ]);
         }
 
-        DB::table('billings')->insert([
-            'no_registrasi' => $user->no_registrasi,
-            'no_billing' => $no_billing,
-        ]);
+        
 
         $user->save();
 

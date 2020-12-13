@@ -12,7 +12,7 @@
                 {{-- TK --}}
                 <div class="col-6 text-center border-right">
                     <div class="card">
-                        <img class="card-img-top" src="{{ asset('/picture/logo-ydai.jpeg') }}" alt="foto TK Ananda UT" style=" object-fit:cover; object-position: center">
+                        <img class="card-img-top" height="366" src="{{ asset('/picture/siswa2-tk.jpg') }}" alt="foto TK Ananda UT" style=" object-fit:cover; object-position: center">
                         <div class="card-body">
                             <div class="card-text">
                                 <h5>TK Ananda UT</h5>
@@ -33,7 +33,7 @@
                 {{-- SD --}}
                 <div class="col-6 text-center">
                     <div class="card border-danger">
-                        <img class="card-img-top" src="{{ asset('/picture/logo-ydai.jpeg') }}" alt="foto TK Ananda UT">
+                        <img class="card-img-top" src="{{ asset('/picture/siswa2-sd.jpg') }}" alt="foto TK Ananda UT">
                         <div class="card-body">
                             <div class="card-text">
                                 <h5>SD Dharma Karya</h5>
@@ -54,7 +54,7 @@
                 {{-- SMP --}}
                 <div class="col-6 text-center border-right mb-3">
                     <div class="card">
-                        <img class="card-img-top" src="{{ asset('/picture/logo-ydai.jpeg') }}" alt="foto SMP Dharma Karya">
+                        <img class="card-img-top" src="{{ asset('/picture/siswa2-smp.jpg') }}" alt="foto SMP Dharma Karya">
                         <div class="card-body">
                             <div class="card-text">
                                 <h5>SMP Dharma Karya</h5>
@@ -75,7 +75,7 @@
                 {{-- SMA --}}
                 <div class="col-6 text-center mb-3">
                     <div class="card border-danger">
-                        <img class="card-img-top" src="{{ asset('/picture/logo-ydai.jpeg') }}" alt="foto SMA Ananda UT">
+                        <img class="card-img-top" src="{{ asset('/picture/siswa2-sma.jpg') }}" alt="foto SMA Ananda UT">
                         <div class="card-body">
                             <div class="card-text">
                                 <h5>SMA Dharma Karya</h5>

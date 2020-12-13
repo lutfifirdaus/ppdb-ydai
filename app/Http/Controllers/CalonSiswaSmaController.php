@@ -155,6 +155,16 @@ class CalonSiswaSmaController extends Controller
             $attr['scan_skhun'] = $namaskhun;
         }
 
-        $calon_siswa_sma->update($attr);
+        $userId = Auth::id();
+        $user = User::findOrFail($userId);
+        
+        $user->is_data_verified = $request->is_data_verified;
+        // dd($request);
+
+        $user->save();
+        $user->csSma()->update($attr);
+
+        // session()->flash('success', 'Data telah ditambahkan!');
+        return redirect()->route('calon.sma');
     }
 }

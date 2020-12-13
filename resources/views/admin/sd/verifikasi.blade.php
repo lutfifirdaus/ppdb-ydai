@@ -85,11 +85,11 @@
                                 Belum Terverifikasi
                             </button>
                         @elseif($pesertadidik->user->is_data_verified == 2)
-                            <button type="button" class="btn btn-warning" data-toggle="modal" data-target="#exampleModalLong">
+                            <button type="button" class="btn btn-success" data-toggle="modal" data-target="#exampleModalLong">
                             Terverifikasi
                             </button>
                         @elseif($pesertadidik->user->is_data_verified == 3)
-                            <button type="button" class="btn btn-warning" data-toggle="modal" data-target="#exampleModalLong">
+                            <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#exampleModalLong">
                             Kesalahan data
                             </button>
                         @endif
@@ -221,11 +221,11 @@
                                         <div class="mt-2 text-left"><b><h5>Dokumen</h5></b>
                                             <div class="row mb-3">
                                                 <div class="col-sm-3 ml-3 text-left">Pas Foto 3 X 4</div>
-                                                <img src="{{ asset('dokumen/sd/' . $pesertadidik->pas_foto) }}" alt="">
+                                                <img src="{{ asset('dokumen/sd/' . $pesertadidik->foto_pd) }}" alt="">
                                             </div>
                                             <div class="row mb-3">
                                                 <div class="col-sm-3 ml-3 text-left">Scan Ijazah PAUD/TK</div>
-                                                <img src="{{ asset('dokumen/sd/' . $pesertadidik->scan_ijazah) }}" alt="">
+                                                <img class="text-center" src="{{ asset('dokumen/sd/' . $pesertadidik->scan_ijazah) }}" alt="">
                                             </div>
                                             <div class="row mb-3">
                                                 <div class="col-sm-3 ml-3 text-left">Scan Akta Kelahiran</div>

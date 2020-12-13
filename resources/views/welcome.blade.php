@@ -39,7 +39,7 @@
                 <div class="collapse navbar-collapse" id="navbarSupportedContent">
                     <ul class="navbar-nav mr-auto">
                         <li class="nav-item">
-                            <a href="#syarat" class="nav-link">Jenjang Sekolah</a>
+                            <a href="#jenjang" class="nav-link">Jenjang Sekolah</a>
                         </li>
                         <li class="nav-item">
                             <a href="#syarat" class="nav-link">Persayaratan</a>
@@ -47,9 +47,9 @@
                         <li class="nav-item">
                             <a href="#alur-pendaftaran" class="nav-link">Alur Pendaftaran</a>
                         </li>
-                        <li class="nav-item">
+                        {{-- <li class="nav-item">
                             <a href="#alur-pendaftaran" class="nav-link">Biaya Pendaftaran</a>
-                        </li>
+                        </li> --}}
                     </ul>
                     <ul class="navbar-nav ml-auto">
                         <li class="nav-item">
@@ -86,20 +86,32 @@
                         </ol>
                         <div class="carousel-inner">
                             <div class="carousel-item active">
-                            <img class="d-block w-100" src="{{ asset('picture/smp.jpeg') }}" alt="First slide">
+                            <img class="d-block w-100" src="{{ asset('picture/siswa-tk.jpg') }}" alt="First slide">
                             <div class="carousel-caption d-none d-md-block">
                                 <h2><b>TK Ananda UT</b></h2>
                                 <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Optio, fugit.</p>
                             </div>
                         </div>
                         <div class="carousel-item">
-                            <img class="d-block w-100" src="{{ asset('picture/sma.jpeg') }}" alt="Second slide">
+                            <img class="d-block w-100" src="{{ asset('picture/siswa-sd.jpg') }}" alt="Second slide">
+                            <div class="carousel-caption d-none d-md-block">
+                                <h2><b>SD Dharma Karya</b></h2>
+                                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Optio, fugit.</p>
+                            </div>
                         </div>
                         <div class="carousel-item">
-                            <img class="d-block w-100" src="{{ asset('picture/smp1.jpeg') }}" alt="Third slide">
+                            <img class="d-block w-100" src="{{ asset('picture/siswa-smp.jpg') }}" alt="Third slide">
+                            <div class="carousel-caption d-none d-md-block">
+                                <h2><b>SMP Dharma Karya</b></h2>
+                                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Optio, fugit.</p>
+                            </div>
                         </div>
                         <div class="carousel-item">
-                            <img class="d-block w-100" src="{{ asset('picture/sma.jpeg') }}" alt="Fourd slide">
+                            <img class="d-block w-100" src="{{ asset('picture/siswa-sma.JPG') }}" alt="Fourd slide">
+                            <div class="carousel-caption d-none d-md-block">
+                                <h2><b>SMA Dharma Karya</b></h2>
+                                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Optio, fugit.</p>
+                            </div>
                         </div>
                         </div>
                         <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">
@@ -119,19 +131,19 @@
                     <h1>Selamat Datang di PPDB Yayasan Dharma Anak Indonesia UT</h1><hr>
                     <p>Yayasan Dharma Ananda Indonesia UT menyediakan situs ini guna mempermudah pendaftaran peserta didik baru <br> untuk seluruh sekolah yang berada di dalam naungannya</p>
                 </div>
-                <div class="text-center" id="">
+                <div class="text-center" id="jenjang">
                     <h3>Sekolah Dalam Naungan</h3>
                 </div>
                 <hr>
                 <div class="row">
-                    <div class="col-6 text-center border-right">
+                    <div class="col-6 border-right">
                         <div class="card">
-                            <img class="card-img-top" src="{{ asset('/picture/logo-ydai.jpeg') }}" alt="foto TK Ananda UT">
+                            <img class="card-img-top" height="366" src="{{ asset('/picture/siswa2-tk.jpg') }}" alt="foto TK Ananda UT">
                             <div class="card-body">
                                 <div class="card-text">
-                                    <h5>TK Ananda UT</h5>
-                                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Error perferendis sit, aspernatur quae vitae illum quaerat ea? Mollitia, quibusdam? Sint velit enim voluptatum fugiat! Molestias, accusantium! Adipisci ipsum reiciendis voluptate quos vitae inventore doloremque? Minus harum deleniti, rem maxime voluptas laudantium, quas veritatis ullam molestias, placeat excepturi laborum sint dicta!</p>
-                                    <nav class="navbar navbar-expand-lg navbar-dark" style="background-color: darkred;">
+                                    <h5 class="text-center">TK Ananda UT</h5>
+                                    <p class="text-justify">Lorem ipsum dolor sit amet consectetur adipisicing elit. Error perferendis sit, aspernatur quae vitae illum quaerat ea? Mollitia, quibusdam? Sint velit enim voluptatum fugiat! Molestias, accusantium! Adipisci ipsum reiciendis voluptate quos vitae inventore doloremque? Minus harum deleniti, rem maxime voluptas laudantium, quas veritatis ullam molestias, placeat excepturi laborum sint dicta!</p>
+                                    <nav class="navbar navbar-expand-lg navbar-dark bg-success">
                                         <div class="collapse navbar-collapse" id="navbarSupportedContent">
                                             <ul class="navbar-nav mx-auto">
                                                 <li class="nav-item">
@@ -155,12 +167,12 @@
                     </div>
                     <div class="col-6 text-center">
                         <div class="card border-danger">
-                            <img class="card-img-top" src="{{ asset('/picture/logo-ydai.jpeg') }}" alt="foto TK Ananda UT">
+                            <img class="card-img-top" src="{{ asset('/picture/siswa2-sd.jpg') }}" alt="foto TK Ananda UT">
                             <div class="card-body">
                                 <div class="card-text">
-                                    <h5>SD Dharma Karya</h5>
-                                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Error perferendis sit, aspernatur quae vitae illum quaerat ea? Mollitia, quibusdam? Sint velit enim voluptatum fugiat! Molestias, accusantium! Adipisci ipsum reiciendis voluptate quos vitae inventore doloremque? Minus harum deleniti, rem maxime voluptas laudantium, quas veritatis ullam molestias, placeat excepturi laborum sint dicta!</p>
-                                    <nav class="navbar navbar-expand-lg navbar-dark" style="background-color: darkred;">
+                                    <h5 class="text-center">SD Dharma Karya</h5>
+                                    <p class="text-justify">Lorem ipsum dolor sit amet consectetur adipisicing elit. Error perferendis sit, aspernatur quae vitae illum quaerat ea? Mollitia, quibusdam? Sint velit enim voluptatum fugiat! Molestias, accusantium! Adipisci ipsum reiciendis voluptate quos vitae inventore doloremque? Minus harum deleniti, rem maxime voluptas laudantium, quas veritatis ullam molestias, placeat excepturi laborum sint dicta!</p>
+                                    <nav class="navbar navbar-expand-lg navbar-dark bg-danger">
                                         <div class="collapse navbar-collapse" id="navbarSupportedContent">
                                             <ul class="navbar-nav mx-auto">
                                                 <li class="nav-item">
@@ -184,12 +196,12 @@
                     </div>
                     <div class="col-6 text-center border-right mb-3">
                         <div class="card">
-                            <img class="card-img-top" src="{{ asset('/picture/logo-ydai.jpeg') }}" alt="foto TK Ananda UT">
+                            <img class="card-img-top" src="{{ asset('/picture/siswa2-smp.jpg') }}" alt="foto TK Ananda UT">
                             <div class="card-body">
                                 <div class="card-text">
-                                    <h5>TK Ananda UT</h5>
-                                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Error perferendis sit, aspernatur quae vitae illum quaerat ea? Mollitia, quibusdam? Sint velit enim voluptatum fugiat! Molestias, accusantium! Adipisci ipsum reiciendis voluptate quos vitae inventore doloremque? Minus harum deleniti, rem maxime voluptas laudantium, quas veritatis ullam molestias, placeat excepturi laborum sint dicta!</p>
-                                    <nav class="navbar navbar-expand-lg navbar-dark" style="background-color: darkred;">
+                                    <h5 class="text-center">SMP Dharma Karya</h5>
+                                    <p class="text-justify">Lorem ipsum dolor sit amet consectetur adipisicing elit. Error perferendis sit, aspernatur quae vitae illum quaerat ea? Mollitia, quibusdam? Sint velit enim voluptatum fugiat! Molestias, accusantium! Adipisci ipsum reiciendis voluptate quos vitae inventore doloremque? Minus harum deleniti, rem maxime voluptas laudantium, quas veritatis ullam molestias, placeat excepturi laborum sint dicta!</p>
+                                    <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
                                         <div class="collapse navbar-collapse" id="navbarSupportedContent">
                                             <ul class="navbar-nav mx-auto">
                                                 <li class="nav-item">
@@ -213,12 +225,12 @@
                     </div>
                     <div class="col-6 text-center mb-3">
                         <div class="card border-danger">
-                            <img class="card-img-top" src="{{ asset('/picture/logo-ydai.jpeg') }}" alt="foto TK Ananda UT">
+                            <img class="card-img-top" src="{{ asset('/picture/siswa2-sma.jpg') }}" alt="foto TK Ananda UT">
                             <div class="card-body">
                                 <div class="card-text">
-                                    <h5>SD Dharma Karya</h5>
-                                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Error perferendis sit, aspernatur quae vitae illum quaerat ea? Mollitia, quibusdam? Sint velit enim voluptatum fugiat! Molestias, accusantium! Adipisci ipsum reiciendis voluptate quos vitae inventore doloremque? Minus harum deleniti, rem maxime voluptas laudantium, quas veritatis ullam molestias, placeat excepturi laborum sint dicta!</p>
-                                    <nav class="navbar navbar-expand-lg navbar-dark" style="background-color: darkred;">
+                                    <h5 class="text-center">SMA Dharma Karya</h5>
+                                    <p class="text-justify">Lorem ipsum dolor sit amet consectetur adipisicing elit. Error perferendis sit, aspernatur quae vitae illum quaerat ea? Mollitia, quibusdam? Sint velit enim voluptatum fugiat! Molestias, accusantium! Adipisci ipsum reiciendis voluptate quos vitae inventore doloremque? Minus harum deleniti, rem maxime voluptas laudantium, quas veritatis ullam molestias, placeat excepturi laborum sint dicta!</p>
+                                    <nav class="navbar navbar-expand-lg navbar-dark bg-secondary">
                                         <div class="collapse navbar-collapse" id="navbarSupportedContent">
                                             <ul class="navbar-nav mx-auto">
                                                 <li class="nav-item">
@@ -260,8 +272,23 @@
                 </div>
                 <hr>
                 <div class="row">
-                    <div class="col-6 text-center border-right mb-3">
-                        <h5>TK Ananda UT</h5>
+                    <div class="col-6 border-right mb-3">
+                        <h5 class="text-center">TK Ananda UT</h5>
+                        <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Expedita eos delectus quo odit dolor quisquam veritatis beatae maiores aliquid quod, consequatur debitis facere ullam magnam eum esse? Labore a laboriosam, eum veritatis fuga illum atque repellat quibusdam corrupti provident? Excepturi ad earum rem! Earum accusantium dolorum eius ratione minima consectetur!</p>
+                    </div>
+
+                    <div class="col-6 mb-3">
+                        <h5 class="text-center">SD Dharma karya</h5>
+                        <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Expedita eos delectus quo odit dolor quisquam veritatis beatae maiores aliquid quod, consequatur debitis facere ullam magnam eum esse? Labore a laboriosam, eum veritatis fuga illum atque repellat quibusdam corrupti provident? Excepturi ad earum rem! Earum accusantium dolorum eius ratione minima consectetur!</p>
+                    </div>
+
+                    <div class="col-6 border-right mb-3">
+                        <h5 class="text-center">SMP Dharma karya</h5>
+                        <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Expedita eos delectus quo odit dolor quisquam veritatis beatae maiores aliquid quod, consequatur debitis facere ullam magnam eum esse? Labore a laboriosam, eum veritatis fuga illum atque repellat quibusdam corrupti provident? Excepturi ad earum rem! Earum accusantium dolorum eius ratione minima consectetur!</p>
+                    </div>
+
+                    <div class="col-6 mb-3">
+                        <h5 class="text-center">SMA Dharma karya</h5>
                         <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Expedita eos delectus quo odit dolor quisquam veritatis beatae maiores aliquid quod, consequatur debitis facere ullam magnam eum esse? Labore a laboriosam, eum veritatis fuga illum atque repellat quibusdam corrupti provident? Excepturi ad earum rem! Earum accusantium dolorum eius ratione minima consectetur!</p>
                     </div>
                 </div>

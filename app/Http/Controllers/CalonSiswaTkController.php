@@ -55,7 +55,7 @@ class CalonSiswaTkController extends Controller
                 
         if ($request->hasFile('foto_pd')) {
             $foto = $request->file('foto_pd');
-            $namafoto = $request->nisn . "-pas-foto" . "." . $foto->extension();
+            $namafoto = $request->nama_pd . "-pas-foto" . "." . $foto->extension();
             $location = public_path('dokumen/tk/' . $namafoto);
             Image::make($foto)->resize(300, 400)->save($location);
             $attr['foto_pd'] = $namafoto;
@@ -63,7 +63,7 @@ class CalonSiswaTkController extends Controller
 
         if ($request->hasFile('scan_akta')) {
             $akta = $request->file('scan_akta');
-            $namaakta = $request->nik . "-scan-akta" . "." . $akta->extension();
+            $namaakta = $request->nama_pd . "-scan-akta" . "." . $akta->extension();
             $location = public_path('dokumen/tk/' . $namaakta);
             Image::make($akta)->resize(700, 1200)->save($location);
             $attr['scan_akta'] = $namaakta;
@@ -71,7 +71,7 @@ class CalonSiswaTkController extends Controller
 
         if ($request->hasFile('scan_kk')) {
             $kk = $request->file('scan_kk');
-            $namakk = $request->nik . "-scan-kk" . "." . $kk->extension();
+            $namakk = $request->nama_pd . "-scan-kk" . "." . $kk->extension();
             $location = public_path('dokumen/tk/' . $namakk);
             Image::make($kk)->resize(700, 1200)->save($location);
             $attr['scan_kk'] = $namakk;
@@ -86,7 +86,7 @@ class CalonSiswaTkController extends Controller
         // dd($request);
 
         $user->save();
-        $user->cstk()->save($form);
+        $user->csTk()->save($form);
 
         // session()->flash('success', 'Data telah ditambahkan!');
         return redirect()->route('calon.tk');
@@ -118,7 +118,7 @@ class CalonSiswaTkController extends Controller
                 
         if ($request->hasFile('foto_pd')) {
             $foto = $request->file('foto_pd');
-            $namafoto = $request->nisn . "-pas-foto" . "." . $foto->extension();
+            $namafoto = $request->nama_pd . "-pas-foto" . "." . $foto->extension();
             $location = public_path('dokumen/tk/' . $namafoto);
             Image::make($foto)->resize(300, 400)->save($location);
             $attr['foto_pd'] = $namafoto;
@@ -126,7 +126,7 @@ class CalonSiswaTkController extends Controller
 
         if ($request->hasFile('scan_akta')) {
             $akta = $request->file('scan_akta');
-            $namaakta = $request->nik . "-scan-akta" . "." . $akta->extension();
+            $namaakta = $request->nama_pd . "-scan-akta" . "." . $akta->extension();
             $location = public_path('dokumen/tk/' . $namaakta);
             Image::make($akta)->resize(700, 1200)->save($location);
             $attr['scan_akta'] = $namaakta;
@@ -134,13 +134,21 @@ class CalonSiswaTkController extends Controller
 
         if ($request->hasFile('scan_kk')) {
             $kk = $request->file('scan_kk');
-            $namakk = $request->nik . "-scan-kk" . "." . $kk->extension();
+            $namakk = $request->nama_pd . "-scan-kk" . "." . $kk->extension();
             $location = public_path('dokumen/tk/' . $namakk);
             Image::make($kk)->resize(700, 1200)->save($location);
             $attr['scan_kk'] = $namakk;
         }
 
-        $calon_siswa_tk->update($attr);
+        $userId = Auth::id();
+        $user = User::findOrFail($userId);
+        
+        $user->is_data_verified = $request->is_data_verified;
+        // dd($request);
 
+        $user->save();
+        $user->csTk()->update($attr);
+
+        return redirect()->route('calon.tk');
     }
 }

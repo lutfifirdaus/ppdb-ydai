@@ -32,16 +32,16 @@ class KelolaSmpController extends Controller
         if($request->is_data_verified == 2)
         {
             $no_billing = date('Y').$get_id[0]->no_registrasi;
-        } else {
-            $no_billing = null;
+        
+            DB::table('billings')->insert([
+                'no_registrasi' => $user->no_registrasi,
+                'no_billing' => $no_billing,
+            ]);
         }
 
         // dd($user->no_registrasi);
 
-        DB::table('billings')->insert([
-            'no_registrasi' => $user->no_registrasi,
-            'no_billing' => $no_billing,
-        ]);
+        
 
         $user->save();
 

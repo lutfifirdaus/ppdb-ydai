@@ -326,36 +326,36 @@
                             </div>
                         </div>
                         <div class="mb-3 ml-3"><b><h4>Dokumen</h4></b>
-                            @if ($pesertadidik->foto_pd)
-                                <img class="d-flex mx-auto mb-3" src="{{ asset("dokumen/tk/" . $pesertadidik->foto_pd) }}" alt="{{ $pesertadidik->foto_pd }}">
-                            @endif
-                            <div class="form-group row ml-3">
+                            <div class="form-group row">
                                 <label for="foto_pd" class="col-sm-3 col-form-label">Pas Foto 3 X 4</label>
                                 :<input type="file" name="foto_pd" id="foto_pd" class="col-sm-3">
                                 @error('foto_pd')
-                                <div class="text-danger mt-2">{{ $message }}</div>
+                                <div class="text-danger mb-3">{{ $message }}</div>
+                                @enderror
+                            </div>
+                            @if ($pesertadidik->foto_pd)
+                                <img class="d-flex mx-auto mb-3" src="{{ asset("dokumen/tk/" . $pesertadidik->foto_pd) }}" alt="{{ $pesertadidik->foto_pd }}">
+                            @endif
+                            <div class="form-group row">
+                                <label for="scan_akta" class="col-sm-3 col-form-label">Scan Akta Kelahiran</label>
+                                :<input type="file" name="scan_akta" id="scan_akta" class="col-sm-8">
+                                @error('scan_akta')
+                                    <div class="text-danger mb-3">{{ $message }}</div>
                                 @enderror
                             </div>
                             @if ($pesertadidik->scan_akta)
                                 <img class="d-flex mx-auto mb-3" src="{{ asset("dokumen/tk/" . $pesertadidik->scan_akta) }}" alt="{{ $pesertadidik->scan_akta }}">
                             @endif
-                            <div class="form-group row ml-3">
-                                <label for="scan_akta" class="col-sm-3 col-form-label">Scan Akta Kelahiran</label>
-                                :<input type="file" name="scan_akta" id="scan_akta" class="col-sm-8">
-                                @error('scan_akta')
-                                    <div class="text-danger mt-2">{{ $message }}</div>
+                            <div class="form-group row">
+                                <label for="scan_kk" class="col-sm-3 col-form-label">Scan Kartu Keluarga</label>
+                                :<input type="file" name="scan_kk" id="scan_kk" class="col-sm-8">
+                                @error('scan_kk')
+                                    <div class="text-danger mb-3">{{ $message }}</div>
                                 @enderror
                             </div>
                             @if ($pesertadidik->scan_kk)
                                 <img class="d-flex mx-auto mb-3" src="{{ asset("dokumen/tk/" . $pesertadidik->scan_kk) }}" alt="{{ $pesertadidik->scan_kk }}">
                             @endif
-                            <div class="form-group row ml-3">
-                                <label for="scan_kk" class="col-sm-3 col-form-label">Scan Kartu Keluarga</label>
-                                :<input type="file" name="scan_kk" id="scan_kk" class="col-sm-8">
-                                @error('scan_kk')
-                                    <div class="text-danger mt-2">{{ $message }}</div>
-                                @enderror
-                            </div>
                         </div>
                         <input type="hidden" name="is_data_verified" value=1>
                         <div class="d-flex justify-content-end">

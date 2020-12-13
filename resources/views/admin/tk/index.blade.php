@@ -52,7 +52,7 @@
                                 <h3>{{ DB::table('users')->where('no_registrasi', 'like', '001%')->where('is_data_verified', '=', '3')->count() }}
                                 </h3>
 
-                                <p>Banyak data yang<br> salah</p>
+                                <p>Banyak Calon dengan <br> data yang salah</p>
                             </div>
                             <div class="icon">
                                 <i class="fas fa-times"></i>
@@ -89,7 +89,7 @@
                 @foreach ($calon_siswa_tks as $pesertadidik)
                 <div class="col-lg-3 col-6">
                     <div class="card">
-                        <img class="card-img-top" height="200" style=" object-fit:cover; object-position: center" src="{{ asset('dokumen/tk/' . $pesertadidik->pas_foto) }}" alt="Pas Foto 3 X 4">
+                        <img class="card-img-top" height="200" style=" object-fit:cover; object-position: center" src="{{ asset('dokumen/tk/' . $pesertadidik->foto_pd) }}" alt="Pas Foto 3 X 4">
                         <div class="card-body">
                             <p>{{ $pesertadidik->nama_pd }}<br>
                                 {{ $pesertadidik->jenis_kelamin }}<br>

@@ -155,6 +155,15 @@ class CalonSiswaSmpController extends Controller
             $attr['scan_skhun'] = $namaskhun;
         }
 
-        $calon_siswa_smp->update($attr);
+        $userId = Auth::id();
+        $user = User::findOrFail($userId);
+        
+        $user->is_data_verified = $request->is_data_verified;
+        // dd($request);
+
+        $user->save();
+        $user->csSmp()->update($attr);
+
+        return redirect()->route('calon.smp');
     }
 }
