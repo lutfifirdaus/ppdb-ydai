@@ -13,9 +13,9 @@ class KelolaTkController extends Controller
 
     public function index()
     {
-        $calon_siswa_tks = CalonSiswaTk::paginate(10);
+        $calon_siswa_tks = CalonSiswaTk::paginate(6);
 
-        return view('admin.tk.verifikasi', [
+        return view('admin.tk.index', [
             'calon_siswa_tks' => $calon_siswa_tks,
         ]);
     }
@@ -37,10 +37,12 @@ class KelolaTkController extends Controller
         }
 
         // dd($user->no_registrasi);
+        // $userId = Auth::id();
 
         DB::table('billings')->insert([
-            'no_registrasi' => $user->no_registrasi,
-            'no_billing' => $no_billing,
+        'user_id' => $id,
+        'no_registrasi' => $user->no_registrasi,
+        'no_billing' => $no_billing,
         ]);
 
         $user->save();
@@ -61,7 +63,7 @@ class KelolaTkController extends Controller
     {
         $calon_siswa_tks = CalonSiswaTk::paginate(10);
 
-        return view('admin.tk.verifikasi', [
+        return view('admin.tk.tagihan', [
             'calon_siswa_tks' => $calon_siswa_tks,
         ]);
     }

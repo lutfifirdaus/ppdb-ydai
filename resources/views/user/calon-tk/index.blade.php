@@ -50,7 +50,7 @@
                                     Sudah <i class="fas fa-check-circle"></i>
                                 </a>
                             @else
-                                <a href="{{ route('calon.sd.buat') }}" class="small-box-footer">
+                                <a href="{{ route('calon.tk.buat') }}" class="small-box-footer">
                                     Belum <i class="fas fa-times"></i>
                                 </a>
                             @endif
@@ -103,7 +103,7 @@
                             <div class="icon">
                                 <i class="fas fa-file-invoice"></i>
                             </div>
-                            @if (!Auth::user()->status)
+                            @if (empty(Auth::user()->billing))
                                 <a class="small-box-footer">
                                         Belum <i class="fas fa-times"></i>
                                 </a>

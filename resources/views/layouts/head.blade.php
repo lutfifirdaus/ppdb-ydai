@@ -45,6 +45,15 @@
             border: 0px solid white !important;
             border-color: none;
             box-shadow: none;
+            border-bottom: 1px solid blue !important;
+        }
+
+        .card-title {
+            float: none;
+        }
+
+        p {
+            font-size: 14px
         }
     </style>
 </head>

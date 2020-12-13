@@ -14,6 +14,7 @@ class CreateBillingsTable extends Migration
     public function up()
     {
         Schema::create('billings', function (Blueprint $table) {
+            $table->foreignId('user_id')->constrained();
             $table->char('no_registrasi',20);
             $table->char('no_billing', 20);
             $table->char('channel_bank', 150)->nullable();

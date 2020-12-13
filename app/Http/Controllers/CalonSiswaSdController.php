@@ -61,7 +61,7 @@ class CalonSiswaSdController extends Controller
         if ($request->hasFile('foto_pd')) {
             $foto = $request->file('foto_pd');
             $namafoto = $request->nik . "-pas-foto" . "." . $foto->extension();
-            $location = public_path('dokumen/sd' . $namafoto);
+            $location = public_path('dokumen/sd/' . $namafoto);
             Image::make($foto)->resize(300, 400)->save($location);
             $attr['foto_pd'] = $namafoto;
         }
@@ -69,7 +69,7 @@ class CalonSiswaSdController extends Controller
         if ($request->hasFile('scan_ijazah')) {
             $ijazah = $request->file('scan_ijazah');
             $namaijazah = $request->nik . "-scan-ijazah" . "." . $ijazah->extension();
-            $location = public_path('dokumen/sd' . $namaijazah);
+            $location = public_path('dokumen/sd/' . $namaijazah);
             Image::make($foto)->resize(700, 1200)->save($location);
             $attr['scan_ijazah'] = $namaijazah;
         }
@@ -77,7 +77,7 @@ class CalonSiswaSdController extends Controller
         if ($request->hasFile('scan_akta')) {
             $akta = $request->file('scan_akta');
             $namaakta = $request->nik . "-scan-akta" . "." . $akta->extension();
-            $location = public_path('dokumen/sd' . $namaakta);
+            $location = public_path('dokumen/sd/' . $namaakta);
             Image::make($akta)->resize(700, 1200)->save($location);
             $attr['scan_akta'] = $namaakta;
         }
@@ -85,7 +85,7 @@ class CalonSiswaSdController extends Controller
         if ($request->hasFile('scan_kk')) {
             $kk = $request->file('scan_kk');
             $namakk = $request->nik . "-scan-kk" . "." . $kk->extension();
-            $location = public_path('dokumen/sd' . $namakk);
+            $location = public_path('dokumen/sd/' . $namakk);
             Image::make($kk)->resize(700, 1200)->save($location);
             $attr['scan_kk'] = $namakk;
         }
@@ -136,7 +136,7 @@ class CalonSiswaSdController extends Controller
         if ($request->hasFile('foto_pd')) {
             $foto = $request->file('foto_pd');
             $namafoto = $request->nik . "-pas-foto" . "." . $foto->extension();
-            $location = public_path('dokumen/sd' . $namafoto);
+            $location = public_path('dokumen/sd/' . $namafoto);
             Image::make($foto)->resize(300, 400)->save($location);
             $attr['foto_pd'] = $namafoto;
         }
@@ -144,7 +144,7 @@ class CalonSiswaSdController extends Controller
         if ($request->hasFile('scan_ijazah')) {
             $ijazah = $request->file('scan_ijazah');
             $namaijazah = $request->nik . "-scan-ijazah" . "." . $ijazah->extension();
-            $location = public_path('dokumen/sd' . $namaijazah);
+            $location = public_path('dokumen/sd/' . $namaijazah);
             Image::make($foto)->resize(700, 1200)->save($location);
             $attr['scan_ijazah'] = $namaijazah;
         }
@@ -152,7 +152,7 @@ class CalonSiswaSdController extends Controller
         if ($request->hasFile('scan_akta')) {
             $akta = $request->file('scan_akta');
             $namaakta = $request->nik . "-scan-akta" . "." . $akta->extension();
-            $location = public_path('dokumen/sd' . $namaakta);
+            $location = public_path('dokumen/sd/' . $namaakta);
             Image::make($akta)->resize(700, 1200)->save($location);
             $attr['scan_akta'] = $namaakta;
         }
@@ -160,7 +160,7 @@ class CalonSiswaSdController extends Controller
         if ($request->hasFile('scan_kk')) {
             $kk = $request->file('scan_kk');
             $namakk = $request->nik . "-scan-kk" . "." . $kk->extension();
-            $location = public_path('dokumen/sd' . $namakk);
+            $location = public_path('dokumen/sd/' . $namakk);
             Image::make($kk)->resize(700, 1200)->save($location);
             $attr['scan_kk'] = $namakk;
         }

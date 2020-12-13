@@ -15,7 +15,7 @@ class KelolaSmaController extends Controller
     {
         $calon_siswa_smas = CalonSiswaSma::paginate(10);
 
-        return view('admin.sma.verifikasi', [
+        return view('admin.sma.index', [
             'calon_siswa_smas' => $calon_siswa_smas,
         ]);
     }

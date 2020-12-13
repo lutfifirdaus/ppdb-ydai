@@ -15,7 +15,7 @@ class KelolaSmpController extends Controller
     {
         $calon_siswa_smps = CalonSiswaSmp::paginate(10);
 
-        return view('admin.smp.verifikasi', [
+        return view('admin.smp.index', [
             'calon_siswa_smps' => $calon_siswa_smps,
         ]);
     }

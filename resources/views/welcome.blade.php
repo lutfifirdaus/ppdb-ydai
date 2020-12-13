@@ -241,10 +241,19 @@
                         </div>
                     </div>
                 </div>
-                <div class="mb-3 text-center" id="alur-pendaftaran">
-                    <h3>Alur Pendaftaran</h3>
+                <div class="mb-3" id="alur-pendaftaran">
+                    <h3 class="text-center">Alur Pendaftaran</h3>
                     <hr>
-                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Nostrum, quo dolore ducimus nisi quaerat laboriosam delectus, alias earum suscipit fuga ad sequi a deleniti corrupti dolorum ipsam ipsa molestias inventore! Velit, laudantium amet. Voluptate, earum! Magnam incidunt molestias eveniet ex quo illum soluta rem vitae modi similique vero, voluptatibus accusantium sunt ullam blanditiis? Quidem omnis maxime enim cumque, quo eligendi magni necessitatibus, error impedit exercitationem voluptate. Autem laboriosam voluptatibus explicabo beatae, alias est ex distinctio pariatur quibusdam delectus illo expedita nesciunt eos necessitatibus deleniti inventore. Assumenda non aspernatur quod id laudantium est facilis a architecto ad totam. Cumque, mollitia quas.</p>
+                    <p class=" text-lg">1. Calon peserta didik melakukan registrasi/pendaftaran akun<br>
+                        2. Calon peserta didik melakukan verifikasi e-mail akun yang telah didaftarkan<br>
+                        3. Calon peserta didik memilih jenjang sekolah mana yang akan dimasuki<br>
+                        4. Calon Peserta didik mengisi data formulir pendaftaran<br>
+                        5. Data formulir pendaftaran yang telah terkirim akan diverifikasi oleh Panitia<br>
+                        6. Peserta didik yang telah terverifikasi, akan mendapatkan nomor biling untuk melakukan pembayaran registrasi sekolah<br>
+                        7. Setelah melakukan pembayaran, calon peserta didik dapat mengunduh laporan bukti pembayaran beserta formulir pendaftaran<br>
+                        8. Calon peserta didik yang telah mengunduh laporan bukti pembayaran diharuskan mendaftar ulang ke sekolah yang bersangkutan<br>
+                        9. Selesai
+                    </p>
                 </div>
                 <div class="text-center" id="syarat">
                     <h3>Persyaratan dan Ketentuan</h3>

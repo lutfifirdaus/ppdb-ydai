@@ -219,18 +219,18 @@
                                         </div>
                                         </div>
                                         <div class="mt-2 text-left"><b><h5>Dokumen</h5></b>
-                                        <div class="row">
-                                            <div class="col-sm-2 ml-3 text-left">Pas Foto 3 X 4</div>
-                                            <div class="col-sm-9 text-left">: {{ $pesertadidik->nama_wali }}</div>
-                                        </div>
-                                        <div class="row">
-                                            <div class="col-sm-2 ml-3 text-left">Scan Ijazah</div>
-                                            <div class="col-sm-9 text-left">: {{ $pesertadidik->alamat_wali }}</div>
-                                        </div>
-                                        <div class="row">
-                                            <div class="col-sm-2 ml-3 text-left">Scan SKHUN</div>
-                                            <div class="col-sm-9 text-left">: {{ $pesertadidik->pekerjaan_wali }}</div>
-                                        </div>
+                                            <div class="row mb-3">
+                                                <div class="col-sm-3 ml-3 text-left">Pas Foto 3 X 4</div>
+                                                <img src="{{ asset('dokumen/smp/' . $pesertadidik->pas_foto) }}" alt="">
+                                            </div>
+                                            <div class="row mb-3">
+                                                <div class="col-sm-3 ml-3 text-left">Scan Ijazah SD/MI Paket A</div>
+                                                <img src="{{ asset('dokumen/smp/' . $pesertadidik->scan_ijazah) }}" alt="">
+                                            </div>
+                                            <div class="row mb-3">
+                                                <div class="col-sm-3 ml-3 text-left">Scan SKHUN SD/MI Paket A</div>
+                                                <img src="{{ asset('dokumen/smp/' . $pesertadidik->scan_skhun) }}" alt="">
+                                            </div>
                                         </div>
                                     <div class="modal-footer">
                                         <form action="/admin/smp/verifikasi-data/{{ $pesertadidik->user->id }}" method="POST">

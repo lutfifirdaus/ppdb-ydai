@@ -28,7 +28,7 @@
 
     <style>
         body{
-            overflow: hidden;
+            /* overflow: hidden; */
         }
 
         input::-webkit-outer-spin-button,

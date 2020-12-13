@@ -15,7 +15,7 @@ class KelolaSdController extends Controller
     {
         $calon_siswa_sds = CalonSiswaSd::paginate(10);
 
-        return view('admin.sd.verifikasi', [
+        return view('admin.sd.index', [
             'calon_siswa_sds' => $calon_siswa_sds,
         ]);
     }
@@ -62,5 +62,10 @@ class KelolaSdController extends Controller
         return view('admin.sd.verifikasi', [
             'calon_siswa_sds' => $calon_siswa_sds,
         ]);
+    }
+
+    public function laporan()
+    {
+        
     }
 }

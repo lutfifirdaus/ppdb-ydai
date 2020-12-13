@@ -205,7 +205,7 @@
                             </div>
                             <div class="form-group row ml-3">
                                 <label for="ttl" class="col-sm-3 col-form-label">Tempat, Tanggal Lahir</label>
-                                :<textarea rows="3" name="ttl" id="ttl" class="form-control col-sm-8" value="{{ $pesertadidik->ttl }}"></textarea>
+                                :<input type="text" name="ttl" id="ttl" class="form-control col-sm-8" value="{{ $pesertadidik->ttl }}">
                                 @error('ttl')
                                     <div class="text-danger mt-2 col-sm-3">{{ $message }}</div>
                                 @enderror
@@ -252,7 +252,7 @@
                             </div>
                             <div class="form-group row ml-3">
                                 <label for="alamat_pd" class="col-sm-3 col-form-label">Alamat</label>
-                                :<textarea rows="3" name="alamat_pd" id="alamat_pd" class="form-control col-sm-8" value="{{ $pesertadidik->alamat_pd }}"></textarea>
+                                :<textarea rows="3" name="alamat_pd" id="alamat_pd" class="form-control col-sm-8">{{ $pesertadidik->alamat_pd }}</textarea>
                                 @error('alamat_pd')
                                     <div class="text-danger mt-2 col-sm-3">{{ $message }}</div>
                                 @enderror
@@ -275,7 +275,7 @@
                             </div>
                             <div class="form-group row ml-3">
                                 <label for="alamat_ortu" class="col-sm-3 col-form-label">Alamat</label>
-                                :<textarea rows="3" name="alamat_ortu" id="alamat_ortu" class="form-control col-sm-8" value="{{ $pesertadidik->alamat_ortu }}"></textarea>
+                                :<textarea rows="3" name="alamat_ortu" id="alamat_ortu" class="form-control col-sm-8">{{ $pesertadidik->alamat_ortu }}</textarea>
                                 @error('alamat_ortu')
                                     <div class="text-danger mt-2 col-sm-3">{{ $message }}</div>
                                 @enderror
@@ -312,7 +312,7 @@
                             </div>
                             <div class="form-group row ml-3">
                                 <label for="alamat_wali" class="col-sm-3 col-form-label">Alamat</label>
-                                :<textarea rows="3" name="alamat_wali" id="alamat_wali" class="form-control col-sm-8"value="{{ $pesertadidik->alamat_wali }}"></textarea>
+                                :<textarea rows="3" name="alamat_wali" id="alamat_wali" class="form-control col-sm-8">{{ $pesertadidik->alamat_wali }}</textarea>
                                 @error('alamat_wali')
                                     <div class="text-danger mt-2 col-sm-3">{{ $message }}</div>
                                 @enderror
@@ -340,7 +340,7 @@
                                 <img class="d-flex mx-auto mb-3" src="{{ asset("dokumen/tk/" . $pesertadidik->scan_akta) }}" alt="{{ $pesertadidik->scan_akta }}">
                             @endif
                             <div class="form-group row ml-3">
-                                <label for="scan_akta" class="col-sm-3 col-form-label">Scan akta</label>
+                                <label for="scan_akta" class="col-sm-3 col-form-label">Scan Akta Kelahiran</label>
                                 :<input type="file" name="scan_akta" id="scan_akta" class="col-sm-8">
                                 @error('scan_akta')
                                     <div class="text-danger mt-2">{{ $message }}</div>
@@ -350,7 +350,7 @@
                                 <img class="d-flex mx-auto mb-3" src="{{ asset("dokumen/tk/" . $pesertadidik->scan_kk) }}" alt="{{ $pesertadidik->scan_kk }}">
                             @endif
                             <div class="form-group row ml-3">
-                                <label for="scan_kk" class="col-sm-3 col-form-label">Scan kk</label>
+                                <label for="scan_kk" class="col-sm-3 col-form-label">Scan Kartu Keluarga</label>
                                 :<input type="file" name="scan_kk" id="scan_kk" class="col-sm-8">
                                 @error('scan_kk')
                                     <div class="text-danger mt-2">{{ $message }}</div>

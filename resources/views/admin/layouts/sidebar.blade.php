@@ -44,23 +44,56 @@
                         </p>
                     </a>
                 </li>
+
+                {{-- tk --}}
                 <li class="nav-item">
                     <a href="#" class="nav-link">
                         <i class="nav-icon fas fa-user"></i>
                         <p>
-                            SMA
+                            TK
                             <i class="right fas fa-angle-left"></i>
                         </p>
                     </a>
                     <ul class="nav nav-treeview">
                         <li class="nav-item">
-                            <a href="{{ route('index.sma') }}" class="nav-link">
+                            <a href="{{ route('index.tk') }}" class="nav-link">
                                 <i class="fas fa-database"></i>
                                 <p>Data PPDB</p>
                             </a>
                         </li>
                         <li class="nav-item">
-                            <a href="{{ route('verifikasi.sma') }}" class="nav-link">
+                            <a href="{{ route('verifikasi.tk') }}" class="nav-link">
+                                <i class="fas fa-check"></i>
+                                <p>Terverifikasi</p>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="{{ route('pembayaran.tk') }}" class="nav-link">
+                                <i class="fas fa-money-check"></i>
+                                <p>Pembayaran</p>
+                            </a>
+                        </li>
+                    </ul>
+                </li>
+
+                {{-- sd --}}
+                <li class="nav-item">
+                    <a href="#" class="nav-link">
+                        <i class="nav-icon fas fa-user"></i>
+                        <p>
+                            SD
+                            <i class="right fas fa-angle-left"></i>
+                        </p>
+                    </a>
+                    <ul class="nav nav-treeview">
+                        <li class="nav-item">
+                            <a href="{{ route('index.sd') }}" class="nav-link">
+                                <i class="fas fa-database"></i>
+                                <p>Data PPDB</p>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="{{ route('verifikasi.sd') }}" class="nav-link">
                                 <i class="fas fa-check"></i>
                                 <p>Terverifikasi</p>
                             </a>
@@ -73,6 +106,8 @@
                         </li>
                     </ul>
                 </li>
+                
+                {{-- smp --}}
                 <li class="nav-item">
                     <a href="#" class="nav-link">
                         <i class="nav-icon fas fa-user"></i>
@@ -103,23 +138,24 @@
                     </ul>
                 </li>
 
+                {{-- sma --}}
                 <li class="nav-item">
                     <a href="#" class="nav-link">
                         <i class="nav-icon fas fa-user"></i>
                         <p>
-                            TK
+                            SMA
                             <i class="right fas fa-angle-left"></i>
                         </p>
                     </a>
                     <ul class="nav nav-treeview">
                         <li class="nav-item">
-                            <a href="{{ route('index.tk') }}" class="nav-link">
+                            <a href="{{ route('index.sma') }}" class="nav-link">
                                 <i class="fas fa-database"></i>
                                 <p>Data PPDB</p>
                             </a>
                         </li>
                         <li class="nav-item">
-                            <a href="{{ route('verifikasi.tk') }}" class="nav-link">
+                            <a href="{{ route('verifikasi.sma') }}" class="nav-link">
                                 <i class="fas fa-check"></i>
                                 <p>Terverifikasi</p>
                             </a>
@@ -132,35 +168,7 @@
                         </li>
                     </ul>
                 </li>
-                <li class="nav-item">
-                    <a href="#" class="nav-link">
-                        <i class="nav-icon fas fa-user"></i>
-                        <p>
-                            SD
-                            <i class="right fas fa-angle-left"></i>
-                        </p>
-                    </a>
-                    <ul class="nav nav-treeview">
-                        <li class="nav-item">
-                            <a href="{{ route('index.sd') }}" class="nav-link">
-                                <i class="fas fa-database"></i>
-                                <p>Data PPDB</p>
-                            </a>
-                        </li>
-                        <li class="nav-item">
-                            <a href="{{ route('verifikasi.sd') }}" class="nav-link">
-                                <i class="fas fa-check"></i>
-                                <p>Terverifikasi</p>
-                            </a>
-                        </li>
-                        <li class="nav-item">
-                            <a href="#" class="nav-link">
-                                <i class="fas fa-money-check"></i>
-                                <p>Pembayaran</p>
-                            </a>
-                        </li>
-                    </ul>
-                </li>
+
         </nav>
         <!-- /.sidebar-menu -->
     </div>

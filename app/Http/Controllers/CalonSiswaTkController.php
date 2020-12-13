@@ -56,7 +56,7 @@ class CalonSiswaTkController extends Controller
         if ($request->hasFile('foto_pd')) {
             $foto = $request->file('foto_pd');
             $namafoto = $request->nisn . "-pas-foto" . "." . $foto->extension();
-            $location = public_path('dokumen/' . $namafoto);
+            $location = public_path('dokumen/tk/' . $namafoto);
             Image::make($foto)->resize(300, 400)->save($location);
             $attr['foto_pd'] = $namafoto;
         }
@@ -64,7 +64,7 @@ class CalonSiswaTkController extends Controller
         if ($request->hasFile('scan_akta')) {
             $akta = $request->file('scan_akta');
             $namaakta = $request->nik . "-scan-akta" . "." . $akta->extension();
-            $location = public_path('dokumen/sd' . $namaakta);
+            $location = public_path('dokumen/tk/' . $namaakta);
             Image::make($akta)->resize(700, 1200)->save($location);
             $attr['scan_akta'] = $namaakta;
         }
@@ -72,7 +72,7 @@ class CalonSiswaTkController extends Controller
         if ($request->hasFile('scan_kk')) {
             $kk = $request->file('scan_kk');
             $namakk = $request->nik . "-scan-kk" . "." . $kk->extension();
-            $location = public_path('dokumen/sd' . $namakk);
+            $location = public_path('dokumen/tk/' . $namakk);
             Image::make($kk)->resize(700, 1200)->save($location);
             $attr['scan_kk'] = $namakk;
         }
@@ -119,7 +119,7 @@ class CalonSiswaTkController extends Controller
         if ($request->hasFile('foto_pd')) {
             $foto = $request->file('foto_pd');
             $namafoto = $request->nisn . "-pas-foto" . "." . $foto->extension();
-            $location = public_path('dokumen/' . $namafoto);
+            $location = public_path('dokumen/tk/' . $namafoto);
             Image::make($foto)->resize(300, 400)->save($location);
             $attr['foto_pd'] = $namafoto;
         }
@@ -127,7 +127,7 @@ class CalonSiswaTkController extends Controller
         if ($request->hasFile('scan_akta')) {
             $akta = $request->file('scan_akta');
             $namaakta = $request->nik . "-scan-akta" . "." . $akta->extension();
-            $location = public_path('dokumen/sd' . $namaakta);
+            $location = public_path('dokumen/tk/' . $namaakta);
             Image::make($akta)->resize(700, 1200)->save($location);
             $attr['scan_akta'] = $namaakta;
         }
@@ -135,7 +135,7 @@ class CalonSiswaTkController extends Controller
         if ($request->hasFile('scan_kk')) {
             $kk = $request->file('scan_kk');
             $namakk = $request->nik . "-scan-kk" . "." . $kk->extension();
-            $location = public_path('dokumen/sd' . $namakk);
+            $location = public_path('dokumen/tk/' . $namakk);
             Image::make($kk)->resize(700, 1200)->save($location);
             $attr['scan_kk'] = $namakk;
         }

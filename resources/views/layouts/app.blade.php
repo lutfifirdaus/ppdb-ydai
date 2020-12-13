@@ -1,7 +1,7 @@
 @include('layouts.head')
 <body style="width: 100%; height:100%">
     @include('layouts.alert')
-    <nav class="navbar navbar-expand-md navbar-dark bg-primary shadow-sm">
+    <nav class="navbar navbar-expand-md navbar-dark bg-success shadow-sm">
         <div class="container">
             <a class="navbar-brand" href="{{ route('calon') }}">
                 {{ config('app.name', 'Laravel') }}
@@ -18,15 +18,39 @@
                             <a href="{{ route('calon.siswa') }}" class="nav-link">Daftar Sekolah</a>
                         </li>
                     @endif
-                    @if (Auth::check())
+                    @if (Auth::check() && Auth::user()->status == 1)
+                        <li class="nav-item">
+                            <a href="{{ route('calon.tk.buat') }}" class="nav-link">Formulir Pendaftaran</a>
+                        </li>
+                    @elseif (Auth::check() && Auth::user()->status == 2)
+                        <li class="nav-item">
+                            <a href="{{ route('calon.sd.buat') }}" class="nav-link">Formulir Pendaftaran</a>
+                        </li>
+                    @elseif (Auth::check() && Auth::user()->status == 3)
+                        <li class="nav-item">
+                            <a href="{{ route('calon.smp.buat') }}" class="nav-link">Formulir Pendaftaran</a>
+                        </li>
+                    @elseif (Auth::check() && Auth::user()->status == 4)
                         <li class="nav-item">
                             <a href="{{ route('calon.sma.buat') }}" class="nav-link">Formulir Pendaftaran</a>
                         </li>
                     @endif
-                    @if (Auth::check())
-                        <li class="nav-item">
-                            <a href="{{ route('calon.sma') }}" class="nav-link">Alur Pendaftaran</a>
-                        </li>
+                    @if (Auth::check() && Auth::user()->status == 1)
+                    <li class="nav-item">
+                        <a href="{{ route('calon.tk') }}" class="nav-link">Alur Pendaftaran</a>
+                    </li>
+                    @elseif (Auth::check() && Auth::user()->status == 2)
+                    <li class="nav-item">
+                        <a href="{{ route('calon.sd') }}" class="nav-link">Alur Pendaftaran</a>
+                    </li>
+                    @elseif (Auth::check() && Auth::user()->status == 3)
+                    <li class="nav-item">
+                        <a href="{{ route('calon.smp') }}" class="nav-link">Alur Pendaftaran</a>
+                    </li>
+                    @elseif (Auth::check() && Auth::user()->status == 4)
+                    <li class="nav-item">
+                        <a href="{{ route('calon.sma') }}" class="nav-link">Alur Pendaftaran</a>
+                    </li>
                     @endif
                 </ul>
 
