@@ -89,7 +89,7 @@
                 @foreach ($calon_siswa_smps as $pesertadidik)
                 <div class="col-lg-3 col-6">
                     <div class="card">
-                        <img class="card-img-top" height="200" style=" object-fit:cover; object-position: center" src="{{ asset('dokumen/smp/' . $pesertadidik->pas_foto) }}" alt="Pas Foto 3 X 4">
+                        <img class="card-img-top" height="200" style=" object-fit:cover; object-position: center" src="{{ asset('dokumen/smp/' . $pesertadidik->foto_pd) }}" alt="Pas Foto 3 X 4">
                         <div class="card-body">
                             <p>{{ $pesertadidik->nama_pd }}<br>
                                 {{ $pesertadidik->jenis_kelamin }}<br>
