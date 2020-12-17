@@ -96,7 +96,7 @@ class CalonSiswaSmaController extends Controller
         $user->save();
         $user->csSma()->save($form);
 
-        // session()->flash('success', 'Data telah ditambahkan!');
+        session()->flash('masuk', 'Selamat! Data Anda telah ditambahkan ke dalam sistem dan akan diverifikasi');
         return redirect()->route('calon.sma');
     }
 
@@ -164,7 +164,17 @@ class CalonSiswaSmaController extends Controller
         $user->save();
         $user->csSma()->update($attr);
 
-        // session()->flash('success', 'Data telah ditambahkan!');
+        session()->flash('edit', 'Tunggu ya! Data Anda akan kembali Kita cek.');
         return redirect()->route('calon.sma');
+    }
+
+    public function billing()
+    {
+        $calon_siswa_smas = CalonSiswaSma::get();
+
+        return view('user.calon-sma.cetakbilling', [
+            'user' => Auth::user(),
+            'calon_siswa_smas' => $calon_siswa_smas
+        ]);
     }
 }

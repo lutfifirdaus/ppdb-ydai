@@ -96,7 +96,7 @@ class CalonSiswaSmpController extends Controller
         $user->save();
         $user->csSmp()->save($form);
 
-        // session()->flash('success', 'Data telah ditambahkan!');
+        session()->flash('masuk', 'Selamat! Data Anda telah ditambahkan ke dalam sistem dan akan diverifikasi');
         return redirect()->route('calon.smp');
     }
 
@@ -164,6 +164,17 @@ class CalonSiswaSmpController extends Controller
         $user->save();
         $user->csSmp()->update($attr);
 
+        session()->flash('edit', 'Tunggu ya! Data Anda akan kembali Kita cek.');
         return redirect()->route('calon.smp');
+    }
+
+    public function billing()
+    {
+        $calon_siswa_smps = CalonSiswaSmp::get();
+
+        return view('user.calon-smp.cetakbilling', [
+            'user' => Auth::user(),
+            'calon_siswa_smps' => $calon_siswa_smps
+        ]);
     }
 }

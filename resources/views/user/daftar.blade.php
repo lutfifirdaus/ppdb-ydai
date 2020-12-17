@@ -2,6 +2,7 @@
 
 
 @section('content')
+<div class="container">
     <div class="my-auto">
         <div class="card border-width-2">
             <div class="card-header text-center">
@@ -96,4 +97,5 @@
             </div>
         </div>
     </div>
+</div>
 @endsection

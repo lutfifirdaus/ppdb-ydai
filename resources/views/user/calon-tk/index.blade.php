@@ -98,12 +98,12 @@
                             <!-- small card -->
                             <br>
                             <div class="inner">
-                                <p>Mengambil Nomor <br> Pembayaran</p>
+                                <p>Melakukan Pembayaran<br>Sesuai Nomor Billing</p>
                             </div>
                             <div class="icon">
                                 <i class="fas fa-file-invoice"></i>
                             </div>
-                            @if (empty(Auth::user()->billing))
+                            @if (empty(Auth::user()->billing->tanggal_bayar))
                                 <a class="small-box-footer">
                                         Belum <i class="fas fa-times"></i>
                                 </a>
@@ -152,13 +152,13 @@
                             <div class="icon">
                                 <i class="fas fa-user-graduate"></i>
                             </div>
-                            @if (!Auth::user()->is_data_verified)
+                            @if (Auth::user()->is_data_verified == 2 && Auth::user()->billing->tanggal_bayar != null)
                                 <a href="" class="small-box-footer">
-                                    Belum <i class="fas fa-times"></i>
+                                    Bisa Daftar Ulang <i class="fas fa-times"></i>
                                 </a>
                             @else
                                 <a href="#" class="small-box-footer">
-                                    Sudah <i class="fas fa-check-circle"></i>
+                                    Belum Bisa <i class="fas fa-check-circle"></i>
                                 </a>
                             @endif
                         </div>

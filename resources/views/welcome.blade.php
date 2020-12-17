@@ -12,6 +12,24 @@
                 object-position: center
             }
 
+            .special {
+                font-size: 92px;
+                text-align: center;
+                text-transform: uppercase;
+                text-rendering: optimizeLegibility;
+            }
+
+            .retroshd {
+                color: #2c2c2c;
+                background-color: #d5d5d5;
+                opacity: 80%;
+                letter-spacing: .05em;
+                text-shadow: 4px 4px 0px #d5d5d5, 7px 7px 0px rgba(0, 0, 0, 0.2);
+            }
+            .retroshd:hover {
+                text-decoration: none;
+            }
+
             .mb-3 {
                 margin-bottom: 6rem !important;
             }
@@ -27,51 +45,49 @@
     </head>
     <body>
         <nav class="navbar navbar-expand-md fixed-top  navbar-dark bg-primary shadow-sm">
-            <div class="container">       
-                {{-- <img class="img-thumbnail mr-2" style="width: 70px; height: 70px; border-radius:50%" src="{{ asset('picture/logo-ydai.jpeg') }}" alt=""> --}}
-                <a class="navbar-brand" href="/">
-                    {{ config('app.name') }}
-                </a>
-                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-                    <span class="navbar-toggler-icon"></span>
-                </button>
+            {{-- <img class="img-thumbnail mr-2" style="width: 70px; height: 70px; border-radius:50%" src="{{ asset('picture/logo-ydai.jpeg') }}" alt=""> --}}
+            <a class="navbar-brand" href="/">
+                {{ config('app.name') }}
+            </a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
 
-                <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                    <ul class="navbar-nav mr-auto">
-                        <li class="nav-item">
-                            <a href="#jenjang" class="nav-link">Jenjang Sekolah</a>
-                        </li>
-                        <li class="nav-item">
-                            <a href="#syarat" class="nav-link">Persayaratan</a>
-                        </li>
-                        <li class="nav-item">
-                            <a href="#alur-pendaftaran" class="nav-link">Alur Pendaftaran</a>
-                        </li>
-                        {{-- <li class="nav-item">
-                            <a href="#alur-pendaftaran" class="nav-link">Biaya Pendaftaran</a>
-                        </li> --}}
-                    </ul>
-                    <ul class="navbar-nav ml-auto">
-                        <li class="nav-item">
-                            @if (Route::has('login'))
-                                @auth
-                                    <a href="{{ route('admin.page') }}" class="nav-link">Home</a>
-                                @else
-                        </li>
-                        <li class="nav-item my-2 my-lg-0">
-                            <a href="{{ route('login') }}" class="nav-link">Login</a>
-                        </li>
-                        <li class="nav-item">
-                                @if (Route::has('register'))
-                                    <a href="{{ route('register') }}" class="ml-4 nav-link">Register</a>
-                                @endif
-                            @endauth
-                        </li>
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <ul class="navbar-nav mr-auto">
+                    <li class="nav-item">
+                        <a href="#jenjang" class="nav-link">Jenjang Sekolah</a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="#syarat" class="nav-link">Persayaratan</a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="#alur-pendaftaran" class="nav-link">Alur Pendaftaran</a>
+                    </li>
+                    {{-- <li class="nav-item">
+                        <a href="#alur-pendaftaran" class="nav-link">Biaya Pendaftaran</a>
+                    </li> --}}
+                </ul>
+                <ul class="navbar-nav ml-auto">
+                    <li class="nav-item">
+                        @if (Route::has('login'))
+                            @auth
+                                <a href="{{ route('admin.page') }}" class="nav-link">Home</a>
+                            @else
+                    </li>
+                    <li class="nav-item my-2 my-lg-0">
+                        <a href="{{ route('login') }}" class="nav-link">Login</a>
+                    </li>
+                    <li class="nav-item">
+                            @if (Route::has('register'))
+                                <a href="{{ route('register') }}" class="ml-4 nav-link">Register</a>
                             @endif
-                        </li>
-                    </ul>
-                </div>      
-            </div>
+                        @endauth
+                    </li>
+                        @endif
+                    </li>
+                </ul>
+            </div>      
         </nav>
 
         <main >
@@ -87,28 +103,28 @@
                         <div class="carousel-inner">
                             <div class="carousel-item active">
                             <img class="d-block w-100" src="{{ asset('picture/siswa-tk.jpg') }}" alt="First slide">
-                            <div class="carousel-caption d-none d-md-block">
-                                <h2><b>TK Ananda UT</b></h2>
+                            <div class="carousel-caption d-none retroshd d-md-block special">
+                                <h2><b>TK ANANDA UT</b></h2>
                                 <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Optio, fugit.</p>
                             </div>
                         </div>
                         <div class="carousel-item">
                             <img class="d-block w-100" src="{{ asset('picture/siswa-sd.jpg') }}" alt="Second slide">
-                            <div class="carousel-caption d-none d-md-block">
+                            <div class="carousel-caption d-none retroshd d-md-block special">
                                 <h2><b>SD Dharma Karya</b></h2>
                                 <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Optio, fugit.</p>
                             </div>
                         </div>
                         <div class="carousel-item">
                             <img class="d-block w-100" src="{{ asset('picture/siswa-smp.jpg') }}" alt="Third slide">
-                            <div class="carousel-caption d-none d-md-block">
+                            <div class="carousel-caption d-none retroshd d-md-block special">
                                 <h2><b>SMP Dharma Karya</b></h2>
                                 <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Optio, fugit.</p>
                             </div>
                         </div>
                         <div class="carousel-item">
                             <img class="d-block w-100" src="{{ asset('picture/siswa-sma.JPG') }}" alt="Fourd slide">
-                            <div class="carousel-caption d-none d-md-block">
+                            <div class="carousel-caption d-none retroshd d-md-block special">
                                 <h2><b>SMA Dharma Karya</b></h2>
                                 <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Optio, fugit.</p>
                             </div>

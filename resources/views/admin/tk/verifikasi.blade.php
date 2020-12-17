@@ -102,91 +102,212 @@
                                         </button>
                                     </div>
                                     <div class="modal-body" style="font-size:1rem">
-                                        <div class="mt-2 text-left"><b><h5>Biodata</h5></b>
+                                        <div class="mt-2 text-left"><b><h5>IDENTITAS ANAK</h5></b>
+                                        
                                         <div class="row">
                                             <div class="col-sm-3 ml-3 text-left">Nama Lengkap</div>
                                             <div class="col-sm-8 text-left">: {{ $pesertadidik->nama_pd }}</div>
                                         </div>
+                                        
                                         <div class="row">
                                             <div class="col-sm-3 ml-3 text-left">Nama Panggilan</div>
                                             <div class="col-sm-8 text-left">: {{ $pesertadidik->nama }}</div>
                                         </div>
-                                        <div class="row">
-                                            <div class="col-sm-3 ml-3 text-left">Tempat, Tanggal Lahir</div>
-                                            <div class="col-sm-8 text-left">: {{ $pesertadidik->ttl }}</div>
-                                        </div>
+                                        
                                         <div class="row">
                                             <div class="col-sm-3 ml-3 text-left">Jenis Kelamin</div>
                                             <div class="col-sm-8 text-left">: {{ $pesertadidik->jenis_kelamin }}</div>
                                         </div>
+
+                                        <div class="row">
+                                            <div class="col-sm-3 ml-3 text-left">Tempat, Tanggal Lahir</div>
+                                            <div class="col-sm-8 text-left">: {{ $pesertadidik->ttl }}</div>
+                                        </div>
+
                                         <div class="row">
                                             <div class="col-sm-3 ml-3 text-left">Agama</div>
                                             <div class="col-sm-8 text-left">: {{ $pesertadidik->agama }}</div>
                                         </div>
+                                        
+                                        <div class="row">
+                                            <div class="col-sm-3 ml-3 text-left">Kewarga-negaraan</div>
+                                            <div class="col-sm-8 text-left">: {{ $pesertadidik->kewarganegaraan }}</div>
+                                        </div>
+                                        
                                         <div class="row">
                                             <div class="col-sm-3 ml-3 text-left">Anak Ke</div>
                                             <div class="col-sm-8 text-left">: {{ $pesertadidik->anak_ke }}</div>
                                         </div>
+
                                         <div class="row">
-                                            <div class="col-sm-3 ml-3 text-left">Status dalam Keluarga</div>
-                                            <div class="col-sm-8 text-left">: {{ $pesertadidik->status_dalam_keluarga }}</div>
+                                            <div class="col-sm-3 ml-3 text-left">Banyak Saudara Kandung (satu Ibu)</div>
+                                            <div class="col-sm-8 text-left">: {{ $pesertadidik->banyak_saudara_ibu }}</div>
                                         </div>
+                                        
+                                        <div class="row">
+                                            <div class="col-sm-3 ml-3 text-left">Banyak Saudara Tiri</div>
+                                            <div class="col-sm-8 text-left">: {{ $pesertadidik->banyak_saudara_tiri }}</div>
+                                        </div>
+                                        
+                                        <div class="row">
+                                            <div class="col-sm-3 ml-3 text-left">Banyak Saudara Angkat</div>
+                                            <div class="col-sm-8 text-left">: {{ $pesertadidik->banyak_saudara_angkat }}</div>
+                                        </div>
+                                        
+                                        <div class="row">
+                                            <div class="col-sm-3 ml-3 text-left">Bahasa Sehar-hari</div>
+                                            <div class="col-sm-8 text-left">: {{ $pesertadidik->bahasa }}</div>
+                                        </div>
+                                        
+                                        <div class="row">
+                                            <div class="col-sm-3 ml-3 text-left">Berat Badan (Kg)</div>
+                                            <div class="col-sm-8 text-left">: {{ $pesertadidik->berat }}</div>
+                                        </div>
+                                        
+                                        <div class="row">
+                                            <div class="col-sm-3 ml-3 text-left">Tinggi Badan (Cm)</div>
+                                            <div class="col-sm-8 text-left">: {{ $pesertadidik->tinggi }}</div>
+                                        </div>
+                                        
+                                        <div class="row">
+                                            <div class="col-sm-3 ml-3 text-left">Golongan Darah</div>
+                                            <div class="col-sm-8 text-left">: {{ $pesertadidik->golongan_darah }}</div>
+                                        </div>
+                                        
+                                        <div class="row">
+                                            <div class="col-sm-3 ml-3 text-left">Penyakit yang pernah dialami</div>
+                                            <div class="col-sm-8 text-left">: {{ $pesertadidik->penyakit }}</div>
+                                        </div>
+                                        
                                         <div class="row">
                                             <div class="col-sm-3 ml-3 text-left">Alamat</div>
                                             <div class="col-sm-8 text-left">: {{ $pesertadidik->alamat_pd }}</div>
-                                        </div> 
-                                        <div class="mt-2 text-left"><b><h5>Orangtua</h5></b>
+                                        </div>
+                                        
                                         <div class="row">
-                                            <div class="col-sm-3 ml-3 text-left">Nama Ayah</div>
-                                            <div class="col-sm-8 text-left">: {{ $pesertadidik->nama_ayah }}</div>
+                                            <div class="col-sm-3 ml-3 text-left">Nomor Telepon</div>
+                                            <div class="col-sm-8 text-left">: {{ $pesertadidik->nomor_pd }}</div>
                                         </div>
+                                        
                                         <div class="row">
-                                            <div class="col-sm-3 ml-3 text-left">Nama Ibu</div>
-                                            <div class="col-sm-8 text-left">: {{ $pesertadidik->nama_ibu }}</div>
+                                            <div class="col-sm-3 ml-3 text-left">Tempat Tinggal</div>
+                                            <div class="col-sm-8 text-left">: {{ $pesertadidik->tempat_tinggal }}</div>
                                         </div>
+                                        
                                         <div class="row">
-                                            <div class="col-sm-3 ml-3 text-left">Alamat</div>
-                                            <div class="col-sm-8 text-left">: {{ $pesertadidik->alamat_ortu }}</div>
+                                            <div class="col-sm-3 ml-3 text-left">Kegemaran/Hobi</div>
+                                            <div class="col-sm-8 text-left">: {{ $pesertadidik->hobi }}</div>
                                         </div>
-                                        <div class="row">
-                                            <div class="col-sm-3 ml-3 text-left">No Telp/HP</div>
-                                            <div class="col-sm-8 text-left">: {{ $pesertadidik->telp_ortu }}</div>
+                                        
+                                        <div class="mt-2 text-left"><b><h5>DATA ORANGTUA/WALI</h5></b>
+                                            
+                                            <div class="mt-2 text-left"><b><h6>AYAH</h6></b>
+                                                <div class="row">
+                                                    <div class="col-sm-3 ml-3 text-left">Nama</div>
+                                                    <div class="col-sm-8 text-left">: {{ $pesertadidik->nama_ayah }}</div>
+                                                </div>
+                                                
+                                                <div class="row">
+                                                    <div class="col-sm-3 ml-3 text-left">Tempat Tanggal Lahir</div>
+                                                    <div class="col-sm-8 text-left">: {{ $pesertadidik->ttl_ayah }}</div>
+                                                </div>
+                                                
+                                                <div class="row">
+                                                    <div class="col-sm-3 ml-3 text-left">Agama</div>
+                                                    <div class="col-sm-8 text-left">: {{ $pesertadidik->agama_ayah }}</div>
+                                                </div>
+                                                
+                                                <div class="row">
+                                                    <div class="col-sm-3 ml-3 text-left">Kewarga-negaraan</div>
+                                                    <div class="col-sm-8 text-left">: {{ $pesertadidik->kewarganegaraan_ayah }}</div>
+                                                </div>
+                                                
+                                                <div class="row">
+                                                    <div class="col-sm-3 ml-3 text-left">Pendidikan Tertinggi</div>
+                                                    <div class="col-sm-8 text-left">: {{ $pesertadidik->pendidikan_ayah }}</div>
+                                                </div>
+                                                
+                                                <div class="row">
+                                                    <div class="col-sm-3 ml-3 text-left">Pekerjaan</div>
+                                                    <div class="col-sm-8 text-left">: {{ $pesertadidik->pekerjaan_ayah }}</div>
+                                                </div>
+                                            </div>
+
+                                            
+                                            <div class="mt-2 text-left"><b><h6>IBU</h6></b>
+                                                <div class="row">
+                                                    <div class="col-sm-3 ml-3 text-left">Nama</div>
+                                                    <div class="col-sm-8 text-left">: {{ $pesertadidik->nama_ibu }}</div>
+                                                </div>
+                                                
+                                                <div class="row">
+                                                    <div class="col-sm-3 ml-3 text-left">Tempat Tanggal Lahir</div>
+                                                    <div class="col-sm-8 text-left">: {{ $pesertadidik->ttl_ibu }}</div>
+                                                </div>
+                                                
+                                                <div class="row">
+                                                    <div class="col-sm-3 ml-3 text-left">Agama</div>
+                                                    <div class="col-sm-8 text-left">: {{ $pesertadidik->agama_ibu }}</div>
+                                                </div>
+                                                
+                                                <div class="row">
+                                                    <div class="col-sm-3 ml-3 text-left">Kewarga-negaraan</div>
+                                                    <div class="col-sm-8 text-left">: {{ $pesertadidik->kewarganegaraan_ibu }}</div>
+                                                </div>
+                                                
+                                                <div class="row">
+                                                    <div class="col-sm-3 ml-3 text-left">Pendidikan Tertinggi</div>
+                                                    <div class="col-sm-8 text-left">: {{ $pesertadidik->pendidikan_ibu }}</div>
+                                                </div>
+                                                
+                                                <div class="row">
+                                                    <div class="col-sm-3 ml-3 text-left">Pekerjaan</div>
+                                                    <div class="col-sm-8 text-left">: {{ $pesertadidik->pekerjaan_ibu }}</div>
+                                                </div>
+                                            </div>
+
+                                            @if ($pesertadidik->nama_wali)
+                                                
+                                            <div class="mt-2 text-left"><b><h6>WALI</h6></b>
+                                                <div class="row">
+                                                    <div class="col-sm-3 ml-3 text-left">Nama</div>
+                                                    <div class="col-sm-8 text-left">: {{ $pesertadidik->nama_wali }}</div>
+                                                </div>
+                                                <div class="row">
+                                                    <div class="col-sm-3 ml-3 text-left">Tempat Tanggal Lahir</div>
+                                                    <div class="col-sm-8 text-left">: {{ $pesertadidik->ttl_wali }}</div>
+                                                </div>
+                                                <div class="row">
+                                                    <div class="col-sm-3 ml-3 text-left">Agama</div>
+                                                    <div class="col-sm-8 text-left">: {{ $pesertadidik->agama_wali }}</div>
+                                                </div>
+                                                <div class="row">
+                                                    <div class="col-sm-3 ml-3 text-left">Kewarga-negaraan</div>
+                                                    <div class="col-sm-8 text-left">: {{ $pesertadidik->kewarganegaraan_wali }}</div>
+                                                </div>
+                                                <div class="row">
+                                                    <div class="col-sm-3 ml-3 text-left">Pendidikan Tertinggi</div>
+                                                    <div class="col-sm-8 text-left">: {{ $pesertadidik->pendidikan_wali }}</div>
+                                                </div>
+                                                <div class="row">
+                                                    <div class="col-sm-3 ml-3 text-left">Pekerjaan</div>
+                                                    <div class="col-sm-8 text-left">: {{ $pesertadidik->pekerjaan_wali }}</div>
+                                                </div>
+                                            @endif
+
                                         </div>
-                                        <div class="row">
-                                            <div class="col-sm-3 ml-3 text-left">Pekerjaan Ayah</div>
-                                            <div class="col-sm-8 text-left">: {{ $pesertadidik->pekerjaan_ayah }}</div>
-                                        </div>
-                                        <div class="row">
-                                            <div class="col-sm-3 ml-3 text-left">Pekerjaan Ibu</div>
-                                            <div class="col-sm-8 text-left">: {{ $pesertadidik->pekerjaan_ibu }}</div>
-                                        </div>
-                                        </div>
-                                        <div class="mt-2 text-left"><b><h5>Wali</h5></b>
-                                        <div class="row">
-                                            <div class="col-sm-3 ml-3 text-left">Nama Wali</div>
-                                            <div class="col-sm-8 text-left">: {{ $pesertadidik->nama_wali }}</div>
-                                        </div>
-                                        <div class="row">
-                                            <div class="col-sm-3 ml-3 text-left">Alamat</div>
-                                            <div class="col-sm-8 text-left">: {{ $pesertadidik->alamat_wali }}</div>
-                                        </div>
-                                        <div class="row">
-                                            <div class="col-sm-3 ml-3 text-left">Pekerjaan Wali</div>
-                                            <div class="col-sm-8 text-left">: {{ $pesertadidik->pekerjaan_wali }}</div>
-                                        </div>
-                                        </div>
-                                        <div class="mt-2 text-left"><b><h5>Dokumen</h5></b>
-                                        <div class="row mb-3">
-                                            <div class="col-sm-3 ml-3 text-left">Pas Foto 3 X 4</div>
-                                            <img src="{{ asset('dokumen/tk/' . $pesertadidik->foto_pd) }}" alt="">
-                                        </div>
+                                        <div class="mt-2 text-left"><b><h5>DOKUMEN</h5></b>
                                         <div class="row mb-3">
                                             <div class="col-sm-3 ml-3 text-left">Scan Akta Kelahiran</div>
-                                            <img src="{{ asset('dokumen/tk/' . $pesertadidik->scan_akta) }}" alt="">
+                                            <img src="{{ asset('dokumen/tk/' . $pesertadidik->scan_akta) }}" alt="" class="mx-auto">
                                         </div>
                                         <div class="row mb-3">
                                             <div class="col-sm-3 ml-3 text-left">Scan Kartu Keluarga</div>
-                                            <img src="{{ asset('dokumen/tk/' . $pesertadidik->scan_kk) }}" alt="">
+                                            <img src="{{ asset('dokumen/tk/' . $pesertadidik->scan_kk) }}" alt="" class="mx-auto">
+                                        </div>
+                                        <div class="row mb-3">
+                                            <div class="col-sm-3 ml-3 text-left">Scan KTP Orangtua</div>
+                                            <img src="{{ asset('dokumen/tk/' . $pesertadidik->scan_ktp_ortu) }}" alt="" class="mx-auto">
                                         </div>
                                         </div>
                                     <div class="modal-footer">

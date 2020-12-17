@@ -71,4 +71,13 @@ class RegisterController extends Controller
             'password' => Hash::make($data['password']),
         ])->assignRole('calon');;
     }
+
+    public function authenticated($user)
+    {
+        if ($user->hasRole('admin')) {
+            return redirect()->route('admin.page');
+        }
+
+        return redirect()->route('calon');
+    }
 }

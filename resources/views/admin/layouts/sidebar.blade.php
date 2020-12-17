@@ -37,7 +37,7 @@
             <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
                 <!-- Add icons to the links using the .nav-icon class with font-awesome or any other icon font library -->
                 <li class="nav-item">
-                    <a href="{{ route('admin.page') }}" class="nav-link">
+                    <a href="{{ route('admin.page') }}" class="nav-link{{ request()->is('admin') ? ' active' : '' }}">
                         <i class="nav-icon fas fa-tachometer-alt"></i>
                         <p>
                             Dashboard
@@ -46,7 +46,7 @@
                 </li>
 
                 {{-- tk --}}
-                <li class="nav-item">
+                <li class="nav-item{{ request()->fullUrl() == route('index.tk')||route('verifikasi.tk')||route('pembayaran.tk') ? ' menu-is-opening menu-open' : '' }}">
                     <a href="#" class="nav-link">
                         <i class="nav-icon fas fa-user"></i>
                         <p>
@@ -56,19 +56,19 @@
                     </a>
                     <ul class="nav nav-treeview">
                         <li class="nav-item">
-                            <a href="{{ route('index.tk') }}" class="nav-link">
+                            <a href="{{ route('index.tk') }}" class="nav-link{{ request()->fullUrl() == route('index.tk') ? ' active' : '' }}">
                                 <i class="fas fa-database"></i>
                                 <p>Data PPDB</p>
                             </a>
                         </li>
                         <li class="nav-item">
-                            <a href="{{ route('verifikasi.tk') }}" class="nav-link">
+                            <a href="{{ route('verifikasi.tk') }}" class="nav-link{{ request()->fullUrl() == route('verifikasi.tk') ? ' active' : '' }}">
                                 <i class="fas fa-check"></i>
                                 <p>Terverifikasi</p>
                             </a>
                         </li>
                         <li class="nav-item">
-                            <a href="{{ route('pembayaran.tk') }}" class="nav-link">
+                            <a href="{{ route('pembayaran.tk') }}" class="nav-link{{ request()->fullUrl() == route('pembayaran.tk') ? ' active' : '' }}">
                                 <i class="fas fa-money-check"></i>
                                 <p>Pembayaran</p>
                             </a>
@@ -77,29 +77,29 @@
                 </li>
 
                 {{-- sd --}}
-                <li class="nav-item">
+                <li class="nav-item{{ request()->fullUrl() == route('index.sd')||route('verifikasi.sd')||route('pembayaran.sd') ? ' menu-is-opening menu-open' : '' }}">
                     <a href="#" class="nav-link">
                         <i class="nav-icon fas fa-user"></i>
                         <p>
-                            SD
+                            SD Dharma Karya UT
                             <i class="right fas fa-angle-left"></i>
                         </p>
                     </a>
                     <ul class="nav nav-treeview">
                         <li class="nav-item">
-                            <a href="{{ route('index.sd') }}" class="nav-link">
+                            <a href="{{ route('index.sd') }}" class="nav-link{{ request()->fullUrl() == route('index.sd') ? ' active' : '' }}">
                                 <i class="fas fa-database"></i>
                                 <p>Data PPDB</p>
                             </a>
                         </li>
                         <li class="nav-item">
-                            <a href="{{ route('verifikasi.sd') }}" class="nav-link">
+                            <a href="{{ route('verifikasi.sd') }}" class="nav-link{{ request()->fullUrl() == route('verifikasi.sd') ? ' active' : '' }}">
                                 <i class="fas fa-check"></i>
                                 <p>Terverifikasi</p>
                             </a>
                         </li>
                         <li class="nav-item">
-                            <a href="#" class="nav-link">
+                            <a href="{{ route('pembayaran.sd') }}" class="nav-link{{ request()->fullUrl() == route('pembayaran.sd') ? ' active' : '' }}">
                                 <i class="fas fa-money-check"></i>
                                 <p>Pembayaran</p>
                             </a>

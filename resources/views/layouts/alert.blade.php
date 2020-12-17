@@ -9,17 +9,23 @@
     </div>
 @endif
 
-{{-- verifikasi data --}}
-    @if (Auth::check() && (Auth::user()->is_data_verified == 1 && Auth::user()->status != 0))
+{{-- notifikasi --}}
+    @if (session()->has('masuk'))
         <div class="alert alert-warning text-center text-black text-black pt-3 m-0">
-            Tolong ditunggu ya! <br> Formulir pendaftaran Anda telah masuk ke dalam sistem dan akan diverifikasi oleh panitia PPDB
+            <button type="button" class="close" data-dismiss="alert">×</button> 
+            {{ session()->get('masuk') }}
         </div>
-    @elseif(Auth::check() && (Auth::user()->is_data_verified == 3 && Auth::user()->status != 0))
+    @endif
+
+    @if(session()->has('edit'))
         <div class="alert alert-danger text-center text-black pt-3 m-0">
-            Mohon maaf, terdapat kesalahan atau kekeliruan data pada formulir pendaftaran <br> yang Anda kirimkan. Mohon dicek dan ubah!
+            <button type="button" class="close" data-dismiss="alert">×</button> 
+            {{ session()->get('edit') }}
         </div>
-    @elseif(Auth::check() && (Auth::user()->is_data_verified == 2 && Auth::user()->status != 0))
+    @endif
+
+    {{-- @if(Auth::check() && Auth::user()->status = 0)
         <div class="alert alert-primary text-center text-black pt-3 m-0">
             Selamat! <br> Formulir pendaftaran anda telah terverifikasi kebenarannya.
         </div>
-    @endif
+    @endif --}}

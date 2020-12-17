@@ -39,6 +39,7 @@ class UserController extends Controller
 
         $user->status = $request->status;
 
+        //generate nomor billing
         $get_no_reg = DB::select('select no_registrasi from users 
         order by no_registrasi desc limit 1');
 
@@ -128,4 +129,5 @@ class UserController extends Controller
             return redirect()->route('calon.tk');
         }
     }
+
 }
