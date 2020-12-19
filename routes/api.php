@@ -16,7 +16,4 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/user', function (CalonSiswaTk $user) {
-        
-        return response()->json($user->all());
-});
+Route::resource('billing', 'App\Http\Controllers\api\kelolaBilling');
