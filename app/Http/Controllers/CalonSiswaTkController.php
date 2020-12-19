@@ -81,7 +81,7 @@ class CalonSiswaTkController extends Controller
                 
         if ($request->hasFile('scan_akta')) {
             $akta = $request->file('scan_akta');
-            $namaakta = $request->nama_pd . "-scan-akta" . "." . $akta->extension();
+            $namaakta = $request->scan_akta . "-scan-akta" . "." . $akta->extension();
             $location = public_path('dokumen/tk/' . $namaakta);
             Image::make($akta)->resize(900, 1200)->save($location);
             $attr['scan_akta'] = $namaakta;
@@ -89,7 +89,7 @@ class CalonSiswaTkController extends Controller
 
         if ($request->hasFile('scan_kk')) {
             $kk = $request->file('scan_kk');
-            $namakk = $request->nama_pd . "-scan-kk" . "." . $kk->extension();
+            $namakk = $request->scan_kk . "-scan-kk" . "." . $kk->extension();
             $location = public_path('dokumen/tk/' . $namakk);
             Image::make($kk)->resize(900, 1200)->save($location);
             $attr['scan_kk'] = $namakk;
@@ -97,7 +97,7 @@ class CalonSiswaTkController extends Controller
         
         if ($request->hasFile('scan_ktp_ortu')) {
             $ktp = $request->file('scan_ktp_ortu');
-            $namaktp = $request->nama_pd . "-scan-ktp-ortu" . "." . $ktp->extension();
+            $namaktp = $request->scan_ktp_ortu . "-scan-ktp-ortu" . "." . $ktp->extension();
             $location = public_path('dokumen/tk/' . $namaktp);
             Image::make($ktp)->resize(600, 400)->save($location);
             $attr['scan_ktp_ortu'] = $namaktp;
@@ -169,7 +169,7 @@ class CalonSiswaTkController extends Controller
                 
         if ($request->hasFile('scan_akta')) {
             $akta = $request->file('scan_akta');
-            $namaakta = $request->nama_pd . "-scan-akta" . "." . $akta->extension();
+            $namaakta = $request->scan_akta . "-scan-akta" . "." . $akta->extension();
             $location = public_path('dokumen/tk/' . $namaakta);
             Image::make($akta)->resize(900, 1200)->save($location);
             $attr['scan_akta'] = $namaakta;
@@ -177,7 +177,7 @@ class CalonSiswaTkController extends Controller
 
         if ($request->hasFile('scan_kk')) {
             $kk = $request->file('scan_kk');
-            $namakk = $request->nama_pd . "-scan-kk" . "." . $kk->extension();
+            $namakk = $request->scan_kk . "-scan-kk" . "." . $kk->extension();
             $location = public_path('dokumen/tk/' . $namakk);
             Image::make($kk)->resize(900, 1200)->save($location);
             $attr['scan_kk'] = $namakk;
@@ -185,7 +185,7 @@ class CalonSiswaTkController extends Controller
         
         if ($request->hasFile('scan_ktp_ortu')) {
             $ktp = $request->file('scan_ktp_ortu');
-            $namaktp = $request->nama_pd . "-scan-ktp-ortu" . "." . $ktp->extension();
+            $namaktp = $request->scan_ktp_ortu . "-scan-ktp-ortu" . "." . $ktp->extension();
             $location = public_path('dokumen/tk/' . $namaktp);
             Image::make($ktp)->resize(600, 400)->save($location);
             $attr['scan_ktp_ortu'] = $namaktp;

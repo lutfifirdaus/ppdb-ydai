@@ -24,14 +24,14 @@ class CreateCalonSiswaSdsTable extends Migration
             $table->char('bayak_saudara_kandung', 2);
             $table->enum('agama', ['Islam', 'Kristen', 'Katholik', 'Hindu', 'Buddha', 'Konghucu']);
             $table->string('kewarganegaraan');
-            $table->string('kebutuhan_khusus');
+            $table->string('kebutuhan_khusus')->nullable();
             $table->text('alamat_pd');
             $table->char('telp_rumah', 12)->nullable();
             $table->char('telp_pd', 13);
             $table->string('alat_transport');
             $table->string('waktu_kesekolah');
             $table->string('jarak_kesekolah');
-            $table->string('tinggal_dengan');
+            $table->string('jenis_tinggal');
             $table->char('tinggi', 3);
             $table->char('berat', 3);
             $table->string('no_kks')->nullable();
@@ -43,8 +43,6 @@ class CreateCalonSiswaSdsTable extends Migration
             $table->string('nama_ibu');
             $table->year('tahun_lahir_ayah');
             $table->year('tahun_lahir_ibu');
-            $table->text('alamat_ortu');
-            $table->char('telp_ortu');
             $table->string('pekerjaan_ayah');
             $table->string('pekerjaan_ibu');
             $table->string('pendidikan_ayah');
@@ -52,10 +50,9 @@ class CreateCalonSiswaSdsTable extends Migration
             $table->string('penghasilan_ayah');
             $table->string('penghasilan_ibu');
             $table->string('nama_wali')->nullable();
-            $table->string('nama_wali')->nullable();
             $table->text('alamat_wali')->nullable();
             $table->string('pekerjaan_wali')->nullable();
-            $table->string('pendidikan_wali ');
+            $table->string('pendidikan_wali')->nullable();
             $table->string('penghasilan_wali')->nullable();
             $table->string('foto_pd');
             $table->string('scan_akta');

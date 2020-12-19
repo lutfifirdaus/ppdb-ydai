@@ -41,14 +41,14 @@ class CalonSiswaSdController extends Controller
             'anak_ke' => 'required',
             'banyak_saudara_kandung' => 'required',
             'kewarganegaraan' => 'required',
-            'kebutuhan_khusus' => 'required',
+            'kebutuhan_khusus',
             'alamat_pd' => 'required',
             'telp_rumah' => 'required|digits:12',
             'telp_pd' => 'required|digits_between:11,13',
             'alat_transport' => 'required',
             'waktu_kesekolah' => 'required',
             'jarak_kesekolah' => 'required',
-            'tinggal_dengan' => 'required',
+            'jenis_tinggal' => 'required',
             'tinggi' => 'required',
             'berat' => 'required',
             'no_kks' => 'required|digits_between:0,18',
@@ -90,7 +90,7 @@ class CalonSiswaSdController extends Controller
                 
         if ($request->hasFile('foto_pd')) {
             $foto = $request->file('foto_pd');
-            $namafoto = $request->nik . "-pas-foto" . "." . $foto->extension();
+            $namafoto = $request->foto_pd . "-pas-foto" . "." . $foto->extension();
             $location = public_path('dokumen/sd/' . $namafoto);
             Image::make($foto)->resize(300, 400)->save($location);
             $attr['foto_pd'] = $namafoto;
@@ -98,7 +98,7 @@ class CalonSiswaSdController extends Controller
 
         if ($request->hasFile('scan_ijazah')) {
             $ijazah = $request->file('scan_ijazah');
-            $namaijazah = $request->nik . "-scan-ijazah" . "." . $ijazah->extension();
+            $namaijazah = $request->scan_ijazah . "-scan-ijazah" . "." . $ijazah->extension();
             $location = public_path('dokumen/sd/' . $namaijazah);
             Image::make($foto)->resize(900, 1200)->save($location);
             $attr['scan_ijazah'] = $namaijazah;
@@ -106,7 +106,7 @@ class CalonSiswaSdController extends Controller
 
         if ($request->hasFile('scan_akta')) {
             $akta = $request->file('scan_akta');
-            $namaakta = $request->nik . "-scan-akta" . "." . $akta->extension();
+            $namaakta = $request->scan_akta . "-scan-akta" . "." . $akta->extension();
             $location = public_path('dokumen/sd/' . $namaakta);
             Image::make($akta)->resize(900, 1200)->save($location);
             $attr['scan_akta'] = $namaakta;
@@ -114,7 +114,7 @@ class CalonSiswaSdController extends Controller
 
         if ($request->hasFile('scan_kk')) {
             $kk = $request->file('scan_kk');
-            $namakk = $request->nik . "-scan-kk" . "." . $kk->extension();
+            $namakk = $request->scan_kk . "-scan-kk" . "." . $kk->extension();
             $location = public_path('dokumen/sd/' . $namakk);
             Image::make($kk)->resize(900, 1200)->save($location);
             $attr['scan_kk'] = $namakk;
@@ -122,25 +122,25 @@ class CalonSiswaSdController extends Controller
 
         if ($request->hasFile('scan_kks')) {
             $kks = $request->file('scan_kks');
-            $namakks = $request->nik . "-scan-kks" . "." . $kks->extension();
+            $namakks = $request->scan_kks . "-scan-kks" . "." . $kks->extension();
             $location = public_path('dokumen/sd/' . $namakks);
-            Image::make($kks)->resize(900, 1200)->save($location);
+            Image::make($kks)->resize(600, 400)->save($location);
             $attr['scan_kks'] = $namakks;
         }
 
         if ($request->hasFile('scan_kip')) {
             $kip = $request->file('scan_kip');
-            $namakip = $request->nik . "-scan-kip" . "." . $kip->extension();
+            $namakip = $request->scan_kip . "-scan-kip" . "." . $kip->extension();
             $location = public_path('dokumen/sd/' . $namakip);
-            Image::make($kip)->resize(900, 1200)->save($location);
+            Image::make($kip)->resize(600, 400)->save($location);
             $attr['scan_kip'] = $namakip;
         }
 
         if ($request->hasFile('scan_kps')) {
             $kps = $request->file('scan_kps');
-            $namakps = $request->nik . "-scan-kps" . "." . $kps->extension();
+            $namakps = $request->scan_kps . "-scan-kps" . "." . $kps->extension();
             $location = public_path('dokumen/sd/' . $namakps);
-            Image::make($kps)->resize(900, 1200)->save($location);
+            Image::make($kps)->resize(600, 400)->save($location);
             $attr['scan_kps'] = $namakps;
         }
 
@@ -211,7 +211,7 @@ class CalonSiswaSdController extends Controller
                 
         if ($request->hasFile('foto_pd')) {
             $foto = $request->file('foto_pd');
-            $namafoto = $request->nik . "-pas-foto" . "." . $foto->extension();
+            $namafoto = $request->foto_pd . "-pas-foto" . "." . $foto->extension();
             $location = public_path('dokumen/sd/' . $namafoto);
             Image::make($foto)->resize(300, 400)->save($location);
             $attr['foto_pd'] = $namafoto;
@@ -219,7 +219,7 @@ class CalonSiswaSdController extends Controller
 
         if ($request->hasFile('scan_ijazah')) {
             $ijazah = $request->file('scan_ijazah');
-            $namaijazah = $request->nik . "-scan-ijazah" . "." . $ijazah->extension();
+            $namaijazah = $request->scan_ijazah . "-scan-ijazah" . "." . $ijazah->extension();
             $location = public_path('dokumen/sd/' . $namaijazah);
             Image::make($foto)->resize(900, 1200)->save($location);
             $attr['scan_ijazah'] = $namaijazah;
@@ -227,7 +227,7 @@ class CalonSiswaSdController extends Controller
 
         if ($request->hasFile('scan_akta')) {
             $akta = $request->file('scan_akta');
-            $namaakta = $request->nik . "-scan-akta" . "." . $akta->extension();
+            $namaakta = $request->scan_akta . "-scan-akta" . "." . $akta->extension();
             $location = public_path('dokumen/sd/' . $namaakta);
             Image::make($akta)->resize(900, 1200)->save($location);
             $attr['scan_akta'] = $namaakta;
@@ -235,7 +235,7 @@ class CalonSiswaSdController extends Controller
 
         if ($request->hasFile('scan_kk')) {
             $kk = $request->file('scan_kk');
-            $namakk = $request->nik . "-scan-kk" . "." . $kk->extension();
+            $namakk = $request->scan_kk . "-scan-kk" . "." . $kk->extension();
             $location = public_path('dokumen/sd/' . $namakk);
             Image::make($kk)->resize(900, 1200)->save($location);
             $attr['scan_kk'] = $namakk;
@@ -243,7 +243,7 @@ class CalonSiswaSdController extends Controller
 
         if ($request->hasFile('scan_kks')) {
             $kks = $request->file('scan_kks');
-            $namakks = $request->nik . "-scan-kks" . "." . $kks->extension();
+            $namakks = $request->scan_kks . "-scan-kks" . "." . $kks->extension();
             $location = public_path('dokumen/sd/' . $namakks);
             Image::make($kks)->resize(900, 1200)->save($location);
             $attr['scan_kks'] = $namakks;
@@ -251,7 +251,7 @@ class CalonSiswaSdController extends Controller
 
         if ($request->hasFile('scan_kip')) {
             $kip = $request->file('scan_kip');
-            $namakip = $request->nik . "-scan-kip" . "." . $kip->extension();
+            $namakip = $request->scan_kip . "-scan-kip" . "." . $kip->extension();
             $location = public_path('dokumen/sd/' . $namakip);
             Image::make($kip)->resize(900, 1200)->save($location);
             $attr['scan_kip'] = $namakip;
@@ -259,7 +259,7 @@ class CalonSiswaSdController extends Controller
 
         if ($request->hasFile('scan_kps')) {
             $kps = $request->file('scan_kps');
-            $namakps = $request->nik . "-scan-kps" . "." . $kps->extension();
+            $namakps = $request->scan_kps . "-scan-kps" . "." . $kps->extension();
             $location = public_path('dokumen/sd/' . $namakps);
             Image::make($kps)->resize(900, 1200)->save($location);
             $attr['scan_kps'] = $namakps;

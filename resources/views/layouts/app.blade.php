@@ -13,63 +13,33 @@
             <!-- Left Side Of Navbar -->
             <ul class="navbar-nav mr-auto">
 
-                @if (Auth::check() && Auth::user()->status == 0)
-                    <li class="nav-item">
-                        <a href="{{ route('calon.siswa') }}" class="nav-link">Daftar Sekolah</a>
-                    </li>
-                @elseif (Auth::check() && Auth::user()->status == 1)
-                    <li class="nav-item">
-                        <a href="{{ route('calon.tk.buat') }}" class="nav-link">Formulir Pendaftaran</a>
-                    </li>
-                @elseif (Auth::check() && Auth::user()->status == 2)
-                    <li class="nav-item">
-                        <a href="{{ route('calon.sd.buat') }}" class="nav-link">Formulir Pendaftaran</a>
-                    </li>
-                @elseif (Auth::check() && Auth::user()->status == 3)
-                    <li class="nav-item">
-                        <a href="{{ route('calon.smp.buat') }}" class="nav-link">Formulir Pendaftaran</a>
-                    </li>
-                @elseif (Auth::check() && Auth::user()->status == 4)
-                    <li class="nav-item">
-                        <a href="{{ route('calon.sma.buat') }}" class="nav-link">Formulir Pendaftaran</a>
-                    </li>
-                @endif
+                @can('memilih sekolah')
+                    <a href="{{ route('calon.siswa') }}" class="nav-link">Daftar Sekolah</a>
+                @endcan
 
-                @if (Auth::check() && Auth::user()->status == 1)
-                <li class="nav-item">
+                @can('melakukan pendaftaran tk')
+                    <a href="{{ route('calon.tk.buat') }}" class="nav-link">Formulir Pendaftaran</a>
                     <a href="{{ route('calon.tk') }}" class="nav-link">Alur Pendaftaran</a>
-                </li>
-                @elseif (Auth::check() && Auth::user()->status == 2)
-                <li class="nav-item">
-                    <a href="{{ route('calon.sd') }}" class="nav-link">Alur Pendaftaran</a>
-                </li>
-                @elseif (Auth::check() && Auth::user()->status == 3)
-                <li class="nav-item">
-                    <a href="{{ route('calon.smp') }}" class="nav-link">Alur Pendaftaran</a>
-                </li>
-                @elseif (Auth::check() && Auth::user()->status == 4)
-                <li class="nav-item">
-                    <a href="{{ route('calon.sma') }}" class="nav-link">Alur Pendaftaran</a>
-                </li>
-                @endif
-
-                @if (Auth::check() && Auth::user()->status == 1)
-                <li class="nav-item">
                     <a href="{{ route('calon.tk.billing') }}" class="nav-link">Biaya Pendidikan</a>
-                </li>
-                {{-- @elseif (Auth::check() && Auth::user()->status == 2)
-                <li class="nav-item">
+                @endcan
+                
+                @can('melakukan pendaftaran sd')
+                    <a href="{{ route('calon.sd.buat') }}" class="nav-link">Formulir Pendaftaran</a>
+                    <a href="{{ route('calon.sd') }}" class="nav-link">Alur Pendaftaran</a>
                     <a href="{{ route('calon.sd.billing') }}" class="nav-link">Biaya Pendidikan</a>
-                </li>
-                @elseif (Auth::check() && Auth::user()->status == 3)
-                <li class="nav-item">
+                @endcan
+            
+                @can('melakukan pendaftaran smp')
+                    <a href="{{ route('calon.smp.buat') }}" class="nav-link">Formulir Pendaftaran</a>
+                    <a href="{{ route('calon.smp') }}" class="nav-link">Alur Pendaftaran</a>
                     <a href="{{ route('calon.smp.billing') }}" class="nav-link">Biaya Pendidikan</a>
-                </li>
-                @elseif (Auth::check() && Auth::user()->status == 4)
-                <li class="nav-item">
-                    <a href="{{ route('calon.sma.billing') }}" class="nav-link">Biaya Pendidikan</a>
-                </li> --}}
-                @endif
+                @endcan
+
+                @can('melakukan pendaftaran sma')
+                    <a href="{{ route('calon.sma.buat') }}" class="nav-link">Formulir Pendaftaran</a>
+                    <a href="{{ route('calon.sma') }}" class="nav-link">Alur Pendaftaran</a>
+                    {{-- <a href="{{ route('calon.sma.billing') }}" class="nav-link">Biaya Pendidikan</a> --}}
+                @endcan
             </ul>
 
             <!-- Right Side Of Navbar -->

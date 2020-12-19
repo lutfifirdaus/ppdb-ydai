@@ -1,6 +1,6 @@
 {{-- verifikasi email --}}
 @if (Auth::check() && !Auth::user()->email_verified_at)
-    <div class="alert alert-danger text-center text-black pt-3 m-0">
+    <div class="alert alert-danger text-center text-black pt-3 m-0 mb-3">
         Silahkan verifikasi email terlebih dahulu sebelum melakukan pendaftaran,
         <form class="d-inline" method="POST" action="{{ route('verification.resend') }}">
             @csrf
@@ -11,14 +11,14 @@
 
 {{-- notifikasi --}}
     @if (session()->has('masuk'))
-        <div class="alert alert-warning text-center text-black text-black pt-3 m-0">
+        <div class="alert alert-warning text-center text-black text-black pt-3 m-0 mb-3">
             <button type="button" class="close" data-dismiss="alert">×</button> 
             {{ session()->get('masuk') }}
         </div>
     @endif
 
     @if(session()->has('edit'))
-        <div class="alert alert-danger text-center text-black pt-3 m-0">
+        <div class="alert alert-danger text-center text-black pt-3 m-0 mb-3">
             <button type="button" class="close" data-dismiss="alert">×</button> 
             {{ session()->get('edit') }}
         </div>

@@ -36,11 +36,11 @@ Route::view('/tk-visi-dan-misi', 'tk.index')->name('tk.visimisi');
 Route::view('/tk/guru-dan-staff', 'tk.index')->name('tk.gurustaff');
 
 //alamat untuk admin
-Route::group(['prefix' => 'admin', 'middleware' => 'role:admin'], function () {
+Route::group(['prefix' => 'admin', 'middleware' => 'role:admin|super-admin'], function () {
     Route::view('/', 'admin.index')->name('admin.page');
 
     //alamat untuk admin sma
-    Route::group(['prefix' => 'sma'], function () {
+    Route::group(['prefix' => 'sma', 'middleware' => 'permission:kelola data calon sma'], function () {
         Route::get('/', [KelolaSmaController::class, 'index'])->name('index.sma');
         Route::get('/verifikas-data', [KelolaSmaController::class, 'tabelVerifikasi'])->name('verifikasi.sma');
         Route::put('/verifikasi-data/{user:id}', [KelolaSmaController::class, 'verifikasiData']);
@@ -48,7 +48,7 @@ Route::group(['prefix' => 'admin', 'middleware' => 'role:admin'], function () {
     });
 
     //alamat untuk admin smp
-    Route::group(['prefix' => 'smp'], function () {
+    Route::group(['prefix' => 'smp', 'middleware' =>'permission:kelola data calon smp'], function () {
         Route::get('/', [KelolaSmpController::class, 'index'])->name('index.smp');
         Route::get('/verifikas-data', [KelolaSmpController::class, 'tabelVerifikasi'])->name('verifikasi.smp');
         Route::put('/verifikasi-data/{user:id}', [KelolaSmpController::class, 'verifikasiData']);
@@ -56,7 +56,7 @@ Route::group(['prefix' => 'admin', 'middleware' => 'role:admin'], function () {
     });
 
     //alamat untuk admin sd
-    Route::group(['prefix' => 'sd'], function () {
+    Route::group(['prefix' => 'sd', 'middleware' =>'permission:kelola data calon sd'], function () {
         Route::get('/', [KelolaSdController::class, 'index'])->name('index.sd');
         Route::get('/verifikas-data', [KelolaSdController::class, 'tabelVerifikasi'])->name('verifikasi.sd');
         Route::put('/verifikasi-data/{user:id}', [KelolaSdController::class, 'verifikasiData']);
@@ -64,7 +64,7 @@ Route::group(['prefix' => 'admin', 'middleware' => 'role:admin'], function () {
     });
 
     //alamat untuk admin tk
-    Route::group(['prefix' => 'tk'], function () {
+    Route::group(['prefix' => 'tk', 'middleware' =>'permission:kelola data calon tk'], function () {
         Route::get('/', [KelolaTkController::class, 'index'])->name('index.tk');
         Route::get('/verifikas-data', [KelolaTkController::class, 'tabelVerifikasi'])->name('verifikasi.tk');
         Route::put('/verifikasi-data/{user:id}', [KelolaTkController::class, 'verifikasiData']);
@@ -73,14 +73,18 @@ Route::group(['prefix' => 'admin', 'middleware' => 'role:admin'], function () {
 });
 
 //alamat untuk calon peserta didik
-Route::group(['prefix' => 'calon', 'middleware' => 'role:calon'], function () {
-        Route::view('/', 'home')->name('calon');
+Route::group(['prefix' => 'calon', 'middleware' => 'role:calon|super-admin'], function () {
+    Route::view('/', 'home')->name('calon');
+    Route::post('siswa/kirim-email', [UserController::class, 'kirimEmail'])->name('kirim.email');
+
+
+    Route::group(['prefix' => 'daftar', 'middleware' => 'permission:memilih sekolah'], function () {
         Route::get('siswa/', [UserController::class, 'show'])->name('calon.siswa');
         Route::patch('siswa/update/{user}', [UserController::class, 'update']);
-        Route::post('siswa/kirim-email', [UserController::class, 'kirimEmail'])->name('kirim.email');
-
+    });    
+    
     //untuk calon peserta didik sma
-    Route::group(['prefix' => 'sma', 'middleware' => ['verified', 'role:calon-sma']], function () {
+    Route::group(['prefix' => 'sma', 'middleware' => ['verified', 'permission:melakukan pendaftaran sma']], function () {
         Route::get('/', [CalonSiswaSmaController::class, 'index'])->name('calon.sma');
         Route::get('create', [CalonSiswaSmaController::class, 'create'])->name('calon.sma.buat');
         Route::post('store/{user}', [CalonSiswaSmaController::class, 'store']);
@@ -88,7 +92,7 @@ Route::group(['prefix' => 'calon', 'middleware' => 'role:calon'], function () {
     });
 
     //untuk calon peserta didik smp
-    Route::group(['prefix' => 'smp', 'middleware' => ['verified', 'role:calon-smp']], function () {
+    Route::group(['prefix' => 'smp', 'middleware' => ['verified', 'permission:melakukan pendaftaran smp']], function () {
         Route::get('/', [CalonSiswaSmpController::class, 'index'])->name('calon.smp');
         Route::get('create', [CalonSiswaSmpController::class, 'create'])->name('calon.smp.buat');
         Route::post('store/{user}', [CalonSiswaSmpController::class, 'store']);
@@ -97,7 +101,7 @@ Route::group(['prefix' => 'calon', 'middleware' => 'role:calon'], function () {
     });
 
     //untuk calon peserta didik sd
-    Route::group(['prefix' => 'sd', 'middleware' => ['verified', 'role:calon-sd']], function () {
+    Route::group(['prefix' => 'sd', 'middleware' => ['verified', 'permission:melakukan pendaftaran sd']], function () {
         Route::get('/', [CalonSiswaSdController::class, 'index'])->name('calon.sd');
         Route::get('create', [CalonSiswaSdController::class, 'create'])->name('calon.sd.buat');
         Route::post('store/{user}', [CalonSiswaSdController::class, 'store']);
@@ -106,7 +110,7 @@ Route::group(['prefix' => 'calon', 'middleware' => 'role:calon'], function () {
     });
     
     //untuk calon peserta didik tk
-    Route::group(['prefix' => 'tk', 'middleware' => ['verified', 'role:calon-tk']], function () {
+    Route::group(['prefix' => 'tk', 'middleware' => ['verified', 'permission:melakukan pendaftaran tk']], function () {
         Route::get('/', [CalonSiswaTkController::class, 'index'])->name('calon.tk');
         Route::get('create', [CalonSiswaTkController::class, 'create'])->name('calon.tk.buat');
         Route::post('store/{user}', [CalonSiswaTkController::class, 'store']);

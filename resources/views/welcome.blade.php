@@ -39,7 +39,8 @@
             }
 
             body {
-                font-size: 14px
+                font-size: 14px;
+                
             }
         </style>
     </head>
@@ -58,11 +59,13 @@
                     <li class="nav-item">
                         <a href="#jenjang" class="nav-link">Jenjang Sekolah</a>
                     </li>
-                    <li class="nav-item">
-                        <a href="#syarat" class="nav-link">Persayaratan</a>
-                    </li>
+                    
                     <li class="nav-item">
                         <a href="#alur-pendaftaran" class="nav-link">Alur Pendaftaran</a>
+                    </li>
+
+                    <li class="nav-item">
+                        <a href="#kontak" class="nav-link">Kontak dan Bantuan</a>
                     </li>
                     {{-- <li class="nav-item">
                         <a href="#alur-pendaftaran" class="nav-link">Biaya Pendaftaran</a>
@@ -105,28 +108,28 @@
                             <img class="d-block w-100" src="{{ asset('picture/siswa-tk.jpg') }}" alt="First slide">
                             <div class="carousel-caption d-none retroshd d-md-block special">
                                 <h2><b>TK ANANDA UT</b></h2>
-                                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Optio, fugit.</p>
+                                <p>kreatif | cerdas | aktif | berprestasi</p>
                             </div>
                         </div>
                         <div class="carousel-item">
                             <img class="d-block w-100" src="{{ asset('picture/siswa-sd.jpg') }}" alt="Second slide">
                             <div class="carousel-caption d-none retroshd d-md-block special">
                                 <h2><b>SD Dharma Karya</b></h2>
-                                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Optio, fugit.</p>
+                                <p>tempat yang tepat untuk mengeksplor bakat dan minat</p>
                             </div>
                         </div>
                         <div class="carousel-item">
                             <img class="d-block w-100" src="{{ asset('picture/siswa-smp.jpg') }}" alt="Third slide">
                             <div class="carousel-caption d-none retroshd d-md-block special">
                                 <h2><b>SMP Dharma Karya</b></h2>
-                                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Optio, fugit.</p>
+                                <p>jadikan tumbuh kembangmu semakin bermakna</p>
                             </div>
                         </div>
                         <div class="carousel-item">
                             <img class="d-block w-100" src="{{ asset('picture/siswa-sma.JPG') }}" alt="Fourd slide">
                             <div class="carousel-caption d-none retroshd d-md-block special">
                                 <h2><b>SMA Dharma Karya</b></h2>
-                                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Optio, fugit.</p>
+                                <p>sehat, cerdas, dan berprestasi di masa muda</p>
                             </div>
                         </div>
                         </div>
@@ -145,7 +148,7 @@
                 <div class="mb-3 text-center">
                     <img class="mx-auto mr-2" style="height: 300px; border-radius:50%" src="{{ asset('picture/logo-ydai.png') }}" alt="">
                     <h1>Selamat Datang di PPDB Yayasan Dharma Anak Indonesia UT</h1><hr>
-                    <p>Yayasan Dharma Ananda Indonesia UT menyediakan situs ini guna mempermudah pendaftaran peserta didik baru <br> untuk seluruh sekolah yang berada di dalam naungannya</p>
+                    <p style="font-size: 20px">Website ini diciptakan guna mempermudah pendaftaran peserta didik baru <br> untuk seluruh sekolah yang berada di dalam naungan Yayasan Dharma Ananda Indonesia</p>
                 </div>
                 <div class="text-center" id="jenjang">
                     <h3>Sekolah Dalam Naungan</h3>
@@ -269,43 +272,47 @@
                         </div>
                     </div>
                 </div>
+
                 <div class="mb-3" id="alur-pendaftaran">
                     <h3 class="text-center">Alur Pendaftaran</h3>
                     <hr>
-                    <p class=" text-lg">1. Calon peserta didik melakukan registrasi/pendaftaran akun<br>
-                        2. Calon peserta didik melakukan verifikasi e-mail akun yang telah didaftarkan<br>
-                        3. Calon peserta didik memilih jenjang sekolah mana yang akan dimasuki<br>
-                        4. Calon Peserta didik mengisi data formulir pendaftaran<br>
-                        5. Data formulir pendaftaran yang telah terkirim akan diverifikasi oleh Panitia<br>
-                        6. Peserta didik yang telah terverifikasi, akan mendapatkan nomor biling untuk melakukan pembayaran registrasi sekolah<br>
-                        7. Setelah melakukan pembayaran, calon peserta didik dapat mengunduh laporan bukti pembayaran beserta formulir pendaftaran<br>
-                        8. Calon peserta didik yang telah mengunduh laporan bukti pembayaran diharuskan mendaftar ulang ke sekolah yang bersangkutan<br>
-                        9. Selesai
-                    </p>
+                    <ol class=" text-md">
+                        <li>Calon peserta didik melakukan registrasi/pendaftaran akun</li>
+                        <li>Calon peserta didik melakukan verifikasi e-mail akun yang telah didaftarkan</li>
+                        <li>Calon peserta didik memilih jenjang sekolah mana yang akan dimasuki</li>
+                        <li>Calon Peserta didik mengisi data formulir pendaftaran</li>
+                        <li>Data formulir pendaftaran yang telah terkirim akan diverifikasi oleh Panitia</li>
+                        <li>Peserta didik yang telah terverifikasi, akan mendapatkan nomor biling untuk melakukan pembayaran registrasi sekolah</li>
+                        <li>Setelah melakukan pembayaran, calon peserta didik dapat mengunduh laporan bukti pembayaran beserta formulir pendaftaran</li>
+                        <li>Calon peserta didik yang telah mengunduh laporan bukti pembayaran diharuskan mendaftar ulang ke sekolah yang bersangkutan</li>
+                        <li>Selesai</li>
+                    </ol>
                 </div>
-                <div class="text-center" id="syarat">
-                    <h3>Persyaratan dan Ketentuan</h3>
-                </div>
-                <hr>
-                <div class="row">
-                    <div class="col-6 border-right mb-3">
-                        <h5 class="text-center">TK Ananda UT</h5>
-                        <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Expedita eos delectus quo odit dolor quisquam veritatis beatae maiores aliquid quod, consequatur debitis facere ullam magnam eum esse? Labore a laboriosam, eum veritatis fuga illum atque repellat quibusdam corrupti provident? Excepturi ad earum rem! Earum accusantium dolorum eius ratione minima consectetur!</p>
-                    </div>
-
-                    <div class="col-6 mb-3">
-                        <h5 class="text-center">SD Dharma karya</h5>
-                        <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Expedita eos delectus quo odit dolor quisquam veritatis beatae maiores aliquid quod, consequatur debitis facere ullam magnam eum esse? Labore a laboriosam, eum veritatis fuga illum atque repellat quibusdam corrupti provident? Excepturi ad earum rem! Earum accusantium dolorum eius ratione minima consectetur!</p>
-                    </div>
-
-                    <div class="col-6 border-right mb-3">
-                        <h5 class="text-center">SMP Dharma karya</h5>
-                        <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Expedita eos delectus quo odit dolor quisquam veritatis beatae maiores aliquid quod, consequatur debitis facere ullam magnam eum esse? Labore a laboriosam, eum veritatis fuga illum atque repellat quibusdam corrupti provident? Excepturi ad earum rem! Earum accusantium dolorum eius ratione minima consectetur!</p>
-                    </div>
-
-                    <div class="col-6 mb-3">
-                        <h5 class="text-center">SMA Dharma karya</h5>
-                        <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Expedita eos delectus quo odit dolor quisquam veritatis beatae maiores aliquid quod, consequatur debitis facere ullam magnam eum esse? Labore a laboriosam, eum veritatis fuga illum atque repellat quibusdam corrupti provident? Excepturi ad earum rem! Earum accusantium dolorum eius ratione minima consectetur!</p>
+                
+                <div class="mb-3">
+                    <h3 class="text-center" id="kontak">Kontak dan Bantuan</h3>
+                    <hr>
+                    <div class="row">
+                        <div class="col-3 border">
+                            <div class="text-center text-lg border-bottom">TK ANANDA UT</div>
+                                <li>E-mail : example@smp.com</li>
+                                <li>Sulaiman : 0891234567890</li>
+                        </div>
+                        <div class="col-3 border">
+                            <div class="text-center text-lg border-bottom">SD DHARMA KARYA UT</div>
+                            <li>E-mail : example@smp.com</li>
+                            <li>Sulaiman : 0891234567890</li>
+                        </div>
+                        <div class="col-3 border">
+                            <div class="text-center text-lg border-bottom">SMP DHARMA KARYA UT</div>
+                            <li>E-mail : example@smp.com</li>
+                            <li>Sulaiman : 0891234567890</li>
+                        </div>
+                        <div class="col-3 border">
+                            <div class="text-center text-lg border-bottom">SMA DHARMA KARYA UT</div>
+                            <li>E-mail : example@smp.com</li>
+                            <li>Sulaiman : 0891234567890</li>
+                        </div>
                     </div>
                 </div>
             </div>

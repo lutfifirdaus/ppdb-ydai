@@ -1,14 +1,14 @@
 @extends('layouts.app')
 
 @section('content')
-    <div class="row d-flex">
-        <div class="col-2 border-right">
-
-        </div>
-        <div class="col-10">
-            <div>
+    <div class="container">
+        <div class="card">
+            
+            <div class="card-header">
                 <h1 class="text-center">Alur Pendaftaran</h1>
-                <hr>
+            </div>
+            
+            <div class="card-body">
                 <div class="row d-flex justify-content-center">
                     <div class="col-lg-3 col-2">
                         <div class="small-box bg-primary">

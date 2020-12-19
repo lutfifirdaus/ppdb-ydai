@@ -20,8 +20,39 @@ class UserSeeder extends Seeder
             'password' => bcrypt('password'),
             'email_verified_at' => now()
         ]);
+        $admin->assignRole('super-admin');
 
-        $admin->assignRole('admin');
+        $adminTk = User::create([
+            'name' => 'Admin TK',
+            'email' => 'tk@gmail.com',
+            'password' => bcrypt('password'),
+            'email_verified_at' => now()
+        ]);
+        $adminTk->assignRole('admin')->givePermissionTo('kelola data calon tk');
+
+        $adminsd = User::create([
+            'name' => 'Admin sd',
+            'email' => 'sd@gmail.com',
+            'password' => bcrypt('password'),
+            'email_verified_at' => now()
+        ]);
+        $adminsd->assignRole('admin')->givePermissionTo('kelola data calon sd');
+
+        $adminsmp = User::create([
+            'name' => 'Admin smp',
+            'email' => 'smp@gmail.com',
+            'password' => bcrypt('password'),
+            'email_verified_at' => now()
+        ]);
+        $adminsmp->assignRole('admin')->givePermissionTo('kelola data calon smp');
+
+        $adminsma = User::create([
+            'name' => 'Admin sma',
+            'email' => 'sma@gmail.com',
+            'password' => bcrypt('password'),
+            'email_verified_at' => now()
+        ]);
+        $adminsma->assignRole('admin')->givePermissionTo('kelola data calon sma');
 
         $tk = User::create([
             'name' => 'User',
@@ -29,7 +60,7 @@ class UserSeeder extends Seeder
             'password' => bcrypt('password'),
             'email_verified_at' => now()
         ]);
-        $tk->assignRole('calon');
+        $tk->assignRole('calon')->givePermissionTo('memilih sekolah');
 
         $sd = User::create([
             'name' => 'User',
@@ -37,7 +68,7 @@ class UserSeeder extends Seeder
             'password' => bcrypt('password'),
             'email_verified_at' => now()
         ]);
-        $sd->assignRole('calon');
+        $sd->assignRole('calon')->givePermissionTo('memilih sekolah');
 
         $smp = User::create([
             'name' => 'User',
@@ -45,7 +76,7 @@ class UserSeeder extends Seeder
             'password' => bcrypt('password'),
             'email_verified_at' => now()
         ]);
-        $smp->assignRole('calon');
+        $smp->assignRole('calon')->givePermissionTo('memilih sekolah');
 
         $sma = User::create([
             'name' => 'User',
@@ -54,6 +85,6 @@ class UserSeeder extends Seeder
             'email_verified_at' => now()
         ]);
 
-        $sma->assignRole('calon');
+        $sma->assignRole('calon')->givePermissionTo('memilih sekolah');
     }
 }

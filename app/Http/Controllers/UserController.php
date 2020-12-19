@@ -59,7 +59,10 @@ class UserController extends Controller
                 else 
                 $no_registrasi = '001'.$kode;
             }
-        } elseif($request->status == 2){
+            $user->syncPermissions('melakukan pendaftaran tk');
+        } 
+        
+        elseif($request->status == 2){
             if(empty($get_no_reg)){
                 $no_registrasi = '0020001'; 
             }else{
@@ -75,7 +78,10 @@ class UserController extends Controller
                 else 
                 $no_registrasi = '002'.$kode;
             }
-        } elseif($request->status == 3){
+            $user->syncPermissions('melakukan pendaftaran sd');
+        } 
+        
+        elseif($request->status == 3){
             if(empty($get_no_reg)){
                 $no_registrasi = '0030001'; 
             }else{
@@ -91,7 +97,10 @@ class UserController extends Controller
                 else 
                 $no_registrasi = '003'.$kode;
             }
-        } elseif($request->status == 4){
+            $user->syncPermissions('melakukan pendaftaran smp');
+        } 
+        
+        elseif($request->status == 4){
             if(empty($get_no_reg)){
                 $no_registrasi = '0040001'; 
             }else{
@@ -107,6 +116,7 @@ class UserController extends Controller
                 else 
                 $no_registrasi = '001'.$kode;
             }
+            $user->syncPermissions('melakukan pendaftaran sma');
         }
 
         $user->no_registrasi = $no_registrasi;
@@ -116,16 +126,18 @@ class UserController extends Controller
 
         // Redirect to route
         if ($user->status == 4) {
-            $user->assignRole('calon-sma');
             return redirect()->route('calon.sma');
-        } elseif ($user->status == 3) {
-            $user->assignRole('calon-smp');
+        } 
+        
+        elseif ($user->status == 3) {
             return redirect()->route('calon.smp');
-        } elseif ($user->status == 2) {
-            $user->assignRole('calon-sd');
+        } 
+        
+        elseif ($user->status == 2) {
             return redirect()->route('calon.sd');
-        } elseif ($user->status == 1) {
-            $user->assignRole('calon-tk');
+        } 
+        
+        elseif ($user->status == 1) {
             return redirect()->route('calon.tk');
         }
     }

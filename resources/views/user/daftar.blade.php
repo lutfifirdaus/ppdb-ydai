@@ -19,7 +19,7 @@
                                 <h5>TK Ananda UT</h5>
                                 <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Error perferendis sit, aspernatur quae vitae illum quaerat ea? Mollitia, quibusdam? Sint velit enim voluptatum fugiat! Molestias, accusantium! Adipisci ipsum reiciendis voluptate quos vitae inventore doloremque? Minus harum deleniti, rem maxime voluptas laudantium, quas veritatis ullam molestias, placeat excepturi laborum sint dicta!</p>
                                 <div class="text-center">
-                                    <form action="/calon/siswa/update/{{ $user->id }}" method="post">
+                                    <form action="/calon/daftar/siswa/update/{{ $user->id }}" method="post">
                                         @csrf
                                         @method('PATCH')
                                         <input type="hidden" name="status" value=1>
@@ -40,7 +40,7 @@
                                 <h5>SD Dharma Karya</h5>
                                 <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Error perferendis sit, aspernatur quae vitae illum quaerat ea? Mollitia, quibusdam? Sint velit enim voluptatum fugiat! Molestias, accusantium! Adipisci ipsum reiciendis voluptate quos vitae inventore doloremque? Minus harum deleniti, rem maxime voluptas laudantium, quas veritatis ullam molestias, placeat excepturi laborum sint dicta!</p>
                                 <div class="text-center">
-                                    <form action="/calon/siswa/update/{{ $user->id }}" method="post">
+                                    <form action="/calon/daftar/siswa/update/{{ $user->id }}" method="post">
                                         @csrf
                                         @method('PATCH')
                                         <input type="hidden" name="status" value=2>
@@ -61,7 +61,7 @@
                                 <h5>SMP Dharma Karya</h5>
                                 <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Error perferendis sit, aspernatur quae vitae illum quaerat ea? Mollitia, quibusdam? Sint velit enim voluptatum fugiat! Molestias, accusantium! Adipisci ipsum reiciendis voluptate quos vitae inventore doloremque? Minus harum deleniti, rem maxime voluptas laudantium, quas veritatis ullam molestias, placeat excepturi laborum sint dicta!</p>
                                 <div class="text-center">
-                                    <form action="/calon/siswa/update/{{ $user->id }}" method="post">
+                                    <form action="/calon/daftar/siswa/update/{{ $user->id }}" method="post">
                                         @csrf
                                         @method('PATCH')
                                         <input type="hidden" name="status" value=3>
@@ -82,7 +82,7 @@
                                 <h5>SMA Dharma Karya</h5>
                                 <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Error perferendis sit, aspernatur quae vitae illum quaerat ea? Mollitia, quibusdam? Sint velit enim voluptatum fugiat! Molestias, accusantium! Adipisci ipsum reiciendis voluptate quos vitae inventore doloremque? Minus harum deleniti, rem maxime voluptas laudantium, quas veritatis ullam molestias, placeat excepturi laborum sint dicta!</p>
                                 <div class="text-center">
-                                    <form action="/calon/siswa/update/{{ $user->id }}" method="post">
+                                    <form action="/calon/daftar/siswa/update/{{ $user->id }}" method="post">
                                         @csrf
                                         @method('PATCH')
                                         <input type="hidden" name="status" value=4>
