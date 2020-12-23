@@ -1,12 +1,17 @@
-@extends('layouts.app')
+@include('layouts.head')
 
-@section('content')
-<div class="container">
-    <div class="row justify-content-center">
-        <div class="col-md-8">
-            <div class="card">
-                <div class="card-header">{{ __('Register') }}</div>
-
+<body class="bg-white">
+    <div style="padding-top: 5%">
+        <div class="row h-75 shadow-lg" style="border: 5px solid rgb(73, 73, 255); margin: 0 5rem; border-radius: 25px">
+            
+            <div class="col-md-7 text-center" style="background-image: url({{ asset('picture/sma.jpeg') }}); background-position: center; background-size: cover; border-radius: 20px 0 0 20px; padding-top: 10%;">
+                <div class="card m-auto w-50 nol9">
+                    <a href="/"><img class="card-img-top" src="{{ asset('picture/logo-ydai.png') }}" alt=""></a>
+                </div>
+            </div>
+    
+            <div class="col-md-5 m-auto">
+                <div class="text-center"><h4>{{ __('Register') }}</h4></div>
                 <div class="card-body">
                     <form method="POST" action="{{ route('register') }}">
                         @csrf
@@ -67,11 +72,16 @@
                                     {{ __('Register') }}
                                 </button>
                             </div>
+                            <div class="col-md-8 offset-md-3">
+                                @if (Route::has('login'))
+                                    <a class="nav-link text-center"href="{{ route('login') }}">Sudah Punya Akun? <span class="btn btn-sm btn-success">Klik di Sini</span></a>
+                                @endif
+                            </div>
                         </div>
                     </form>
                 </div>
             </div>
+    
         </div>
     </div>
-</div>
-@endsection
+</body>

@@ -5,6 +5,7 @@ namespace App\Http\Controllers\api;
 use App\Http\Controllers\Controller;
 use App\Models\Billing;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
 class kelolaBilling extends Controller
 {
@@ -51,7 +52,13 @@ class kelolaBilling extends Controller
      */
     public function show($id)
     {
-        //
+        $billing = DB::table('billings')->where('no_billing', '=', $id)->get();
+
+        if(empty($billing)){
+            return response()->json([
+                "message" => "billing not found"
+            ], 404);
+        }
     }
 
     /**
@@ -62,7 +69,7 @@ class kelolaBilling extends Controller
      */
     public function edit(Request $request, $id)
     {
-        if (Billing::where('id', $id)->exists()) {
+        if (Billing::where('no_billing', $id)->exists()) {
             $billing = Billing::find($id);
 
             $billing = $request->billing();
@@ -98,7 +105,7 @@ class kelolaBilling extends Controller
      */
     public function destroy($id)
     {
-        if (Billing::where('id', $id)->exists()) {
+        if (Billing::where('no_billing', $id)->exists()) {
             $billing = Billing::find($id);
             $billing->delete();
 

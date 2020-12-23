@@ -26,37 +26,55 @@
                                 
                                         <div class="form-group row ml-3">
                                             <label for="nama_pd" class="col-12 form-label">Nama Lengkap</label>
-                                            <input type="text" name="nama_pd" id="nama_pd" class="form-control col-12" value="{{ old('nama_pd') }}" placeholder="sesuai Akta Kelahiran">
+                                            <input type="text" name="nama_pd" id="nama_pd" class="form-control col-12 @error('nama_pd') is-invalid @enderror" value="{{ old('nama_pd') }}" placeholder="sesuai Akta Kelahiran">
+                                            
                                             @error('nama_pd')
-                                                <div class="text-danger mt-2 col-sm-3">{{ $message }}</div>
+                                            <span class="invalid-feedback" role="alert">
+                                                <strong>{{ $message }}</strong>
+                                            </span>
                                             @enderror
                                         </div>
                                         
                                         <div class="form-group row ml-3">
                                             <label for="jenis_kelamin" class="col-12 form-label">Jenis Kelamin</label>
-                                            <select name="jenis_kelamin" id="jenis_kelamin" class="form-control col-12">
+                                            <select name="jenis_kelamin" id="jenis_kelamin" class="form-control col-12 @error('nama_pd') is-invalid @enderror">
                                                     <option selected disabled>Pilih salah satu</option>
                                                     <option @if (old('jenis_kelamin')  == "Laki-laki") selected @endif value="Laki-laki">Laki-laki</option>
                                                     <option @if (old('jenis_kelamin')  == "Laki-laki") selected @endif value="Perempuan">Perempuan</option>
                                             </select>
+
                                             @error('jenis_kelamin')
-                                                <div class="text-danger mt-2 col-sm-3">{{ $message }}</div>
-                                            @enderror
+                                            <span class="invalid-feedback" role="alert">
+                                                <strong>{{ $message }}</strong>
+                                            </span>
+                                            @enderror                                        
                                         </div>
                                         
                                         <div class="form-group row ml-3">
-                                            <label for="nik" class="col-12 form-label">NIK / Nomor Induk Kependudukan</label>
+                                            <label for="nik" class="col-12 form-label @error('nik') is-invalid @enderror">NIK / Nomor Induk Kependudukan</label>
                                             <input placeholder="Sesuai Kartu Keluarga" type="number" name="nik" id="nik" class="form-control col-12" value="{{ old('nik') }}">
-                                            @error('nik')
-                                                <div class="text-danger mt-2 col-sm-3">{{ $message }}</div>
+                                            
+                                            @error('nama_pd')
+                                            <span class="invalid-feedback" role="alert">
+                                                <strong>{{ $message }}</strong>
+                                            </span>
                                             @enderror
                                         </div>
         
                                         <div class="form-group row ml-3">
                                             <label for="ttl" class="col-12 form-label">Tempat, Tanggal Lahir</label>
-                                            <input type="text" name="t" id="t" class="form-control col-8" value="{{ old('t') }}"><input type="date" name="tl" id="tl" class="form-control col-4" value="{{ old('tl') }}">
-                                            @error('ttl')
-                                                <div class="text-danger mt-2 col-sm-3">{{ $message }}</div>
+                                            <input type="text" name="t" id="t" class="form-control col-8 @error('t') is-invalid @enderror" value="{{ old('t') }}" >
+                                            <input type="date" name="tl" id="tl" class="form-control col-4 @error('tl') is-invalid @enderror" value="{{ old('tl') }}">
+
+                                            @error('t')
+                                            <span class="invalid-feedback" role="alert">
+                                                <strong>{{ $message }}</strong>
+                                            </span>
+                                            @enderror
+                                            @error('tl')
+                                            <span class="invalid-feedback" role="alert">
+                                                <strong>{{ $message }}</strong>
+                                            </span>
                                             @enderror
                                         </div>
                                         

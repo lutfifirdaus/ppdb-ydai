@@ -55,6 +55,14 @@
         p {
             font-size: 14px
         }
+
+        .nol9{
+            opacity: 0.9
+        }
+
+        .rnd{
+            border-radius: 25px
+        }
     </style>
 
     <link rel="apple-touch-icon" sizes="180x180" href="{{ asset('picture/logo-ydai.png') }}">
