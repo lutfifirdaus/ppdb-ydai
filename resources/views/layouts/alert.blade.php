@@ -24,6 +24,12 @@
         </div>
     @endif
 
+    @if (session('resent'))
+        <div class="alert alert-success text-center" role="alert">
+            <button type="button" class="close" data-dismiss="alert">×</button> 
+            {{ __('Verifikas E-mail sudah Kami kirim ulang!') }}
+        </div>
+    @endif
     {{-- @if(Auth::check() && Auth::user()->status = 0)
         <div class="alert alert-primary text-center text-black pt-3 m-0">
             Selamat! <br> Formulir pendaftaran anda telah terverifikasi kebenarannya.
