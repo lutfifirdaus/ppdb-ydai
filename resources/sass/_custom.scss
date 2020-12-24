@@ -1,0 +1,50 @@
+//custom css
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+}
+
+/* Firefox */
+input[type=number] {
+    -moz-appearance: textfield;
+}
+
+input[type=file] {
+    border: 0px solid black !important;
+}
+
+input, select {
+    border: 0px solid black !important;
+    border-radius: 0% !important;
+    border-bottom: 1px solid black !important;
+    transition: all 2s ease-in-out;
+}
+
+.form-control:hover {   
+    border-bottom: 2px solid blue !important;
+}
+
+.form-control:focus {   
+    border-bottom: 2px solid blue !important;
+}
+
+.card-title {
+    float: none;
+}
+
+p {
+    font-size: 14px
+}
+
+.nol9{
+    opacity: 0.9
+}
+
+.rnd{
+    border-radius: 25px
+}
+
+.gap{
+    grid-gap: 1em !important;
+}

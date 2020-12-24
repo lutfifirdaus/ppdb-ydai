@@ -2,7 +2,31 @@
 <html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
 
 <head>
-    @include('layouts.head')
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>{{ config('app.name') }}</title>
+
+    <!-- CSRF Token -->
+    <meta name="csrf-token" content="{{ csrf_token() }}">
+
+    <!-- Scripts -->
+    <script src="{{ asset('js/app.js') }}" defer></script>
+
+    <!-- Styles -->
+    <link href="{{ asset('css/app.css') }}" rel="stylesheet">
+
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="{{ asset('adminlte/plugins/fontawesome-free/css/all.min.css') }}">
+    <!-- overlayScrollbars -->
+    <link rel="stylesheet" href="{{ asset('adminlte/plugins/overlayScrollbars/css/OverlayScrollbars.min.css') }}">
+    <!-- Theme style -->
+    <link rel="stylesheet" href="{{ asset('adminlte/dist/css/adminlte.min.css') }}">
+
+
+    <link rel="apple-touch-icon" sizes="180x180" href="{{ asset('picture/logo-ydai.png') }}">
+    <link rel="icon" type="image/png" sizes="32x32" href="{{ asset('picture/logo-ydai.png') }}">
+    <link rel="icon" type="image/png" sizes="16x16" href="{{ asset('picture/logo-ydai.png') }}">
+    <link rel="manifest" href="/site.webmanifest">
 
     <style>
         .carousel .carousel-inner img {
@@ -12,7 +36,7 @@
         }
 
         .special {
-            font-size: 92px;
+            font-size: 20px;
             text-align: center;
             text-transform: uppercase;
             text-rendering: optimizeLegibility;
@@ -89,7 +113,7 @@
                     </li>
                     <li class="nav-item">
                         @if (Route::has('register'))
-                            <a href="{{ route('register') }}" class="ml-4 nav-link">Register</a>
+                            <a href="{{ route('register') }}" class="nav-link">Register</a>
                         @endif
                     @endauth
                 </li>
@@ -178,7 +202,7 @@
                         fugiat! Molestias, accusantium! Adipisci ipsum reiciendis voluptate quos vitae inventore
                         doloremque? Minus harum deleniti, rem maxime voluptas laudantium, quas veritatis ullam
                         molestias, placeat excepturi laborum sint dicta!</p>
-                    <div class="justify-content-center">
+                    <div class="d-flex justify-content-between">
                         <button class="btn btn-success btn-xs rnd"><a class="nav-link text-white" href="#">Profil
                                 Sekolah</a></button>
                         <button class="btn btn-success btn-xs rnd"><a class="nav-link text-white" href="#">Visi dan
@@ -201,7 +225,7 @@
                         fugiat! Molestias, accusantium! Adipisci ipsum reiciendis voluptate quos vitae inventore
                         doloremque? Minus harum deleniti, rem maxime voluptas laudantium, quas veritatis ullam
                         molestias, placeat excepturi laborum sint dicta!</p>
-                    <div class="justify-content-center">
+                    <div class="d-flex justify-content-between">
                         <button class="btn btn-danger btn-xs rnd"><a class="nav-link text-white" href="#">Profil
                                 Sekolah</a></button>
                         <button class="btn btn-danger btn-xs rnd"><a class="nav-link text-white" href="#">Visi dan
@@ -234,7 +258,7 @@
                         fugiat! Molestias, accusantium! Adipisci ipsum reiciendis voluptate quos vitae inventore
                         doloremque? Minus harum deleniti, rem maxime voluptas laudantium, quas veritatis ullam
                         molestias, placeat excepturi laborum sint dicta!</p>
-                    <div class="justify-content-center">
+                    <div class="d-flex justify-content-between">
                         <button class="btn btn-primary btn-xs rnd"><a class="nav-link text-white" href="#">Profil
                                 Sekolah</a></button>
                         <button class="btn btn-primary btn-xs rnd"><a class="nav-link text-white" href="#">Visi dan
@@ -257,7 +281,7 @@
                         fugiat! Molestias, accusantium! Adipisci ipsum reiciendis voluptate quos vitae inventore
                         doloremque? Minus harum deleniti, rem maxime voluptas laudantium, quas veritatis ullam
                         molestias, placeat excepturi laborum sint dicta!</p>
-                    <div class="justify-content-center">
+                    <div class="d-flex justify-content-between">
                         <button class="btn btn-secondary btn-xs rnd"><a class="nav-link text-white" href="#">Profil
                                 Sekolah</a></button>
                         <button class="btn btn-secondary btn-xs rnd"><a class="nav-link text-white" href="#">Visi dan
