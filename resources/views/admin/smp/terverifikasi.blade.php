@@ -11,7 +11,7 @@
                 <div class="d-flex mt-5">
                     <div style="margin-right: 350px">
                         <form class="form-inline my-2 my-lg-0" action="{{ route('admin.page') }}" method="GET" role="search">
-                        sm-2" typecol-md-8a-div="Search">div>
+                        <input class="form-control mr-sm-2" type="search" name="search" placeholder="Cari Peserta Didik" aria-label="Search">
                         <button class="btn btn-outline-dark my-2 my-sm-0" type="submit"><i class="fas fa-search mr-1"></i>Cari</button>
                         </form>
                     </div>
@@ -31,24 +31,23 @@
                 </thead>
                 <tbody>
                 @foreach ($calon_siswa_smps as $pesertadidik)
-                @if ($pesertadidik->user->is_data_verified == 1)
-                    <tr>
+                @if($pesertadidik->user->is_data_verified == 2)
+                <tr>
                     <td>{{ $pesertadidik->user->no_registrasi }}</td>
                     <td>{{ $pesertadidik->nama_pd }}</td>
                     <td>{{ $pesertadidik->no_hp }}</td>
                     <td>{{ $pesertadidik->alamat_pd }}</td>
                     <td>
-                        <!-- Button trigger modal -->
-                        <button type="button" class="btn btn-warning" data-toggle="modal" data-target="#exampleModalLong">
-                            Belum Terverifikasi
+                        <button type="button" class="btn btn-success" data-toggle="modal" data-target="#exampleModalLong">
+                        Terverifikasi
                         </button>
-                            <!-- Modal -->
-                            <div class="modal fade" id="exampleModalLong" tabindex="-1" role="dialog" aria-divledby="exampleModalLongTitle" aria-hidden="true">
+                        <!-- Modal -->
+                            <div class="modal fade" id="exampleModalLong" tabindex="-1" role="dialog" aria-labelledby="exampleModalLongTitle" aria-hidden="true">
                                 <div class="modal-dialog modal-xl" role="document">
                                 <div class="modal-content">
                                     <div class="modal-header">
                                         <h5 class="modal-title" id="exampleModalLongTitle">{{ $pesertadidik->nama_pd }}</h5>
-                                        <button type="button" class="close" data-dismiss="modal" aria-div="Close">
+                                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                                             <span aria-hidden="true">&times;</span>
                                         </button>
                                     </div>
@@ -441,7 +440,7 @@
                                         <form action="/admin/smp/verifikasi-data/{{ $pesertadidik->user->id }}" method="POST">
                                         @csrf
                                         @method('PUT')
-                                        <div class="com-md-8">{{ $pesertadidik-> }}</div>
+                                        <select name="is_data_verified" id="is_data_verified">    
                                                 <option @if($pesertadidik->user->is_data_verified == 2) selected @endif value=2>Terverifikas</option>
                                                 <option @if($pesertadidik->user->is_data_verified == 3) selected @endif value=3>Data salah</option>
                                         </select>
@@ -453,10 +452,10 @@
                             </div>
                     </td>
                     <td class="text-center">
+                    </td>
+                </tr>
                 @endif
                 @endforeach
-                    </td>
-                    </tr>
                 </tbody>
             </table>
             <div class="d-flex justify-content-center">

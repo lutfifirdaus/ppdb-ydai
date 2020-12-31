@@ -10,25 +10,6 @@ input[type=number] {
     -moz-appearance: textfield;
 }
 
-input[type=file] {
-    border: 0px solid black !important;
-}
-
-input, select {
-    border: 0px solid black !important;
-    border-radius: 0% !important;
-    border-bottom: 1px solid black !important;
-    transition: all 2s ease-in-out;
-}
-
-.form-control:hover {   
-    border-bottom: 2px solid blue !important;
-}
-
-.form-control:focus {   
-    border-bottom: 2px solid blue !important;
-}
-
 .card-title {
     float: none;
 }
@@ -47,4 +28,8 @@ p {
 
 .gap{
     grid-gap: 1em !important;
+}
+
+label {
+    font-weight: normal !important;
 }

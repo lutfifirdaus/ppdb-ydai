@@ -23,13 +23,5 @@
     <link rel="apple-touch-icon" sizes="180x180" href="{{ asset('picture/logo-ydai.png') }}">
     <link rel="icon" type="image/png" sizes="32x32" href="{{ asset('picture/logo-ydai.png') }}">
     <link rel="icon" type="image/png" sizes="16x16" href="{{ asset('picture/logo-ydai.png') }}">
-    <link rel="manifest" href="/site.webmanifest">
 
-    <script>
-        $(document).ready(function() {
-            $(document).on('submit', 'form', function() {
-                $('button').attr('disabled', 'disabled');
-            });
-        });
-    </script>
 </head>

@@ -15511,3 +15511,39 @@ a.text-dark:focus {
   }
 }
 
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+/* Firefox */
+
+input[type=number] {
+  -moz-appearance: textfield;
+}
+
+.card-title {
+  float: none;
+}
+
+p {
+  font-size: 14px;
+}
+
+.nol9 {
+  opacity: 0.9;
+}
+
+.rnd {
+  border-radius: 25px;
+}
+
+.gap {
+  grid-gap: 1em !important;
+}
+
+label {
+  font-weight: normal !important;
+}
+

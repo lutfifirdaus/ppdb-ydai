@@ -2,7 +2,9 @@
 
 namespace App\Http\Controllers;
 
+use App\Enums\{Agama,KebutuhanKhusus,ModaTransportasi,Pekerjaan,Pendidikan,Penghasilan,TempatTiggal,Tingkat};
 use App\Models\CalonSiswaTk;
+use App\Models\PrestasiDanBeasiswa;
 use App\Models\User;
 use Intervention\Image\Facades\Image;
 use Illuminate\Http\Request;
@@ -24,19 +26,31 @@ class CalonSiswaTkController extends Controller
 
         return view('user.calon-tk.formulir', [
             'user' => Auth::user(),
+            'prestasi' => PrestasiDanBeasiswa::get(),
             'calon_siswa_tks' => $calon_siswa_tks,
+            'agama' => Agama::getValues(),
+            'kebutuhan_khusus' => KebutuhanKhusus::getValues(),
+            'moda_transportasi' => ModaTransportasi::getValues(),
+            'pekerjaan' => Pekerjaan::getValues(),
+            'pendidikan' => Pendidikan::getValues(),
+            'penghasilan' => Penghasilan::getValues(),
+            'tempat_tinggal' => TempatTiggal::getValues(),
+            'tingkat' => Tingkat::getValues(),
         ]);
     }
 
     public function store(Request $request)
     {
         // dd($request);
+        $userId = Auth::id();
+        $user = User::findOrFail($userId);
 
         $attr = $request->validate([
             'nama_pd' => 'required',
             'nama' => 'required',
             'jenis_kelamin' => 'required',
-            'ttl' => 'required',
+            'tempat_lahir' => 'required',
+            'tanggal_lahir' => 'required',
             'agama' => 'required',
             'kewarganegaraan' => 'required',
             'anak_ke' => 'required',
@@ -48,21 +62,41 @@ class CalonSiswaTkController extends Controller
             'tinggi' => 'required',
             'golongan_darah' => 'required',
             'alamat_pd' => 'required',
-            'telp_pd' => 'required|max:15',
+            'kecamatan_pd' => 'required',
+            'kabupaten_pd' => 'required',
+            'provinsi_pd' => 'required',
+            'telp_pd' => 'required|min:12,max:15',
             'tempat_tinggal' => 'required',
             'hobi' => 'required',
             'nama_ayah' => 'required',
-            'ttl_ayah' => 'required',
+            'tempat_lahir_ayah' => 'required',
+            'tanggal_lahir_ayah' => 'required',
             'agama_ayah' => 'required',
             'kewarganegaraan_ayah' => 'required',
             'pendidikan_ayah' => 'required',
             'pekerjaan_ayah' => 'required',
+            'nip_gol_pangkat_ayah' => 'required_if:pekerjaan_ayah,ABRI,Pegawai Negeri',
+            'nama_kantor_instansi_ayah' => 'required_if:pekerjaan_ayah,ABRI,Pegawai Negeri',
+            'alamat_kantor_no_telp_ayah' => 'required_with:pekerjaan_ayah',
             'nama_ibu' => 'required',
-            'ttl_ibu' => 'required',
+            'tempat_lahir_ibu' => 'required',
+            'tanggal_lahir_ibu' => 'required',
             'agama_ibu' => 'required',
             'kewarganegaraan_ibu' => 'required',
             'pendidikan_ibu' => 'required',
             'pekerjaan_ibu' => 'required',
+            'nip_gol_pangkat_ibu' => 'required_if:pekerjaan_ibu,ABRI,Pegawai Negeri',
+            'nama_kantor_instansi_ibu' => 'required_if:pekerjaan_ibu,ABRI,Pegawai Negeri',
+            'alamat_kantor_no_telp_ibu' => 'required_with:pekerjaan_ibu',
+            'tempat_lahir_wali' => 'required_with:nama_wali',
+            'tanggal_lahir_wali' => 'required_with:nama_wali',
+            'agama_wali' => 'required_with:nama_wali',
+            'kewarganegaraan_wali' => 'required_with:nama_wali',
+            'pendidikan_wali' => 'required_with:nama_wali',
+            'pekerjaan_wali' => 'required_with:nama_wali',
+            'nip_gol_pangkat_wali' => 'required_if:pekerjaan_wali,ABRI,Pegawai Negeri',
+            'nama_kantor_instansi_wali' => 'required_if:pekerjaan_wali,ABRI,Pegawai Negeri',
+            'alamat_kantor_no_telp_wali' => 'required_with:pekerjaan_wali',
             'gaji_perbulan' => 'required',
             'jemputan' => 'required',
             'email' => 'required|email',
@@ -71,17 +105,13 @@ class CalonSiswaTkController extends Controller
             'scan_ktp_ortu' => 'required|mimes:jpg,png,jpeg',
         ]);
         
+
         $attr['penyakit'] = $request->penyakit;
         $attr['nama_wali'] = $request->nama_wali;
-        $attr['ttl_wali'] = $request->alamat_wali;
-        $attr['agama_wali'] = $request->alamat_wali;
-        $attr['kewarganegaraan_wali'] = $request->alamat_wali;
-        $attr['pendidikan_wali'] = $request->alamat_wali;
-        $attr['pekerjaan_wali'] = $request->pekerjaan_wali;
-                
+        
         if ($request->hasFile('scan_akta')) {
             $akta = $request->file('scan_akta');
-            $namaakta = $request->scan_akta . "-scan-akta" . "." . $akta->extension();
+            $namaakta = $user->no_registrasi . "-scan-akta" . "." . $akta->extension();
             $location = public_path('dokumen/tk/' . $namaakta);
             Image::make($akta)->resize(900, 1200)->save($location);
             $attr['scan_akta'] = $namaakta;
@@ -89,7 +119,7 @@ class CalonSiswaTkController extends Controller
 
         if ($request->hasFile('scan_kk')) {
             $kk = $request->file('scan_kk');
-            $namakk = $request->scan_kk . "-scan-kk" . "." . $kk->extension();
+            $namakk = $user->no_registrasi . "-scan-kk" . "." . $kk->extension();
             $location = public_path('dokumen/tk/' . $namakk);
             Image::make($kk)->resize(900, 1200)->save($location);
             $attr['scan_kk'] = $namakk;
@@ -97,24 +127,19 @@ class CalonSiswaTkController extends Controller
         
         if ($request->hasFile('scan_ktp_ortu')) {
             $ktp = $request->file('scan_ktp_ortu');
-            $namaktp = $request->scan_ktp_ortu . "-scan-ktp-ortu" . "." . $ktp->extension();
+            $namaktp = $user->no_registrasi . "-scan-ktp-ortu" . "." . $ktp->extension();
             $location = public_path('dokumen/tk/' . $namaktp);
             Image::make($ktp)->resize(600, 400)->save($location);
             $attr['scan_ktp_ortu'] = $namaktp;
         }
 
-        // dd($request);
-
         $form = new CalonSiswaTk($attr);
-
-        $userId = Auth::id();
-        $user = User::findOrFail($userId);
         
         $user->is_data_verified = $request->is_data_verified;
-        // dd($request);
-
-        $user->save();
-        $user->csTk()->save($form);
+        
+        if($user->csTk()->save($form) != null){
+            $user->save();
+        };
 
         session()->flash('masuk', 'Selamat! Data Anda telah ditambahkan ke dalam sistem dan akan diverifikasi');
         return redirect()->route('calon.tk');
@@ -123,11 +148,16 @@ class CalonSiswaTkController extends Controller
     public function update(Request $request, CalonSiswaTk $calon_siswa_tk)
     {
         
+
+        $userId = Auth::id();
+        $user = User::findOrFail($userId);
+        
         $attr = $request->validate([
             'nama_pd' => 'required',
             'nama' => 'required',
             'jenis_kelamin' => 'required',
-            'ttl' => 'required',
+            'tempat_lahir' => 'required',
+            'tanggal_lahir' => 'required',
             'agama' => 'required',
             'kewarganegaraan' => 'required',
             'anak_ke' => 'required',
@@ -139,37 +169,55 @@ class CalonSiswaTkController extends Controller
             'tinggi' => 'required',
             'golongan_darah' => 'required',
             'alamat_pd' => 'required',
-            'telp_pd' => 'required|max:15',
+            'kecamatan_pd' => 'required',
+            'kabupaten_pd' => 'required',
+            'provinsi_pd' => 'required',
+            'telp_pd' => 'required|min:12,max:15',
             'tempat_tinggal' => 'required',
             'hobi' => 'required',
             'nama_ayah' => 'required',
-            'ttl_ayah' => 'required',
+            'tempat_lahir_ayah' => 'required',
+            'tanggal_lahir_ayah' => 'required',
             'agama_ayah' => 'required',
             'kewarganegaraan_ayah' => 'required',
             'pendidikan_ayah' => 'required',
             'pekerjaan_ayah' => 'required',
+            'nip_gol_pangkat_ayah' => 'required_if:pekerjaan_ayah,ABRI,Pegawai Negeri',
+            'nama_kantor_instansi_ayah' => 'required_if:pekerjaan_ayah,ABRI,Pegawai Negeri',
+            'alamat_kantor_no_telp_ayah' => 'required_with:pekerjaan_ayah',
             'nama_ibu' => 'required',
-            'ttl_ibu' => 'required',
+            'tempat_lahir_ibu' => 'required',
+            'tanggal_lahir_ibu' => 'required',
             'agama_ibu' => 'required',
             'kewarganegaraan_ibu' => 'required',
             'pendidikan_ibu' => 'required',
             'pekerjaan_ibu' => 'required',
+            'nip_gol_pangkat_ibu' => 'required_if:pekerjaan_ibu,ABRI,Pegawai Negeri',
+            'nama_kantor_instansi_ibu' => 'required_if:pekerjaan_ibu,ABRI,Pegawai Negeri',
+            'alamat_kantor_no_telp_ibu' => 'required_with:pekerjaan_ibu',
+            'tempat_lahir_wali' => 'required_with:nama_wali',
+            'tanggal_lahir_wali' => 'required_with:nama_wali',
+            'agama_wali' => 'required_with:nama_wali',
+            'kewarganegaraan_wali' => 'required_with:nama_wali',
+            'pendidikan_wali' => 'required_with:nama_wali',
+            'pekerjaan_wali' => 'required_with:nama_wali',
+            'nip_gol_pangkat_wali' => 'required_if:pekerjaan_wali,ABRI,Pegawai Negeri',
+            'nama_kantor_instansi_wali' => 'required_if:pekerjaan_wali,ABRI,Pegawai Negeri',
+            'alamat_kantor_no_telp_wali' => 'required_with:pekerjaan_wali',
             'gaji_perbulan' => 'required',
             'jemputan' => 'required',
             'email' => 'required|email',
+            'scan_akta' => 'required|mimes:jpg,png,jpeg',
+            'scan_kk' => 'required|mimes:jpg,png,jpeg',
+            'scan_ktp_ortu' => 'required|mimes:jpg,png,jpeg',
         ]);
-        
+
         $attr['penyakit'] = $request->penyakit;
         $attr['nama_wali'] = $request->nama_wali;
-        $attr['ttl_wali'] = $request->alamat_wali;
-        $attr['agama_wali'] = $request->alamat_wali;
-        $attr['kewarganegaraan_wali'] = $request->alamat_wali;
-        $attr['pendidkan_wali'] = $request->alamat_wali;
-        $attr['pekerjaan_wali'] = $request->pekerjaan_wali;
-                
+        
         if ($request->hasFile('scan_akta')) {
             $akta = $request->file('scan_akta');
-            $namaakta = $request->scan_akta . "-scan-akta" . "." . $akta->extension();
+            $namaakta = $user->no_registrasi . "-scan-akta" . "." . $akta->extension();
             $location = public_path('dokumen/tk/' . $namaakta);
             Image::make($akta)->resize(900, 1200)->save($location);
             $attr['scan_akta'] = $namaakta;
@@ -177,7 +225,7 @@ class CalonSiswaTkController extends Controller
 
         if ($request->hasFile('scan_kk')) {
             $kk = $request->file('scan_kk');
-            $namakk = $request->scan_kk . "-scan-kk" . "." . $kk->extension();
+            $namakk = $user->no_registrasi . "-scan-kk" . "." . $kk->extension();
             $location = public_path('dokumen/tk/' . $namakk);
             Image::make($kk)->resize(900, 1200)->save($location);
             $attr['scan_kk'] = $namakk;
@@ -185,17 +233,13 @@ class CalonSiswaTkController extends Controller
         
         if ($request->hasFile('scan_ktp_ortu')) {
             $ktp = $request->file('scan_ktp_ortu');
-            $namaktp = $request->scan_ktp_ortu . "-scan-ktp-ortu" . "." . $ktp->extension();
+            $namaktp = $user->no_registrasi . "-scan-ktp-ortu" . "." . $ktp->extension();
             $location = public_path('dokumen/tk/' . $namaktp);
             Image::make($ktp)->resize(600, 400)->save($location);
             $attr['scan_ktp_ortu'] = $namaktp;
         }
 
-        $userId = Auth::id();
-        $user = User::findOrFail($userId);
-        
         $user->is_data_verified = $request->is_data_verified;
-        // dd($request);
 
         $user->save();
         $user->csTk()->update($attr);

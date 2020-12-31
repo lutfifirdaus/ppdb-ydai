@@ -63,8 +63,20 @@
                         </li>
                         <li class="nav-item">
                             <a href="{{ route('verifikasi.tk') }}" class="nav-link{{ request()->fullUrl() == route('verifikasi.tk') ? ' active' : '' }}">
+                                <i class="fas fa-table"></i>
+                                <p>Verifikasi</p>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="{{ route('verifikasi.tk.valid') }}" class="nav-link{{ request()->fullUrl() == route('verifikasi.tk.valid') ? ' active' : '' }}">
                                 <i class="fas fa-check"></i>
-                                <p>Terverifikasi</p>
+                                <p>Terverifikasi Benar</p>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="{{ route('verifikasi.tk.takvalid') }}" class="nav-link{{ request()->fullUrl() == route('verifikasi.tk.takvalid') ? ' active' : '' }}">
+                                <i class="fas fa-times"></i>
+                                <p>Terverifikasi Salah</p>
                             </a>
                         </li>
                         <li class="nav-item">

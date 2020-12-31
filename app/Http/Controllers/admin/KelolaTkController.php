@@ -3,10 +3,15 @@
 namespace App\Http\Controllers\admin;
 
 use App\Http\Controllers\Controller;
+use App\Mail\VerifikasiDataNotification;
+use App\Models\Billing;
 use App\Models\CalonSiswaTk;
 use App\Models\User;
+use App\Notifications\VerifikasiDataTakValidNotification;
+use App\Notifications\VerifikasiDataValidNotification;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Notification;
 
 class KelolaTkController extends Controller
 {
@@ -38,15 +43,12 @@ class KelolaTkController extends Controller
                 'no_registrasi' => $user->no_registrasi,
                 'no_billing' => $no_billing,
                 ]);
+            Notification::send($user, new VerifikasiDataValidNotification());
+        } elseif($request->is_data_verified == 3){
+            Notification::send($user, new VerifikasiDataTakValidNotification());
         }
 
-        // dd($user->no_registrasi);
-        // $userId = Auth::id();
-
-        
-
         $user->save();
-
         return redirect()->back();
     }
 
@@ -56,6 +58,26 @@ class KelolaTkController extends Controller
 
         return view('admin.tk.verifikasi', [
             'calon_siswa_tks' => $calon_siswa_tks,
+            'user' => User::get(),
+            'billing' => Billing::get(),
+        ]);
+    }
+
+    public function tabelVerifikasiValid()
+    {
+        $calon_siswa_tks = CalonSiswaTk::paginate(10);
+
+        return view('admin.tk.terverifikasi', [
+            'calon_siswa_tks' => $calon_siswa_tks,
+        ]);
+    }
+
+    public function tabelVerifikasiTakValid()
+    {
+        $calon_siswa_tks = CalonSiswaTk::paginate(10);
+
+        return view('admin.tk.terverifikasisalah', [
+            'calon_siswa_tks' => $calon_siswa_tks,
         ]);
     }
 
@@ -64,6 +86,9 @@ class KelolaTkController extends Controller
         $calon_siswa_tks = CalonSiswaTk::paginate(10);
 
         return view('admin.tk.tagihan', [
+            'get_tk' => CalonSiswaTk::get(),
+            'user' => User::get(),
+            'billing' => Billing::get(),
             'calon_siswa_tks' => $calon_siswa_tks,
         ]);
     }

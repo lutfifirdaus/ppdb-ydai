@@ -30,17 +30,16 @@
                 </tr>
                 </thead>
                 <tbody>
-                @foreach ($calon_siswa_tks as $pesertadidik)
-                @if ($pesertadidik->user->is_data_verified == 1)
-                    <tr>
+                @foreach ($calon_siswa_smps as $pesertadidik)
+                @if($pesertadidik->user->is_data_verified == 3)
+                <tr>
                     <td>{{ $pesertadidik->user->no_registrasi }}</td>
                     <td>{{ $pesertadidik->nama_pd }}</td>
                     <td>{{ $pesertadidik->jenis_kelamin }}</td>
                     <td>{{ $pesertadidik->alamat_pd }}</td>
                     <td>
-                        <!-- Button trigger modal -->
-                        <button type="button" class="btn btn-warning" data-toggle="modal" data-target="#exampleModalLong">
-                            Belum Terverifikasi
+                        <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#exampleModalLong">
+                        Kesalahan data
                         </button>
                             <!-- Modal -->
                             <div class="modal fade" id="exampleModalLong" tabindex="-1" role="dialog" aria-labelledby="exampleModalLongTitle" aria-hidden="true">
@@ -303,22 +302,21 @@
                                         <div class="mb-3 ml-3 text-center"><b><h4>DOKUMEN</h4></b>
                                             
                                             <div class="text-left">Scan Akta Kelahiran</div>
-                                            <img class="d-flex mx-auto mb-3" src="{{ asset('dokumen/tk/' . $pesertadidik->scan_akta) }}" alt="{{ $pesertadidik->scan_akta }}">
+                                            <img class="d-flex mx-auto mb-3" src="{{ asset('dokumen/smp/' . $pesertadidik->scan_akta) }}" alt="{{ $pesertadidik->scan_akta }}">
                                         
                                             <div class="text-left">Scan Kartu Keluarga</div>
-                                            <img class="d-flex mx-auto mb-3" src="{{ asset('dokumen/tk/' . $pesertadidik->scan_kk) }}" alt="{{ $pesertadidik->scan_kk }}">
+                                            <img class="d-flex mx-auto mb-3" src="{{ asset('dokumen/smp/' . $pesertadidik->scan_kk) }}" alt="{{ $pesertadidik->scan_kk }}">
                                         
                                             <div class="text-left">Scan KTP Orangtua</div>
-                                            <img class="d-flex mx-auto mb-3" src="{{ asset('dokumen/tk/' . $pesertadidik->scan_ktp_ortu) }}" alt="{{ $pesertadidik->scan_ktp_ortu }}">
+                                            <img class="d-flex mx-auto mb-3" src="{{ asset('dokumen/smp/' . $pesertadidik->scan_ktp_ortu) }}" alt="{{ $pesertadidik->scan_ktp_ortu }}">
                                             
                                         </div>
                                     </div>
                                     <div class="modal-footer">
-                                        <form action="/admin/tk/verifikasi-data/{{ $pesertadidik->user->id }}" method="POST">
+                                        <form action="/admin/smp/verifikasi-data/{{ $pesertadidik->user->id }}" method="POST">
                                         @csrf
                                         @method('PUT')
                                         <select name="is_data_verified" id="is_data_verified">    
-                                                <option @if($pesertadidik->user->is_data_verified == 1) selected @endif disabled value=1>Belum terverifikas</option>
                                                 <option @if($pesertadidik->user->is_data_verified == 2) selected @endif value=2>Terverifikas</option>
                                                 <option @if($pesertadidik->user->is_data_verified == 3) selected @endif value=3>Data salah</option>
                                         </select>
@@ -330,14 +328,14 @@
                             </div>
                     </td>
                     <td class="text-center">
+                    </td>
+                </tr>
                 @endif
                 @endforeach
-                    </td>
-                    </tr>
                 </tbody>
             </table>
             <div class="d-flex justify-content-center">
-            {{ $calon_siswa_tks->links() }}
+            {{ $calon_siswa_smps->links() }}
             </div>
         </div>
     </div>

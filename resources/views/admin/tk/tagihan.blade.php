@@ -78,18 +78,17 @@
                     </tr>
                 </thead>
                 <tbody>
-                    @foreach ($calon_siswa_tks as $pesertadidik)
+                    @foreach ($get_tk as $pesertadidik)
                         <tr>
                             <td>{{ $pesertadidik->user->no_registrasi }}</td>
                             <td>{{ $pesertadidik->nama_pd }}</td>
                             <td>{{ $pesertadidik->user->billing->no_billing }}</td>
-                            <td>{{ $pesertadidik->user->billing->status_bayar }} @if($pesertadidik->user->billing->jenis_pembayaran != null) . {{ $pesertadidik->user->billing->jenis_pembayaran }}@endif</td>
+                            <td>{{ $pesertadidik->user->billing->status_bayar }} @if($pesertadidik->jenis_pembayaran != null) . {{ $pesertadidik->jenis_pembayaran }}@endif</td>
                             <td>{{ $pesertadidik->user->billing->tanggal_bayar }}</td>
                             <td>
                             </td>
                         </tr>
                     @endforeach
-
                 </tbody>
             </table>
             <div class="d-flex justify-content-center">

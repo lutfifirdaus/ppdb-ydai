@@ -49,12 +49,23 @@
                                             </span>
                                             @enderror                                        
                                         </div>
+
+                                        <div class="form-group row ml-3">
+                                            <label for="nisn" class="col-12 form-label @error('nisn') is-invalid @enderror">NISN</label>
+                                            <input placeholder="Sesuai Kartu Keluarga" type="number" name="nisn" id="nisn" class="form-control col-12" value="{{ old('nisn') }}">
+                                            
+                                            @error('nisn')
+                                            <span class="invalid-feedback" role="alert">
+                                                <strong>{{ $message }}</strong>
+                                            </span>
+                                            @enderror
+                                        </div>
                                         
                                         <div class="form-group row ml-3">
-                                            <label for="nik" class="col-12 form-label @error('nik') is-invalid @enderror">NIK / Nomor Induk Kependudukan</label>
+                                            <label for="nik" class="col-12 form-label @error('nik') is-invalid @enderror">NIK (Sesuai KK)</label>
                                             <input placeholder="Sesuai Kartu Keluarga" type="number" name="nik" id="nik" class="form-control col-12" value="{{ old('nik') }}">
                                             
-                                            @error('nama_pd')
+                                            @error('nik')
                                             <span class="invalid-feedback" role="alert">
                                                 <strong>{{ $message }}</strong>
                                             </span>
@@ -62,16 +73,18 @@
                                         </div>
         
                                         <div class="form-group row ml-3">
-                                            <label for="ttl" class="col-12 form-label">Tempat, Tanggal Lahir</label>
-                                            <input type="text" name="t" id="t" class="form-control col-8 @error('t') is-invalid @enderror" value="{{ old('t') }}" >
-                                            <input type="date" name="tl" id="tl" class="form-control col-4 @error('tl') is-invalid @enderror" value="{{ old('tl') }}">
-
-                                            @error('t')
+                                            <label for="tempat_lahir" class="col-12 form-label">Tempat, Tanggal Lahir</label>
+                                            <input type="text" name="tempat_lahir" id="tanggal_lahir" class="form-control col-8 @error('tempat_lahir') is-invalid @enderror" value="{{ old('tempat_lahir') }}" >
+                                            
+                                            @error('tempat_lahir')
                                             <span class="invalid-feedback" role="alert">
                                                 <strong>{{ $message }}</strong>
                                             </span>
                                             @enderror
-                                            @error('tl')
+
+                                            <input type="date" name="tanggal_lahir" id="tanggal_lahir" class="form-control col-4 @error('tanggal_lahir') is-invalid @enderror" value="{{ old('tanggal_lahir') }}">
+
+                                            @error('tanggal_lahir')
                                             <span class="invalid-feedback" role="alert">
                                                 <strong>{{ $message }}</strong>
                                             </span>
@@ -82,7 +95,9 @@
                                             <label for="no_akta" class="col-12 form-label">Nomor Registras Akta Lahir</label>
                                             <input placeholder="Sesuai Akta Kelahiran" type="number" name="no_akta" id="no_akta" class="form-control col-12" value="{{ old('no_akta') }}">
                                             @error('no_akta')
-                                                <div class="text-danger mt-2 col-sm-3">{{ $message }}</div>
+                                                <span class="invalid-feedback" role="alert">
+                                                    <strong>{{ $message }}</strong>
+                                                </span>
                                             @enderror
                                         </div>
 
@@ -90,7 +105,9 @@
                                             <label for="anak_ke" class="col-12 form-label">Anak Ke</label>
                                             <input type="number" name="anak_ke" id="anak_ke" class="form-control col-12" value="{{ old('anak_ke') }}">
                                             @error('anak_ke')
-                                                <div class="text-danger mt-2 col-sm-3">{{ $message }}</div>
+                                                <span class="invalid-feedback" role="alert">
+                                                    <strong>{{ $message }}</strong>
+                                                </span>
                                             @enderror
                                         </div>
                                         
@@ -98,15 +115,14 @@
                                             <label for="agama" class="col-12 form-label">Agama</label>
                                             <select name="agama" id="agama" class="form-control col-12">
                                                     <option selected disabled>Pilih salah satu</option>
-                                                    <option @if (old('agama') == 'Islam')  selected @endif value="Islam">Islam</option>
-                                                    <option @if (old('agama') == 'Kristen')  selected @endif value="Kristen">Kristen</option>
-                                                    <option @if (old('agama') == 'Katholik')  selected @endif value="Katholik">Katholik</option>
-                                                    <option @if (old('agama') == 'Hindu')  selected @endif value="Hindu">Hindu</option>
-                                                    <option @if (old('agama') == 'Buddha')  selected @endif value="Buddha">Buddha</option>
-                                                    <option @if (old('agama') == 'Konghucu')  selected @endif value="Konghucu">Konghucu</option>
+                                                    @for(i = 0; i < 7 ; i++)
+                                                    <option value="{{ $agama[$i] }}" @if(old('agama') == $agama[$i]) selected @endif>{{ $agama[$i] }}</option>
+                                                    @endfor
                                             </select>
                                             @error('agama')
-                                                <div class="text-danger mt-2 col-sm-3">{{ $message }}</div>
+                                                <span class="invalid-feedback" role="alert">
+                                                    <strong>{{ $message }}</strong>
+                                                </span>
                                             @enderror
                                         </div>
 
@@ -114,50 +130,86 @@
                                             <label for="kewarganegaraan" class="col-12 form-label">Kewarganegaraan</label>
                                             <input placeholder="Sesuai Kartu Keluarga" type="number" name="kewarganegaraan" id="kewarganegaraan" class="form-control col-12" value="{{ old('kewarganegaraan') }}">
                                             @error('kewarganegaraan')
-                                                <div class="text-danger mt-2 col-sm-3">{{ $message }}</div>
+                                                <span class="invalid-feedback" role="alert">
+                                                    <strong>{{ $message }}</strong>
+                                                </span>
                                             @enderror
                                         </div>
 
                                         <div class="form-group row ml-3">
                                             <label for="kebutuhan_khusus" class="col-12 form-label">Berkebutuhan Khusus</label>
                                             <select name="kebutuhan_khusus" id="kebutuhan_khusus" class="form-control col-12">
-                                                <option selected disabled>Pilih jika ada</option>
-                                                <option @if(old('kebutuhan_khusus') == 'Netra') selected @endif value="Netra">Netra</option>
-                                                <option @if(old('kebutuhan_khusus') == 'Rungu') selected @endif value="Rungu">Rungu</option>
-                                                <option @if(old('kebutuhan_khusus') == 'Grahita Sedang') selected @endif value="Grahita Sedang">Grahita Sedang</option>
-                                                <option @if(old('kebutuhan_khusus') == 'Grahita Ringan') selected @endif value="Grahita Ringan">Grahita Ringan</option>
-                                                <option @if(old('kebutuhan_khusus') == 'Daksa Sedang') selected @endif value="Daksa Sedang">Daksa Sedang</option>
-                                                <option @if(old('kebutuhan_khusus') == 'Daksa Ringan') selected @endif value="Daksa Ringan">Daksa Ringan</option>
-                                                <option @if(old('kebutuhan_khusus') == 'Laras') selected @endif value="Laras">Laras</option>
-                                                <option @if(old('kebutuhan_khusus') == 'Wicara') selected @endif value="Wicara">Wicara</option>
-                                                <option @if(old('kebutuhan_khusus') == 'Hyperaktif') selected @endif value="Hyperaktif">Hyperaktif</option>
-                                                <option @if(old('kebutuhan_khusus') == 'Cerdas Istimewa') selected @endif value="Cerdas Istimewa">Cerdas Istimewa</option>
-                                                <option @if(old('kebutuhan_khusus') == 'Kesulitan Belajar') selected @endif value="Kesulitan Belajar">Kesulitan Belajar</option>
-                                                <option @if(old('kebutuhan_khusus') == 'Narkoba') selected @endif value="Narkoba">Narkoba</option>
-                                                <option @if(old('kebutuhan_khusus') == 'Indigo') selected @endif value="Indigo">Indigo</option>
-                                                <option @if(old('kebutuhan_khusus') == 'Down Syndrome') selected @endif value="Down Syndrome">Down Syndrome</option>
-                                                <option @if(old('kebutuhan_khusus') == 'Autis') selected @endif value="Autis">Autis</option>
+                                                <option selected disabled>Pilih salah satu</option>
+                                                @for(i = 0; i < 14; i++)
+                                                    <option value="{{ $kebutuhan_khusus[$i] }}" @if(old('kebutuhan_khusus') == $kebutuhan_khusus[$i]) selected @endif>{{ $kebutuhan_khusus[$i] }}</option>
+                                                @endfor
                                             </select>
                                             @error('kebutuhan_khusus')
-                                                <div class="text-danger mt-2 col-sm-3">{{ $message }}</div>
+                                                <span class="invalid-feedback" role="alert">
+                                                    <strong>{{ $message }}</strong>
+                                                </span>
                                             @enderror
                                         </div>
 
                                         <div class="form-group row ml-3">
                                             <label for="alamat_pd" class="col-12 form-label">Alamat Tempat Tinggal</label>
-                                            <input type="text" name="jalan_alamat" id="jalan_alamat" class="form-control col-8" value="{{ old('jalan_alamat') }}" placeholder="Jalan">
-                                            <input type="text" name="rukun_alamat" id="rukun_alamat" class="form-control col-4" value="{{ old('rukun_alamat') }}" placeholder="RT/RW">
+                                            <input type="text" name="alamat_pd" id="alamat_pd" class="form-control col-md-8" value="{{ old('alamat_pd') }}" placeholder="Alamat">
+                                            @error('alamat_pd')
+                                                <span class="invalid-feedback" role="alert">
+                                                    <strong>{{ $message }}</strong>
+                                                </span>
+                                            @enderror
+                                            
+                                            <input type="text" name="rt" id="rt" class="form-control col-md-2" value="{{ old('rt') }}" placeholder="RT">
+                                            @error('rt')
+                                                <span class="invalid-feedback" role="alert">
+                                                    <strong>{{ $message }}</strong>
+                                                </span>
+                                            @enderror
+                                            <input type="text" name="rw" id="rw" class="form-control col-md-2" value="{{ old('rw') }}" placeholder="RW">
+                                            @error('rw')
+                                                <span class="invalid-feedback" role="alert">
+                                                    <strong>{{ $message }}</strong>
+                                                </span>
+                                            @enderror
 
-                                            <input type="text" name="desa" id="desa" class="form-control col-8" value="{{ old('desa') }}" placeholder="Kelurahan/Desa">
-                                            <input type="text" name="kodepos_alamat" id="kodepos_alamat" class="form-control col-4" value="{{ old('kodepos_alamat') }}" placeholder="kode Pos">
+                                            <input type="text" name="kelurahan" id="kelurahan" class="form-control col-md-6" value="{{ old('kelurahan') }}" placeholder="Kelurahan/Desa">
+                                            @error('kelurahan')
+                                            <span class="invalid-feedback" role="alert">
+                                                    <strong>{{ $message }}</strong>
+                                                </span>
+                                            @enderror
+                                            <input type="text" name="kecamatan" id="kecamatan" class="form-control col-md-6" value="{{ old('kecamatan') }}" placeholder="Kecamatan">
+                                            @error('kecamatan')
+                                            <span class="invalid-feedback" role="alert">
+                                                    <strong>{{ $message }}</strong>
+                                                </span>
+                                            @enderror
 
-                                            <input type="text" name="kecamatan" id="kecamatan" class="form-control col-6" value="{{ old('kecamatan') }}" placeholder="Kecamatan">
-                                            <input type="text" name="kota" id="kota" class="form-control col-6" value="{{ old('kota') }}" placeholder="Kota/Kabupaten">
+                                            <input type="text" name="kabupaten" id="kabupaten" class="form-control col-6" value="{{ old('kabupaten') }}" placeholder="Kabupaten/Kota">
+                                            @error('kabupaten')
+                                            <span class="invalid-feedback" role="alert">
+                                                    <strong>{{ $message }}</strong>
+                                                </span>
+                                            @enderror
+                                            <input type="number" name="kode_pos" id="kode_pos" class="form-control col-6" value="{{ old('kode_pos') }}" placeholder="kode pos">
+                                            @error('kode_pos')
+                                            <span class="invalid-feedback" role="alert">
+                                                    <strong>{{ $message }}</strong>
+                                                </span>
+                                            @enderror
 
                                             <input type="text" name="lintang" id="lintang" class="form-control col-6" value="{{ old('lintang') }}" placeholder="Lintang">
+                                            @error('lintang')
+                                            <span class="invalid-feedback" role="alert">
+                                                    <strong>{{ $message }}</strong>
+                                                </span>
+                                            @enderror
                                             <input type="text" name="bujur" id="bujur" class="form-control col-6" value="{{ old('bujur') }}" placeholder="Bujur">
-                                            @error('alamat_pd')
-                                                <div class="text-danger mt-2 col-3">{{ $message }}</div>
+                                            @error('bujur')
+                                            <span class="invalid-feedback" role="alert">
+                                                    <strong>{{ $message }}</strong>
+                                                </span>
                                             @enderror
                                         </div>
 
@@ -165,42 +217,114 @@
                                             <label for="telp_rumah" class="col-12 form-label">Nomor Telepon Rumah</label>
                                             <input placeholder="Sesuai Akta Kelahiran" type="number" name="telp_rumah" id="telp_rumah" class="form-control col-12" value="{{ old('telp_rumah') }}">
                                             @error('telp_rumah')
-                                                <div class="text-danger mt-2 col-sm-3">{{ $message }}</div>
+                                                <span class="invalid-feedback" role="alert">
+                                                    <strong>{{ $message }}</strong>
+                                                </span>
                                             @enderror
                                         </div>
                                         
                                         <div class="form-group row ml-3">
-                                            <label for="telp_pd" class="col-12 form-label">Nomor HP</label>
+                                            <label for="telp_pd" class="col-12 form-label">Nomor Handphone</label>
                                             <input placeholder="Sesuai Akta Kelahiran" type="number" name="telp_pd" id="telp_pd" class="form-control col-12" value="{{ old('telp_pd') }}">
                                             @error('telp_pd')
-                                                <div class="text-danger mt-2 col-sm-3">{{ $message }}</div>
+                                                <span class="invalid-feedback" role="alert">
+                                                    <strong>{{ $message }}</strong>
+                                                </span>
                                             @enderror
                                         </div>
 
                                         <div class="form-group row ml-3">
-                                            <label for="no_kks" class="col-12 form-label">Nomor Kartu Keluarga Sejahtera/KKS</label>
-                                            <input placeholder="Isikan jika menerima" type="number" name="no_kks" id="no_kks" class="form-control col-12" value="{{ old('no_kks') }}">
+                                            <label for="moda_transportasi" class="col-12 form-label">Alat Transportasi Ke Sekolah</label>
+                                            <select name="moda_transportasi" id="moda_transportasi">
+                                                <option selected disabled></option>
+                                                @for(i = 0; i < 14; i++)
+                                                    <option value="{{ $moda_transportasi[$i] }}" @if(old('moda_transportasi') == $moda_transportasi[$i]) selected @endif>$moda_transportasi[$i]</option>
+                                                @endfor
+                                            </select>
+                                            @error('moda_transportasi')
+                                                <span class="invalid-feedback" role="alert">
+                                                    <strong>{{ $message }}</strong>
+                                                </span>
+                                            @enderror
+                                        </div>
+
+                                        <div class="form-group row ml-3">
+                                            <label for="jenis_tinggal" class="col-12 form-label">Jenis Tinggal</label>
+                                            <select name="jenis_tinggal" id="jenis_tinggal">
+                                                <option selected disabled></option>
+                                                @for(i = 0; i < 14; i++)
+                                                    <option value="{{ $tempat_tinggal[$i] }}" @if(old('jenis_tinggal') == $tempat_tinggal[$i]) selected @endif>$tempat_tinggal[$i]</option>
+                                                @endfor
+                                            </select>
+                                            @error('jenis_tinggal')
+                                                <span class="invalid-feedback" role="alert">
+                                                    <strong>{{ $message }}</strong>
+                                                </span>
+                                            @enderror
+                                        </div>
+
+                                        <div class="form-group row ml-3">
+                                            <label for="penerima_kks" class="col-md-3 form-label">Apakah penerima KKS ?</label>
+                                            <select name="penerima_kks" id="penerima_kks" class="col-md-3">
+                                                <option value=1 @if(old('penerima_kks') == 1) selected @endif>Ya</option>
+                                                <option value=0 @if(old('penerima_kks') == 0) selected @endif>Tidak</option>
+                                            </select>
+                                            @error('penerima_kks')
+                                                <span class="invalid-feedback" role="alert">
+                                                    <strong>{{ $message }}</strong>
+                                                </span>
+                                            @enderror
+
+                                            <label for="no_kks" class="col-md-3 form-label">Nomor KKS</label>
+                                            <input placeholder="Isikan jika menerima" type="number" name="no_kks" id="no_kks" class="form-control col-md-3" value="{{ old('no_kks') }}">
                                             @error('no_kks')
-                                                <div class="text-danger mt-2 col-sm-3">{{ $message }}</div>
+                                                <span class="invalid-feedback" role="alert">
+                                                    <strong>{{ $message }}</strong>
+                                                </span>
                                             @enderror
                                         </div>
 
                                         <div class="form-group row ml-3">
-                                            <label for="no_kps" class="col-12 form-label">Nomor Kartu Perlindungan Sosial</label>
-                                            <input placeholder="Isikan jika menerima" type="number" name="no_kps" id="no_kps" class="form-control col-12" value="{{ old('no_kps') }}">
+                                            <label for="penerima_kps" class="col-md-3 form-label">Apakah penerima KPS ?</label>
+                                            <select name="penerima_kps" id="penerima_kps" class="col-md-3">
+                                                <option value=1 @if(old('penerima_kps') == 1) selected @endif>Ya</option>
+                                                <option value=0 @if(old('penerima_kps') == 0) selected @endif>Tidak</option>
+                                            </select>
+                                            @error('penerima_kps')
+                                                <span class="invalid-feedback" role="alert">
+                                                    <strong>{{ $message }}</strong>
+                                                </span>
+                                            @enderror
+
+                                            <label for="no_kps" class="col-md-3 form-label">Nomor KPS</label>
+                                            <input placeholder="Isikan jika menerima" type="number" name="no_kps" id="no_kps" class="form-control col-md-3" value="{{ old('no_kps') }}">
                                             @error('no_kps')
-                                                <div class="text-danger mt-2 col-sm-3">{{ $message }}</div>
+                                                <span class="invalid-feedback" role="alert">
+                                                    <strong>{{ $message }}</strong>
+                                                </span>
                                             @enderror
                                         </div>
 
                                         <div class="form-group row ml-3">
-                                            <label for="no_kis" class="col-12 form-label">Nomor Kartu Indonesia Pintar/KIS</label>
-                                            <input placeholder="Isikan jika menerima" type="number" name="no_kis" id="no_kis" class="form-control col-12" value="{{ old('no_kis') }}">
-                                            @error('no_kis')
-                                                <div class="text-danger mt-2 col-sm-3">{{ $message }}</div>
+                                            <label for="penerima_kip" class="col-md-3 form-label">Apakah penerima KIP ?</label>
+                                            <select name="penerima_kip" id="penerima_kip" class="col-md-3">
+                                                <option value=1 @if(old('penerima_kip') == 1) selected @endif>Ya</option>
+                                                <option value=0 @if(old('penerima_kip') == 0) selected @endif>Tidak</option>
+                                            </select>
+                                            @error('penerima_kip')
+                                                <span class="invalid-feedback" role="alert">
+                                                    <strong>{{ $message }}</strong>
+                                                </span>
+                                            @enderror
+
+                                            <label for="no_kip" class="col-md-3 form-label">Nomor KIP</label>
+                                            <input placeholder="Isikan jika menerima" type="number" name="no_kip" id="no_kip" class="form-control col-md-3" value="{{ old('no_kip') }}">
+                                            @error('no_kip')
+                                                <span class="invalid-feedback" role="alert">
+                                                    <strong>{{ $message }}</strong>
+                                                </span>
                                             @enderror
                                         </div>
-                                    </div>
 
                                     <div class="ml-3" style="margin-top: 10px"><b><h4 class="mt-3 text-center"><hr>DATA PERIODIK SISWA<hr></h4></b>
                                         
@@ -210,7 +334,9 @@
                                                 <input type="text" name="tinggi" id="tinggi" class="form-control" value="{{ old('tinggi') }}"><div class="input-group-text">Cm</div>
                                             </div>
                                             @error('tinggi')
-                                                <div class="text-danger mt-2 col-sm-3">{{ $message }}</div>
+                                                <span class="invalid-feedback" role="alert">
+                                                    <strong>{{ $message }}</strong>
+                                                </span>
                                             @enderror
                                         </div>
                                         
@@ -220,7 +346,9 @@
                                                 <input type="text" name="banyak_saudara_kandung" id="banyak_saudara_kandung" class="form-control" value="{{ old('banyak_saudara_kandung') }}"><div class="input-group-text">Orang</div>
                                             </div>
                                             @error('banyak_saudara_kandung')
-                                                <div class="text-danger mt-2 col-sm-3">{{ $message }}</div>
+                                                <span class="invalid-feedback" role="alert">
+                                                    <strong>{{ $message }}</strong>
+                                                </span>
                                             @enderror
                                         </div>
 
@@ -230,7 +358,9 @@
                                                 <input type="text" name="berat" id="berat" class="form-control" value="{{ old('berat') }}"><div class="input-group-text">Kg</div>
                                             </div>
                                             @error('berat')
-                                                <div class="text-danger mt-2 col-sm-3">{{ $message }}</div>
+                                                <span class="invalid-feedback" role="alert">
+                                                    <strong>{{ $message }}</strong>
+                                                </span>
                                             @enderror
                                         </div>
 
@@ -240,7 +370,9 @@
                                                 <input type="text" name="jarak_kesekolah" id="jarak_kesekolah" class="form-control" value="{{ old('jarak_kesekolah') }}"><div class="input-group-text">Km</div>
                                             </div>
                                             @error('jarak_kesekolah')
-                                                <div class="text-danger mt-2 col-sm-3">{{ $message }}</div>
+                                                <span class="invalid-feedback" role="alert">
+                                                    <strong>{{ $message }}</strong>
+                                                </span>
                                             @enderror
                                         </div>
 
@@ -250,7 +382,9 @@
                                                 <input type="text" name="waktu_kesekolah" id="waktu_kesekolah" class="form-control" value="{{ old('waktu_kesekolah') }}"><div class="input-group-text">Km</div>
                                             </div>
                                             @error('waktu_kesekolah')
-                                                <div class="text-danger mt-2 col-sm-3">{{ $message }}</div>
+                                                <span class="invalid-feedback" role="alert">
+                                                    <strong>{{ $message }}</strong>
+                                                </span>
                                             @enderror
                                         </div>
                                         
@@ -263,130 +397,236 @@
                                     <div class="ml-3" style="margin-top: 10px"><b><h4 class="mt-3 text-center"><hr>SEKOLAH ASAL<hr></h4></b>
 
                                         <div class="form-group row ml-3">
-                                            <label for="nama_asal_sekolah" class="col-12 form-label">Nama Sekolah</label>
-                                            <input type="text" name="nama_asal_sekolah" id="nama_asal_sekolah" class="form-control col-12" value="{{ old('nama_asal_sekolah') }}">
-                                            @error('nama_asal_sekolah')
-                                                <div class="text-danger mt-2 col-sm-3">{{ $message }}</div>
+                                            <label for="sekolah_asal" class="col-12 form-label">Asal Sekolah</label>
+                                            <input type="text" name="sekolah_asal" id="sekolah_asal" class="form-control col-12" value="{{ old('sekolah_asal') }}">
+                                            @error('sekolah_asal')
+                                                <span class="invalid-feedback" role="alert">
+                                                    <strong>{{ $message }}</strong>
+                                                </span>
                                             @enderror
                                         </div>
                                         
                                         <div class="form-group row ml-3">
-                                            <label for="alamat_asal_sekolah" class="col-12 form-label">Kecamatan Sekolah</label>
-                                            <input type="text" name="alamat_asal_sekolah" id="alamat_asal_sekolah" class="form-control col-12" value="{{ old('alamat_asal_sekolah') }}">
-                                            @error('alamat_asal_sekolah')
-                                                <div class="text-danger mt-2 col-sm-3">{{ $message }}</div>
+                                            <label for="kecamatan_sekolah_asal" class="col-12 form-label">Kecamatan Sekolah</label>
+                                            <input type="text" name="kecamatan_sekolah_asal" id="kecamatan_sekolah_asal" class="form-control col-12" value="{{ old('kecamatan_sekolah_asal') }}">
+                                            @error('kecamatan_sekolah_asal')
+                                                <span class="invalid-feedback" role="alert">
+                                                    <strong>{{ $message }}</strong>
+                                                </span>
                                             @enderror
                                         </div>
                                     
                                     </div>
         
-                                    <div class="ml-3" style="margin-top: 10px"><b><h4 class="mt-3 text-center"><hr>IJAZAH PAUD/TK<hr></h4></b>
-                                        
-                                        <div class="form-group row ml-3">
-                                            <label for="tahun_ijazah" class="col-12 form-label">Tahun</label>
-                                            <input type="number" name="tahun_ijazah" id="tahun_ijazah" class="form-control col-12" value="{{ old('tahun_ijazah') }}">
-                                            @error('tahun_ijazah')
-                                                <div class="text-danger mt-2 col-sm-3">{{ $message }}</div>
-                                            @enderror
-                                        </div>
-
-                                        <div class="form-group row ml-3">
-                                            <label for="nomor_ijazah" class="col-12 form-label">Nomor Ijazah</label>
-                                            <input type="text" name="nomor_ijazah" id="nomor_ijazah" class="form-control col-12" value="{{ old('nomor_ijazah') }}">
-                                            @error('nomor_ijazah')
-                                                <div class="text-danger mt-2 col-sm-3">{{ $message }}</div>
-                                            @enderror
-                                        </div>
-                                        
-                                    </div>
-                                    
                                     <div class="ml-3" style="margin-top: 10px"><b><h4 class="mt-3 text-center"><hr>ORANGTUA<hr></h4></b>
 
                                         <div class="form-group row ml-3">
                                             <label for="nama_ayah" class="col-12 form-label">Nama Ayah Kandung</label>
                                             <input type="text" name="nama_ayah" id="nama_ayah" class="form-control col-12" value="{{ old('nama_ayah') }}">
                                             @error('nama_ayah')
-                                                <div class="text-danger mt-2 col-sm-3">{{ $message }}</div>
+                                                <span class="invalid-feedback" role="alert">
+                                                    <strong>{{ $message }}</strong>
+                                                </span>
                                             @enderror
                                         </div>
 
                                         <div class="form-group row ml-3">
-                                            <label for="tahun_lahir_ayah" class="col-12 form-label">Nama Ayah Kandung</label>
+                                            <label for="tahun_lahir_ayah" class="col-12 form-label">Tahun lahir</label>
                                             <input type="year" name="tahun_lahir_ayah" id="tahun_lahir_ayah" class="form-control col-12" value="{{ old('tahun_lahir_ayah') }}">
                                             @error('tahun_lahir_ayah')
-                                                <div class="text-danger mt-2 col-sm-3">{{ $message }}</div>
+                                                <span class="invalid-feedback" role="alert">
+                                                    <strong>{{ $message }}</strong>
+                                                </span>
                                             @enderror
                                         </div>
 
                                         <div class="form-group row ml-3">
-                                            <label for="tahun_lahir_ayah" class="col-12 form-label">Nama Ayah Kandung</label>
-                                            <input type="text" name="tahun_lahir_ayah" id="tahun_lahir_ayah" class="form-control col-12" value="{{ old('tahun_lahir_ayah') }}">
-                                            @error('tahun_lahir_ayah')
-                                                <div class="text-danger mt-2 col-sm-3">{{ $message }}</div>
+                                            <label for="pendidikan_ayah" class="col-12 form-label">Pendidikan</label>
+                                            <select name="pendidikan_ayah" id="pendidikan_ayah">
+                                                <option selected disabled>Pilih salah satu</option>
+                                                @for(i = 0; i < 17; i++)
+                                                    <option value="{{ $pendidikan[$i] }}" @if(old('pendidikan_ayah') == $pendidikan[$i]) selected @endif>{{ $pendidikan[$i] }}</option>
+                                                @endfor
+                                            </select>
+                                            @error('pendidikan_ayah')
+                                                <span class="invalid-feedback" role="alert">
+                                                    <strong>{{ $message }}</strong>
+                                                </span>
                                             @enderror
                                         </div>
 
                                         <div class="form-group row ml-3">
-                                            <label for="nama_ibu" class="col-12 form-label">Nama Ibu</label>
+                                            <label for="pekerjaan_ayah" class="col-12 form-label">Pekerjaan</label>
+                                            <select name="pekerjaan_ayah" id="pekerjaan_ayah">
+                                                <option selected disabled>Pilih salah satu</option>
+                                                @for(i = 0; i < 17; i++)
+                                                    <option value="{{ $pekerjaan[$i] }}" @if(old('pekerjaan_ayah') == $pekerjaan[$i]) selected @endif>{{ $pekerjaan[$i] }}</option>
+                                                @endfor
+                                            </select>
+                                            @error('pekerjaan_ayah')
+                                                <span class="invalid-feedback" role="alert">
+                                                    <strong>{{ $message }}</strong>
+                                                </span>
+                                            @enderror
+                                        </div>
+
+                                        <div class="form-group row ml-3">
+                                            <label for="penghasilan_ayah" class="col-12 form-label">Penghasilan Bulanan</label>
+                                            <select name="penghasilan_ayah" id="penghasilan_ayah">
+                                                <option selected disabled>Pilih salah satu</option>
+                                                @for(i = 0; i < 17; i++)
+                                                    <option value="{{ $penghasilan[$i] }}" @if(old('penghasilan_ayah') == $penghasilan[$i]) selected @endif>{{ $penghasilan[$i] }}</option>
+                                                @endfor
+                                            </select>
+                                            @error('penghasilan_ayah')
+                                                <span class="invalid-feedback" role="alert">
+                                                    <strong>{{ $message }}</strong>
+                                                </span>
+                                            @enderror
+                                        </div>
+
+                                        <div class="form-group row ml-3">
+                                            <label for="nama_ibu" class="col-12 form-label">Nama Ibu Kandung</label>
                                             <input type="text" name="nama_ibu" id="nama_ibu" class="form-control col-12" value="{{ old('nama_ibu') }}">
                                             @error('nama_ibu')
-                                                <div class="text-danger mt-2 col-sm-3">{{ $message }}</div>
+                                                <span class="invalid-feedback" role="alert">
+                                                    <strong>{{ $message }}</strong>
+                                                </span>
                                             @enderror
                                         </div>
 
                                         <div class="form-group row ml-3">
-                                            <label for="telp_ortu" class="col-12 form-label">Telp/HP</label>
-                                            <input type="number" name="telp_ortu" id="telp_ortu" class="form-control col-12" value="{{ old('telp_ortu') }}">
-                                            @error('telp_ortu')
-                                                <div class="text-danger mt-2 col-sm-3">{{ $message }}</div>
+                                            <label for="tahun_lahir_ibu" class="col-12 form-label">Tahun lahir</label>
+                                            <input type="year" name="tahun_lahir_ibu" id="tahun_lahir_ibu" class="form-control col-12" value="{{ old('tahun_lahir_ibu') }}">
+                                            @error('tahun_lahir_ibu')
+                                                <span class="invalid-feedback" role="alert">
+                                                    <strong>{{ $message }}</strong>
+                                                </span>
                                             @enderror
                                         </div>
+
                                         <div class="form-group row ml-3">
-                                            <label for="pekerjaan_ayah" class="col-12 form-label">Pekerjaan Ayah</label>
-                                            <input type="text" name="pekerjaan_ayah" id="pekerjaan_ayah" class="form-control col-12" value="{{ old('pekerjaan_ayah') }}">
-                                            @error('pekerjaan_ayah')
-                                                <div class="text-danger mt-2 col-sm-3">{{ $message }}</div>
+                                            <label for="pendidikan_ibu" class="col-12 form-label">Pendidikan</label>
+                                            <select name="pendidikan_ibu" id="pendidikan_ibu">
+                                                <option selected disabled>Pilih salah satu</option>
+                                                @for(i = 0; i < 17; i++)
+                                                    <option value="{{ $pendidikan[$i] }}" @if(old('pendidikan_ibu') == $pendidikan[$i]) selected @endif>{{ $pendidikan[$i] }}</option>
+                                                @endfor
+                                            </select>
+                                            @error('pendidikan_ibu')
+                                                <span class="invalid-feedback" role="alert">
+                                                    <strong>{{ $message }}</strong>
+                                                </span>
                                             @enderror
                                         </div>
+
                                         <div class="form-group row ml-3">
-                                            <label for="pekerjaan_ibu" class="col-12 form-label">Pekerjaan Ibu</label>
-                                            <input type="text" name="pekerjaan_ibu" id="pekerjaan_ibu" class="form-control col-12" value="{{ old('pekerjaan_ibu') }}">
+                                            <label for="pekerjaan_ibu" class="col-12 form-label">Pekerjaan</label>
+                                            <select name="pekerjaan_ibu" id="pekerjaan_ibu">
+                                                <option selected disabled>Pilih salah satu</option>
+                                                @for(i = 0; i < 17; i++)
+                                                    <option value="{{ $pekerjaan[$i] }}" @if(old('pekerjaan_ibu') == $pekerjaan[$i]) selected @endif>{{ $pekerjaan[$i] }}</option>
+                                                @endfor
+                                            </select>
                                             @error('pekerjaan_ibu')
-                                                <div class="text-danger mt-2 col-sm-3">{{ $message }}</div>
+                                                <span class="invalid-feedback" role="alert">
+                                                    <strong>{{ $message }}</strong>
+                                                </span>
+                                            @enderror
+                                        </div>
+
+                                        <div class="form-group row ml-3">
+                                            <label for="penghasilan_ibu" class="col-12 form-label">Penghasilan Bulanan</label>
+                                            <select name="penghasilan_ibu" id="penghasilan_ibu">
+                                                <option selected disabled>Pilih salah satu</option>
+                                                @for(i = 0; i < 17; i++)
+                                                    <option value="{{ $penghasilan[$i] }}" @if(old('penghasilan_ibu') == $penghasilan[$i]) selected @endif>{{ $penghasilan[$i] }}</option>
+                                                @endfor
+                                            </select>
+                                            @error('penghasilan_ibu')
+                                                <span class="invalid-feedback" role="alert">
+                                                    <strong>{{ $message }}</strong>
+                                                </span>
                                             @enderror
                                         </div>
                                     </div>
 
-                                    <div class="ml-3" style="margin-top: 10px"><b><h4 class="mt-3 text-center"><hr>Wali<hr></h4></b>
+                                    <div class="ml-3" style="margin-top: 10px"><b><h4 class="mt-3 text-center"><hr>APABILA TINGGAL BERSAMA WALI ISI DATA BERIKUT<hr></h4></b>
                                         <div class="form-group row ml-3">
                                             <label for="nama_wali" class="col-12 form-label">Nama Wali</label>
-                                            <input type="text" name="nama_wali" id="nama_wali" class="form-control col-12"value="{{ old('nama_wali') }}">
+                                            <input type="text" name="nama_wali" id="nama_wali" class="form-control col-12" value="{{ old('nama_wali') }}">
                                             @error('nama_wali')
-                                                <div class="text-danger mt-2 col-sm-3">{{ $message }}</div>
+                                                <span class="invalid-feedback" role="alert">
+                                                    <strong>{{ $message }}</strong>
+                                                </span>
                                             @enderror
                                         </div>
+
                                         <div class="form-group row ml-3">
-                                            <label for="alamat_wali" class="col-12 form-label">Alamat</label>
-                                            <textarea rows="3" placeholder="Jalan, Kelurahan, Kecamatan, Kota/Kabupaten" name="alamat_wali" id="alamat_wali" class="form-control col-12"value="{{ old('alamat_wali') }}"></textarea>
-                                            @error('alamat_wali')
-                                                <div class="text-danger mt-2 col-sm-3">{{ $message }}</div>
+                                            <label for="tahun_lahir_wali" class="col-12 form-label">Tahun lahir</label>
+                                            <input type="year" name="tahun_lahir_wali" id="tahun_lahir_wali" class="form-control col-12" value="{{ old('tahun_lahir_wali') }}">
+                                            @error('tahun_lahir_wali')
+                                                <span class="invalid-feedback" role="alert">
+                                                    <strong>{{ $message }}</strong>
+                                                </span>
                                             @enderror
                                         </div>
+
+                                        <div class="form-group row ml-3">
+                                            <label for="pendidikan_wali" class="col-12 form-label">Pendidikan</label>
+                                            <select name="pendidikan_wali" id="pendidikan_wali">
+                                                <option selected disabled>Pilih salah satu</option>
+                                                @for(i = 0; i < 17; i++)
+                                                    <option value="{{ $pendidikan[$i] }}" @if(old('pendidikan_wali') == $pendidikan[$i]) selected @endif>{{ $pendidikan[$i] }}</option>
+                                                @endfor
+                                            </select>
+                                            @error('pendidikan_wali')
+                                                <span class="invalid-feedback" role="alert">
+                                                    <strong>{{ $message }}</strong>
+                                                </span>
+                                            @enderror
+                                        </div>
+
                                         <div class="form-group row ml-3">
                                             <label for="pekerjaan_wali" class="col-12 form-label">Pekerjaan</label>
-                                            <input type="text" name="pekerjaan_wali" id="pekerjaan_wali" class="form-control col-12"value="{{ old('pekerjaan_wali') }}">
+                                            <select name="pekerjaan_wali" id="pekerjaan_wali">
+                                                <option selected disabled>Pilih salah satu</option>
+                                                @for(i = 0; i < 17; i++)
+                                                    <option value="{{ $pekerjaan[$i] }}" @if(old('pekerjaan_wali') == $pekerjaan[$i]) selected @endif>{{ $pekerjaan[$i] }}</option>
+                                                @endfor
+                                            </select>
                                             @error('pekerjaan_wali')
-                                                <div class="text-danger mt-2 col-sm-3">{{ $message }}</div>
+                                                <span class="invalid-feedback" role="alert">
+                                                    <strong>{{ $message }}</strong>
+                                                </span>
+                                            @enderror
+                                        </div>
+
+                                        <div class="form-group row ml-3">
+                                            <label for="penghasilan_wali" class="col-12 form-label">Penghasilan Bulanan</label>
+                                            <select name="penghasilan_wali" id="penghasilan_wali">
+                                                <option selected disabled>Pilih salah satu</option>
+                                                @for(i = 0; i < 17; i++)
+                                                    <option value="{{ $penghasilan[$i] }}" @if(old('penghasilan_wali') == $penghasilan[$i]) selected @endif>{{ $penghasilan[$i] }}</option>
+                                                @endfor
+                                            </select>
+                                            @error('penghasilan_wali')
+                                                <span class="invalid-feedback" role="alert">
+                                                    <strong>{{ $message }}</strong>
+                                                </span>
                                             @enderror
                                         </div>
                                     </div>
 
                                     <div class="ml-3" style="margin-top: 10px"><b><h4 class="mt-3 text-center"><hr>Dokumen<hr></h4></b>
+                                        
                                         <div class="form-group row ml-3">
                                             <label for="foto_pd" class="col-12 form-label">Pas Foto 3 X 4</label>
                                             <input type="file" name="foto_pd" id="foto_pd" class="col-sm-8">
                                             @error('foto_pd')
-                                                <div class="text-danger mt-2">{{ $message }}</div>
+                                                <span class="invalid-feedback" role="alert">
+                                                    <strong>{{ $message }}</strong>
+                                                </span>
                                             @enderror
                                         </div>
                                         
@@ -394,7 +634,9 @@
                                             <label for="scan_akta" class="col-12 form-label">Scan Akta Kelahiran</label>
                                             <input type="file" name="scan_akta" id="scan_akta" class="col-sm-8">
                                             @error('scan_akta')
-                                                <div class="text-danger mt-2">{{ $message }}</div>
+                                            <span class="invalid-feedback" role="alert">
+                                                <strong>{{ $message }}</strong>
+                                            </span>
                                             @enderror
                                         </div>
 
@@ -402,17 +644,62 @@
                                             <label for="scan_kk" class="col-12 form-label">Scan Kartu Keluarga</label>
                                             <input type="file" name="scan_kk" id="scan_kk" class="col-sm-8">
                                             @error('scan_kk')
-                                                <div class="text-danger mt-2">{{ $message }}</div>
+                                            <span class="invalid-feedback" role="alert">
+                                                <strong>{{ $message }}</strong>
+                                            </span>
                                             @enderror
                                         </div>
 
                                         <div class="form-group row ml-3">
-                                            <label for="scan_ijazah" class="col-12 form-label">Scan Ijazah PAUD/TK (jika ada)</label>
+                                            <label for="scan_ijazah" class="col-12 form-label">Scan Ijazah PAUD/TK (jika berasal dari PAUD/TK)</label>
                                             <input type="file" name="scan_ijazah" id="scan_ijazah" class="col-sm-8">
                                             @error('scan_ijazah')
-                                                <div class="text-danger mt-2">{{ $message }}</div>
+                                            <span class="invalid-feedback" role="alert">
+                                                <strong>{{ $message }}</strong>
+                                            </span>
                                             @enderror
                                         </div>
+
+                                        <div class="form-group row ml-3">
+                                            <label for="scan_kks" class="col-12 form-label">Scan KKS</label>
+                                            <input type="file" name="scan_kks" id="scan_kks" class="col-sm-8">
+                                            @error('scan_kks')
+                                            <span class="invalid-feedback" role="alert">
+                                                <strong>{{ $message }}</strong>
+                                            </span>
+                                            @enderror
+                                        </div>
+
+                                        <div class="form-group row ml-3">
+                                            <label for="scan_kks" class="col-12 form-label">Scan KKS</label>
+                                            <input type="file" name="scan_kks" id="scan_kks" class="col-sm-8">
+                                            @error('scan_kks')
+                                            <span class="invalid-feedback" role="alert">
+                                                <strong>{{ $message }}</strong>
+                                            </span>
+                                            @enderror
+                                        </div>
+
+                                        <div class="form-group row ml-3">
+                                            <label for="scan_kps" class="col-12 form-label">Scan KPS</label>
+                                            <input type="file" name="scan_kps" id="scan_kps" class="col-sm-8">
+                                            @error('scan_kps')
+                                            <span class="invalid-feedback" role="alert">
+                                                <strong>{{ $message }}</strong>
+                                            </span>
+                                            @enderror
+                                        </div>
+
+                                        <div class="form-group row ml-3">
+                                            <label for="scan_kip" class="col-12 form-label">Scan KIP</label>
+                                            <input type="file" name="scan_kip" id="scan_kip" class="col-sm-8">
+                                            @error('scan_kip')
+                                            <span class="invalid-feedback" role="alert">
+                                                <strong>{{ $message }}</strong>
+                                            </span>
+                                            @enderror
+                                        </div>
+
                                     </div>
 
                                 </div>
@@ -435,21 +722,27 @@
                                     <label for="nik" class="col-sm-3 form-label">NIK / Nomor Induk Kependudukan</label>
                                     <input type="number" name="nik" id="nik" class="form-control col-12" value="{{ $pesertadidik->nik }}">
                                     @error('nik')
-                                        <div class="text-danger mt-2 col-sm-3">{{ $message }}</div>
+                                        <span class="invalid-feedback" role="alert">
+                                                    <strong>{{ $message }}</strong>
+                                                </span>
                                     @enderror
                                 </div>
                                 <div class="form-group row ml-3">
                                     <label for="nama_pd" class="col-sm-3 form-label">Nama Lengkap</label>
                                         <input type="text" name="nama_pd" id="nama_pd" class="form-control col-12" value="{{ $pesertadidik->nama_pd }}">
                                     @error('nama_pd')
-                                        <div class="text-danger mt-2 col-sm-3">{{ $message }}</div>
+                                        <span class="invalid-feedback" role="alert">
+                                                    <strong>{{ $message }}</strong>
+                                                </span>
                                     @enderror
                                 </div>
                                 <div class="form-group row ml-3">
                                     <label for="ttl" class="col-sm-3 form-label">Tempat, Tanggal Lahir</label>
                                     <input type="text" name="ttl" id="ttl" class="form-control col-12" value="{{ $pesertadidik->ttl }}">
                                     @error('ttl')
-                                        <div class="text-danger mt-2 col-sm-3">{{ $message }}</div>
+                                        <span class="invalid-feedback" role="alert">
+                                                    <strong>{{ $message }}</strong>
+                                                </span>
                                     @enderror
                                 </div>
                                 <div class="form-group row ml-3">
@@ -460,7 +753,9 @@
                                             <option value="Perempuan" @if ($pesertadidik->jenis_kelamin  == "Perempuan")selected @endif>Perempuan</option>
                                     </select>
                                     @error('jenis_kelamin')
-                                        <div class="text-danger mt-2 col-sm-3">{{ $message }}</div>
+                                        <span class="invalid-feedback" role="alert">
+                                                    <strong>{{ $message }}</strong>
+                                                </span>
                                     @enderror
                                 </div>
                                 <div class="form-group row ml-3">
@@ -475,28 +770,36 @@
                                             <option value="Konghucu" @if ($pesertadidik->agama == 'Konghucu') selected @endif>Konghucu</option>
                                     </select>
                                     @error('agama')
-                                        <div class="text-danger mt-2 col-sm-3">{{ $message }}</div>
+                                        <span class="invalid-feedback" role="alert">
+                                                    <strong>{{ $message }}</strong>
+                                                </span>
                                     @enderror
                                 </div>
                                 <div class="form-group row ml-3">
                                     <label for="anak_ke" class="col-sm-3 form-label">Anak Ke</label>
                                     <input type="number" name="anak_ke" id="anak_ke" class="form-control col-12" value="{{ $pesertadidik->anak_ke }}">
                                     @error('anak_ke')
-                                        <div class="text-danger mt-2 col-sm-3">{{ $message }}</div>
+                                        <span class="invalid-feedback" role="alert">
+                                                    <strong>{{ $message }}</strong>
+                                                </span>
                                     @enderror
                                 </div>
                                 <div class="form-group row ml-3">
                                     <label for="status_dalam_keluarga" class="col-sm-3 form-label">Status dalam Keluarga</label>
                                     <input type="text" name="status_dalam_keluarga" id="status_dalam_keluarga" class="form-control col-12" value="{{ $pesertadidik->status_dalam_keluarga }}">
                                     @error('status_dalam_keluarga')
-                                        <div class="text-danger mt-2 col-sm-3">{{ $message }}</div>
+                                        <span class="invalid-feedback" role="alert">
+                                                    <strong>{{ $message }}</strong>
+                                                </span>
                                     @enderror
                                 </div>
                                 <div class="form-group row ml-3">
                                     <label for="alamat_pd" class="col-sm-3 form-label">Alamat</label>
                                     <textarea rows="3" placeholder="Jalan, Kelurahan, Kecamatan, Kota/Kabupaten" name="alamat_pd" id="alamat_pd" class="form-control col-12">{{ $pesertadidik->alamat_pd }}</textarea>
                                     @error('alamat_pd')
-                                        <div class="text-danger mt-2 col-sm-3">{{ $message }}</div>
+                                        <span class="invalid-feedback" role="alert">
+                                                    <strong>{{ $message }}</strong>
+                                                </span>
                                     @enderror
                                 </div>
                             </div>
@@ -505,14 +808,18 @@
                                     <label for="nama_asal_sekolah" class="col-sm-3 form-label">Nama Sekolah</label>
                                     <input type="text" name="nama_asal_sekolah" id="nama_asal_sekolah" class="form-control col-12" value="{{ $pesertadidik->nama_asal_sekolah }}">
                                     @error('nama_asal_sekolah')
-                                        <div class="text-danger mt-2 col-sm-3">{{ $message }}</div>
+                                        <span class="invalid-feedback" role="alert">
+                                                    <strong>{{ $message }}</strong>
+                                                </span>
                                     @enderror
                                 </div>
                                 <div class="form-group row ml-3">
                                     <label for="alamat_asal_sekolah" class="col-sm-3 form-label">Alamat Sekolah</label>
                                     <textarea rows="3" placeholder="Jalan, Kelurahan, Kecamatan, Kota/Kabupaten" name="alamat_asal_sekolah" id="alamat_asal_sekolah" class="form-control col-12" >{{ $pesertadidik->alamat_asal_sekolah }}</textarea>
                                     @error('alamat_asal_sekolah')
-                                        <div class="text-danger mt-2 col-sm-3">{{ $message }}</div>
+                                        <span class="invalid-feedback" role="alert">
+                                                    <strong>{{ $message }}</strong>
+                                                </span>
                                     @enderror
                                 </div>
                             </div>
@@ -521,14 +828,18 @@
                                     <label for="tahun_ijazah" class="col-sm-3 form-label">Tahun</label>
                                     <input type="number" name="tahun_ijazah" id="tahun_ijazah" class="form-control col-12" value="{{ $pesertadidik->tahun_ijazah }}">
                                     @error('tahun_ijazah')
-                                        <div class="text-danger mt-2 col-sm-3">{{ $message }}</div>
+                                        <span class="invalid-feedback" role="alert">
+                                                    <strong>{{ $message }}</strong>
+                                                </span>
                                     @enderror
                                 </div>
                                 <div class="form-group row ml-3">
                                     <label for="nomor_ijazah" class="col-sm-3 form-label">Nomor Ijazah</label>
                                     <input type="text" name="nomor_ijazah" id="nomor_ijazah" class="form-control col-12" value="{{ $pesertadidik->nomor_ijazah }}">
                                     @error('nomor_ijazah')
-                                        <div class="text-danger mt-2 col-sm-3">{{ $message }}</div>
+                                        <span class="invalid-feedback" role="alert">
+                                                    <strong>{{ $message }}</strong>
+                                                </span>
                                     @enderror
                                 </div>
                             </div>
@@ -537,42 +848,54 @@
                                     <label for="nama_ayah" class="col-sm-3 form-label">Nama Ayah</label>
                                     <input type="text" name="nama_ayah" id="nama_ayah" class="form-control col-12" value="{{ $pesertadidik->nama_ayah }}">
                                     @error('nama_ayah')
-                                        <div class="text-danger mt-2 col-sm-3">{{ $message }}</div>
+                                        <span class="invalid-feedback" role="alert">
+                                                    <strong>{{ $message }}</strong>
+                                                </span>
                                     @enderror
                                 </div>
                                 <div class="form-group row ml-3">
                                     <label for="nama_ibu" class="col-sm-3 form-label">Nama Ibu</label>
                                     <input type="text" name="nama_ibu" id="nama_ibu" class="form-control col-12" value="{{ $pesertadidik->nama_ibu }}">
                                     @error('nama_ibu')
-                                        <div class="text-danger mt-2 col-sm-3">{{ $message }}</div>
+                                        <span class="invalid-feedback" role="alert">
+                                                    <strong>{{ $message }}</strong>
+                                                </span>
                                     @enderror
                                 </div>
                                 <div class="form-group row ml-3">
                                     <label for="alamat_ortu" class="col-sm-3 form-label">Alamat</label>
                                     <textarea rows="3" placeholder="Jalan, Kelurahan, Kecamatan, Kota/Kabupaten" name="alamat_ortu" id="alamat_ortu" class="form-control col-12" >{{ $pesertadidik->alamat_ortu }}</textarea>
                                     @error('alamat_ortu')
-                                        <div class="text-danger mt-2 col-sm-3">{{ $message }}</div>
+                                        <span class="invalid-feedback" role="alert">
+                                                    <strong>{{ $message }}</strong>
+                                                </span>
                                     @enderror
                                 </div>
                                 <div class="form-group row ml-3">
                                     <label for="telp_ortu" class="col-sm-3 form-label">Telp/HP</label>
                                     <input type="number" name="telp_ortu" id="telp_ortu" class="form-control col-12" value="{{ $pesertadidik->telp_ortu }}">
                                     @error('telp_ortu')
-                                        <div class="text-danger mt-2 col-sm-3">{{ $message }}</div>
+                                        <span class="invalid-feedback" role="alert">
+                                                    <strong>{{ $message }}</strong>
+                                                </span>
                                     @enderror
                                 </div>
                                 <div class="form-group row ml-3">
                                     <label for="pekerjaan_ayah" class="col-sm-3 form-label">Pekerjaan Ayah</label>
                                     <input type="text" name="pekerjaan_ayah" id="pekerjaan_ayah" class="form-control col-12" value="{{ $pesertadidik->pekerjaan_ayah }}">
                                     @error('pekerjaan_ayah')
-                                        <div class="text-danger mt-2 col-sm-3">{{ $message }}</div>
+                                        <span class="invalid-feedback" role="alert">
+                                                    <strong>{{ $message }}</strong>
+                                                </span>
                                     @enderror
                                 </div>
                                 <div class="form-group row ml-3">
                                     <label for="pekerjaan_ibu" class="col-sm-3 form-label">Pekerjaan Ibu</label>
                                     <input type="text" name="pekerjaan_ibu" id="pekerjaan_ibu" class="form-control col-12" value="{{ $pesertadidik->pekerjaan_ibu }}">
                                     @error('pekerjaan_ibu')
-                                        <div class="text-danger mt-2 col-sm-3">{{ $message }}</div>
+                                        <span class="invalid-feedback" role="alert">
+                                                    <strong>{{ $message }}</strong>
+                                                </span>
                                     @enderror
                                 </div>
                             </div>
@@ -581,21 +904,27 @@
                                     <label for="nama_wali" class="col-sm-3 form-label">Nama Wali</label>
                                     <input type="text" name="nama_wali" id="nama_wali" class="form-control col-12"value="{{ $pesertadidik->nama_wali }}">
                                     @error('nama_wali')
-                                        <div class="text-danger mt-2 col-sm-3">{{ $message }}</div>
+                                        <span class="invalid-feedback" role="alert">
+                                                    <strong>{{ $message }}</strong>
+                                                </span>
                                     @enderror
                                 </div>
                                 <div class="form-group row ml-3">
                                     <label for="alamat_wali" class="col-sm-3 form-label">Alamat</label>
                                     <textarea rows="3" placeholder="Jalan, Kelurahan, Kecamatan, Kota/Kabupaten" name="alamat_wali" id="alamat_wali" class="form-control col-12">{{ $pesertadidik->alamat_wali }}</textarea>
                                     @error('alamat_wali')
-                                        <div class="text-danger mt-2 col-sm-3">{{ $message }}</div>
+                                        <span class="invalid-feedback" role="alert">
+                                                    <strong>{{ $message }}</strong>
+                                                </span>
                                     @enderror
                                 </div>
                                 <div class="form-group row ml-3">
                                     <label for="pekerjaan_wali" class="col-sm-3 form-label">Pekerjaan</label>
                                     <input type="text" name="pekerjaan_wali" id="pekerjaan_wali" class="form-control col-12"value="{{ $pesertadidik->pekerjaan_wali }}">
                                     @error('pekerjaan_wali')
-                                        <div class="text-danger mt-2 col-sm-3">{{ $message }}</div>
+                                        <span class="invalid-feedback" role="alert">
+                                                    <strong>{{ $message }}</strong>
+                                                </span>
                                     @enderror
                                 </div>
                             </div>

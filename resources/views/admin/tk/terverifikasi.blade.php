@@ -31,18 +31,17 @@
                 </thead>
                 <tbody>
                 @foreach ($calon_siswa_tks as $pesertadidik)
-                @if ($pesertadidik->user->is_data_verified == 1)
-                    <tr>
+                @if($pesertadidik->user->is_data_verified == 2)
+                <tr>
                     <td>{{ $pesertadidik->user->no_registrasi }}</td>
                     <td>{{ $pesertadidik->nama_pd }}</td>
                     <td>{{ $pesertadidik->jenis_kelamin }}</td>
                     <td>{{ $pesertadidik->alamat_pd }}</td>
                     <td>
-                        <!-- Button trigger modal -->
-                        <button type="button" class="btn btn-warning" data-toggle="modal" data-target="#exampleModalLong">
-                            Belum Terverifikasi
+                        <button type="button" class="btn btn-success" data-toggle="modal" data-target="#exampleModalLong">
+                        Terverifikasi
                         </button>
-                            <!-- Modal -->
+                        <!-- Modal -->
                             <div class="modal fade" id="exampleModalLong" tabindex="-1" role="dialog" aria-labelledby="exampleModalLongTitle" aria-hidden="true">
                                 <div class="modal-dialog modal-xl" role="document">
                                 <div class="modal-content">
@@ -318,7 +317,6 @@
                                         @csrf
                                         @method('PUT')
                                         <select name="is_data_verified" id="is_data_verified">    
-                                                <option @if($pesertadidik->user->is_data_verified == 1) selected @endif disabled value=1>Belum terverifikas</option>
                                                 <option @if($pesertadidik->user->is_data_verified == 2) selected @endif value=2>Terverifikas</option>
                                                 <option @if($pesertadidik->user->is_data_verified == 3) selected @endif value=3>Data salah</option>
                                         </select>
@@ -330,10 +328,10 @@
                             </div>
                     </td>
                     <td class="text-center">
+                    </td>
+                </tr>
                 @endif
                 @endforeach
-                    </td>
-                    </tr>
                 </tbody>
             </table>
             <div class="d-flex justify-content-center">

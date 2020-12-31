@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Enums\{Agama,KebutuhanKhusus,ModaTransportasi,Pekerjaan,Pendidikan,Penghasilan,TempatTiggal,Tingkat};
 use App\Models\CalonSiswaSd;
 use App\Models\User;
 use Illuminate\Http\Request;
@@ -25,6 +26,14 @@ class CalonSiswaSdController extends Controller
         return view('user.calon-sd.formulir', [
             'user' => Auth::user(),
             'calon_siswa_sds' => $calon_siswa_sds,
+            'agama' => Agama::getValues(),
+            'kebutuhan_khusus' => KebutuhanKhusus::getValues(),
+            'moda_transportasi' => ModaTransportasi::getValues(),
+            'pekerjaan' => Pekerjaan::getValues(),
+            'pendidikan' => Pendidikan::getValues(),
+            'penghasilan' => Penghasilan::getValues(),
+            'tempat_tinggal' => TempatTiggal::getValues(),
+            'tingkat' => Tingkat::getValues(),
         ]);
     }
 
@@ -59,8 +68,8 @@ class CalonSiswaSdController extends Controller
             'nama_ayah' => 'required',
             'nama_ibu' => 'required',
             'nama_wali',
-            'tahun_lahir_ayah' => 'required|digit:4',
-            'tahun_lahir_ibu' => 'required|digit:4',
+            'tahun_lahir_ayah' => 'required|digits:4',
+            'tahun_lahir_ibu' => 'required|digits:4',
             'tahun_lahir_wali',
             'pekerjaan_ayah' => 'required',
             'pekerjaan_ibu' => 'required',
@@ -80,9 +89,7 @@ class CalonSiswaSdController extends Controller
             'scan_ktp_ortu' => 'required|mimes:jpg,png,jpeg',
         ]);
         
-        $attr['ttl'] = $request->session()->get('t') . ', ' . $request->session()->get('tl');;
-
-        dd($request);
+        // $attr['ttl'] = $request->session()->get('t') . ', ' . $request->session()->get('tl');
 
         // $attr['nama_wali'] = $request->nama_wali;
         // $attr['alamat_wali'] = $request->alamat_wali;

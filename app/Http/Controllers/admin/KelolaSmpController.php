@@ -4,8 +4,10 @@ namespace App\Http\Controllers\admin;
 
 use App\Http\Controllers\Controller;
 use App\Models\CalonSiswaSmp;
+use App\Models\PrestasiDanBeasiswa;
 use App\Models\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
 
 class KelolaSmpController extends Controller
@@ -53,6 +55,30 @@ class KelolaSmpController extends Controller
         $calon_siswa_smps = CalonSiswaSmp::paginate(10);
 
         return view('admin.smp.verifikasi', [
+            'user' => Auth::user(),
+            'prestasi' => PrestasiDanBeasiswa::get(),
+            'calon_siswa_smps' => $calon_siswa_smps,
+        ]);
+    }
+
+    public function tabelVerifikasiValid()
+    {
+        $calon_siswa_smps = CalonSiswaSmp::paginate(10);
+
+        return view('admin.smp.terverifikasi', [
+            'user' => Auth::user(),
+            'prestasi' => PrestasiDanBeasiswa::get(),
+            'calon_siswa_smps' => $calon_siswa_smps,
+        ]);
+    }
+
+    public function tabelVerifikasiTakValid()
+    {
+        $calon_siswa_smps = CalonSiswaSmp::paginate(10);
+
+        return view('admin.smp.terverifikasisalah', [
+            'user' => Auth::user(),
+            'prestasi' => PrestasiDanBeasiswa::get(),
             'calon_siswa_smps' => $calon_siswa_smps,
         ]);
     }
