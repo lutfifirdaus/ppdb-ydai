@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Models\CalonSiswaSma;
 use App\Models\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
 
 class KelolaSmaController extends Controller
@@ -56,12 +57,32 @@ class KelolaSmaController extends Controller
         ]);
     }
 
+    public function showData($id)
+    {
+        return view('admin.sma.show', [
+            'pesertadidik' => User::find($id),
+            'user' => Auth::user(),
+        ]);
+    }
+
+    public function tabelVerifikasiValid()
+    {
+        return view('admin.sma.terverifikasi', [
+            'calon_siswa_smas' => CalonSiswaSma::paginate(10),
+        ]);
+    }
+
+    public function tabelVerifikasiTakValid()
+    {
+        return view('admin.sma.terverifikasisalah', [
+            'calon_siswa_smas' => CalonSiswaSma::paginate(10),
+        ]);
+    }
+
     public function tabelBayar()
     {
-        $calon_siswa_smas = CalonSiswaSma::paginate(10);
-
-        return view('admin.sma.verifikasi', [
-            'calon_siswa_smas' => $calon_siswa_smas,
+        return view('admin.sma.tagihan', [
+            'billings' => DB::table('billings')->join('calon_siswa_smas', 'calon_siswa_smas.user_id', '=', 'billings.user_id')->where('no_registrasi', 'LIKE', '001%')->paginate(10),
         ]);
     }
 }

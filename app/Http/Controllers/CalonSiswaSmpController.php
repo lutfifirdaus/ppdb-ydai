@@ -9,6 +9,7 @@ use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\File;
 use Illuminate\Validation\Rule;
 use Intervention\Image\Facades\Image;
 
@@ -27,7 +28,6 @@ class CalonSiswaSmpController extends Controller
         return view('user.calon-smp.formulir', [
             'user' => Auth::user(),
             'prestasi' => PrestasiDanBeasiswa::get(),
-            'calon_siswa_smps' => CalonSiswaSmp::get(),
             'agama' => Agama::getValues(),
             'kebutuhan_khusus' => KebutuhanKhusus::getValues(),
             'moda_transportasi' => ModaTransportasi::getValues(),
@@ -169,8 +169,8 @@ class CalonSiswaSmpController extends Controller
         $prestasi = new PrestasiDanBeasiswa($attr2);
         $form = new CalonSiswaSmp($attr);
 
-        if($user->prestasi()->save($prestasi)){
-            $user->csSmp()->save($form);
+        if($user->csSmp()->save($form) != null){
+            $user->prestasi()->save($prestasi);
             $user->save();
         }
         
@@ -277,6 +277,9 @@ class CalonSiswaSmpController extends Controller
         // $attr['pekerjaan_wali'] = $request->pekerjaan_wali;
 
         if ($request->hasFile('foto_pd')) {
+            if(File::exists(public_path('dokumen/smp/' . $calon_siswa_smp->foto_pd))){
+                File::delete(public_path('dokumen/smp/' . $calon_siswa_smp->foto_pd));
+            }
             $foto = $request->file('foto_pd');
             $namafoto = $request->nisn . "-pas-foto" . "." . $foto->extension();
             $location = public_path('dokumen/smp/' . $namafoto);
@@ -285,6 +288,9 @@ class CalonSiswaSmpController extends Controller
         }
 
         if ($request->hasFile('scan_ijazah')) {
+            if(File::exists(public_path('dokumen/smp/' . $calon_siswa_smp->scan_ijazah))){
+                File::delete(public_path('dokumen/smp/' . $calon_siswa_smp->scan_ijazah));
+            }
             $ijazah = $request->file('scan_ijazah');
             $namaijazah = $request->nisn . "-scan-ijazah" . "." . $ijazah->extension();
             $location = public_path('dokumen/smp/' . $namaijazah);
@@ -293,6 +299,9 @@ class CalonSiswaSmpController extends Controller
         }
 
         if ($request->hasFile('scan_skhun')) {
+            if(File::exists(public_path('dokumen/smp/' . $calon_siswa_smp->scan_skhun))){
+                File::delete(public_path('dokumen/smp/' . $calon_siswa_smp->scan_skhun));
+            }
             $skhun = $request->file('scan_skhun');
             $namaskhun = $request->nisn . "-scan-skhun" . "." . $skhun->extension();
             $location = public_path('dokumen/smp/' . $namaskhun);
@@ -311,7 +320,7 @@ class CalonSiswaSmpController extends Controller
         $prestasi = new PrestasiDanBeasiswa($attr2);
         $form = new CalonSiswaSmp($attr);
 
-        if ($user->csSmp()->update($attr)) {
+        if ($user->csSmp()->update($attr) != null) {
             $user->prestasi()->sync($attr2);
             $user->push();
         }
@@ -322,11 +331,8 @@ class CalonSiswaSmpController extends Controller
 
     public function billing()
     {
-        $calon_siswa_smps = CalonSiswaSmp::get();
-
         return view('user.calon-smp.cetakbilling', [
             'user' => Auth::user(),
-            'calon_siswa_smps' => $calon_siswa_smps
         ]);
     }
 }

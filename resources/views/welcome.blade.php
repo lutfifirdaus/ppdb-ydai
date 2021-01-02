@@ -105,7 +105,11 @@
                 <li class="nav-item">
                     @if (Route::has('login'))
                         @auth
-                            <a href="{{ route('admin.page') }}" class="nav-link">Home</a>
+                            @if(Auth::user()->hasRole('admin') || Auth::user()->hasRole('super-admin'))
+                                <a href="{{ route('admin.page') }}" class="nav-link">Home</a>
+                            @elseif(Auth::user()->hasRole('calon'))
+                                <a href="{{ route('calon') }}" class="nav-link">Home</a>
+                            @endif
                         @else
                     </li>
                     <li class="nav-item my-2 my-lg-0">

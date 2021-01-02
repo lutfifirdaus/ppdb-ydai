@@ -3,7 +3,7 @@
     <nav class="navbar navbar-expand-md navbar-dark bg-success shadow-sm">
         <a class="navbar-brand" @if(Auth::check() && auth()->user()->hasRole('calon')) href="{{ route('calon') }}" @elseif(Auth::check() && auth()->user()->hasRole('admin')) href="{{ route('admin.page') }}" @else href="/" @endif >
             {{-- <img src="/picture/logo-ydai2.jpeg" width="50" height="30" alt="logo YDAI"> --}}
-            {{ config('app.name') }}
+            Beranda
         </a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="{{ __('Toggle navigation') }}">
             <span class="navbar-toggler-icon"></span>

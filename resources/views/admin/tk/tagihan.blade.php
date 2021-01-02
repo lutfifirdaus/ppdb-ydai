@@ -1,7 +1,7 @@
 @extends('admin.layouts.app')
 
 @section('header.content')
-    <h2 class="text-center mt-3">Daftar Calon Peserta Didik SMA Dharma Karya</h2>
+    <h2 class="text-center mt-3">Daftar Calon Peserta Didik TK Ananda UT</h2>
 @endsection
 
 @section('main.content')
@@ -78,13 +78,13 @@
                     </tr>
                 </thead>
                 <tbody>
-                    @foreach ($get_tk as $pesertadidik)
+                    @foreach ($billings as $billing)
                         <tr>
-                            <td>{{ $pesertadidik->user->no_registrasi }}</td>
-                            <td>{{ $pesertadidik->nama_pd }}</td>
-                            <td>{{ $pesertadidik->user->billing->no_billing }}</td>
-                            <td>{{ $pesertadidik->user->billing->status_bayar }} @if($pesertadidik->jenis_pembayaran != null) . {{ $pesertadidik->jenis_pembayaran }}@endif</td>
-                            <td>{{ $pesertadidik->user->billing->tanggal_bayar }}</td>
+                            <td>{{ $billing->no_registrasi }}</td>
+                            <td>{{ $billing->nama_pd }}</td>
+                            <td>{{ $billing->no_billing }}</td>
+                            <td>@if($billing->status_bayar == null) - @else {{ $billing->status_bayar }} @if($billing->jenis_pembayaran != null) . {{ $billing->jenis_pembayaran }}@endif @endif</td>
+                            <td>@if($billing->tanggal_bayar == null) - @else {{ $billing->tanggal_bayar }} @endif</td>
                             <td>
                             </td>
                         </tr>
@@ -92,7 +92,7 @@
                 </tbody>
             </table>
             <div class="d-flex justify-content-center">
-                {{ $calon_siswa_tks->links() }}
+                {{ $billings->links() }}
             </div>
         </div>
     </div>

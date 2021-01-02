@@ -8,6 +8,7 @@ use App\Http\Controllers\CalonSiswaSmaController;
 use App\Http\Controllers\CalonSiswaSmpController;
 use App\Http\Controllers\CalonSiswaSdController;
 use App\Http\Controllers\CalonSiswaTkController;
+use App\Http\Controllers\HomeController;
 use App\Http\Controllers\UserController;
 use App\Models\CalonSiswaTk;
 use Illuminate\Support\Facades\Auth;
@@ -42,9 +43,9 @@ Route::group(['prefix' => 'admin', 'middleware' => 'role:admin|super-admin'], fu
     //alamat untuk admin sma
     Route::group(['prefix' => 'sma', 'middleware' => 'permission:kelola data calon sma'], function () {
         Route::get('/', [KelolaSmaController::class, 'index'])->name('index.sma');
-        Route::get('/verifikas-data', [KelolaSmaController::class, 'tabelVerifikasi'])->name('verifikasi.sma');
-        // Route::get('/verifikas-data', [KelolaSmaController::class, 'tabelVerifikasiValid'])->name('verifikasi.sma.valid');
-        // Route::get('/verifikas-data', [KelolaSmaController::class, 'tabelVerifikasiTakValid'])->name('verifikasi.sma.takvalid');
+        Route::get('/verifikasi-data', [KelolaSmaController::class, 'tabelVerifikasi'])->name('verifikasi.sma');
+        Route::get('/verifikasi-data-valid', [KelolaSmaController::class, 'tabelVerifikasiValid'])->name('verifikasi.sma.valid');
+        Route::get('/verifikasi-data-takvalid', [KelolaSmaController::class, 'tabelVerifikasiTakValid'])->name('verifikasi.sma.takvalid');
         Route::put('/verifikasi-data/{user:id}', [KelolaSmaController::class, 'verifikasiData']);
         Route::get('/pembayaran-data',[KelolaSmaController::class, 'tabelBayar'])->name('pembayaran.sma');
     });
@@ -52,9 +53,10 @@ Route::group(['prefix' => 'admin', 'middleware' => 'role:admin|super-admin'], fu
     //alamat untuk admin smp
     Route::group(['prefix' => 'smp', 'middleware' =>'permission:kelola data calon smp'], function () {
         Route::get('/', [KelolaSmpController::class, 'index'])->name('index.smp');
-        Route::get('/verifikas-data', [KelolaSmpController::class, 'tabelVerifikasi'])->name('verifikasi.smp');
-        // Route::get('/verifikas-data', [KelolaSmpController::class, 'tabelVerifikasiValid'])->name('verifikasi.smp.valid');
-        // Route::get('/verifikas-data', [KelolaSmpController::class, 'tabelVerifikasiTakValid'])->name('verifikasi.smp.takvalid');
+        Route::get('/verifikasi-data', [KelolaSmpController::class, 'tabelVerifikasi'])->name('verifikasi.smp');
+        Route::get('/verifikasi-data-valid', [KelolaSmpController::class, 'tabelVerifikasiValid'])->name('verifikasi.smp.valid');
+        Route::get('/verifikasi-data-takvalid', [KelolaSmpController::class, 'tabelVerifikasiTakValid'])->name('verifikasi.smp.takvalid');
+        Route::get('/verifikasi-data/show/{user:id}', [KelolaSmpController::class, 'showData'])->name('verifikasi.smp.show');
         Route::put('/verifikasi-data/{user:id}', [KelolaSmpController::class, 'verifikasiData']);
         Route::get('/pembayaran-data',[KelolaSmpController::class, 'tabelBayar'])->name('pembayaran.smp');
     });
@@ -62,9 +64,10 @@ Route::group(['prefix' => 'admin', 'middleware' => 'role:admin|super-admin'], fu
     //alamat untuk admin sd
     Route::group(['prefix' => 'sd', 'middleware' =>'permission:kelola data calon sd'], function () {
         Route::get('/', [KelolaSdController::class, 'index'])->name('index.sd');
-        Route::get('/verifikas-data', [KelolaSdController::class, 'tabelVerifikasi'])->name('verifikasi.sd');
-        // Route::get('/verifikas-data', [KelolaSdController::class, 'tabelVerifikasiValid'])->name('verifikasi.sd.valid');
-        // Route::get('/verifikas-data', [KelolaSdController::class, 'tabelVerifikasiTakValid'])->name('verifikasi.sd.takvalid');
+        Route::get('/verifikasi-data', [KelolaSdController::class, 'tabelVerifikasi'])->name('verifikasi.sd');
+        Route::get('/verifikasi-data-valid', [KelolaSdController::class, 'tabelVerifikasiValid'])->name('verifikasi.sd.valid');
+        Route::get('/verifikasi-data-takvalid', [KelolaSdController::class, 'tabelVerifikasiTakValid'])->name('verifikasi.sd.takvalid');
+        Route::get('/verifikasi-data/show/{user:id}', [KelolaSdController::class, 'showData'])->name('verifikasi.sd.show');
         Route::put('/verifikasi-data/{user:id}', [KelolaSdController::class, 'verifikasiData']);
         Route::get('/pembayaran-data',[KelolaSdController::class, 'tabelBayar'])->name('pembayaran.sd');
     });
@@ -72,9 +75,10 @@ Route::group(['prefix' => 'admin', 'middleware' => 'role:admin|super-admin'], fu
     //alamat untuk admin tk
     Route::group(['prefix' => 'tk', 'middleware' =>'permission:kelola data calon tk'], function () {
         Route::get('/', [KelolaTkController::class, 'index'])->name('index.tk');
-        Route::get('/verifikas-data', [KelolaTkController::class, 'tabelVerifikasi'])->name('verifikasi.tk');
-        Route::get('/verifikas-data-valid', [KelolaTkController::class, 'tabelVerifikasiValid'])->name('verifikasi.tk.valid');
-        Route::get('/verifikas-data-takvalid', [KelolaTkController::class, 'tabelVerifikasiTakValid'])->name('verifikasi.tk.takvalid');
+        Route::get('/verifikasi-data', [KelolaTkController::class, 'tabelVerifikasi'])->name('verifikasi.tk');
+        Route::get('/verifikasi-data-valid', [KelolaTkController::class, 'tabelVerifikasiValid'])->name('verifikasi.tk.valid');
+        Route::get('/verifikasi-data-takvalid', [KelolaTkController::class, 'tabelVerifikasiTakValid'])->name('verifikasi.tk.takvalid');
+        Route::get('/verifikasi-data/show/{user:id}', [KelolaTkController::class, 'showData'])->name('verifikasi.tk.show');
         Route::put('/verifikasi-data/{user:id}', [KelolaTkController::class, 'verifikasiData']);
         Route::get('/pembayaran-data',[KelolaTkController::class, 'tabelBayar'])->name('pembayaran.tk');
     });
@@ -82,7 +86,7 @@ Route::group(['prefix' => 'admin', 'middleware' => 'role:admin|super-admin'], fu
 
 //alamat untuk calon peserta didik
 Route::group(['prefix' => 'calon', 'middleware' => 'role:calon|super-admin'], function () {
-    Route::view('/', 'home')->name('calon');
+    Route::get('/', [HomeController::class, 'index'])->name('calon');
     Route::post('siswa/kirim-email', [UserController::class, 'kirimEmail'])->name('kirim.email');
 
 

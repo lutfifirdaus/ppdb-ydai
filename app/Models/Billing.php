@@ -11,8 +11,10 @@ class Billing extends Model
 
     protected $fillable = []; 
 
+    protected $table = 'billings';
+
     public function user(){
-        return $this->belongsTo(User::class, 'no_registrasi', 'no_registras');
+        return $this->belongsTo(User::class, 'no_registrasi');
     }
 }
 

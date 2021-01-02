@@ -15,7 +15,7 @@
                 <p style="font-size: 18px">
                     Halo <b>{{ Auth::user()->name }}</b>&#128075;
                     <br>
-                    Lorem ipsum dolor sit amet consectetur adipisicing elit. Sunt ratione officiis architecto nemo accusamus aperiam repellendus, libero quia incidunt perspiciatis deleniti, amet ea itaque provident. Maxime vel itaque nam quod, cupiditate quae ipsa rem omnis similique a? Officiis explicabo nam facere non! Exercitationem, totam pariatur assumenda placeat libero nesciunt deserunt!
+                    Dengan Anda mendaftarkan diri pada website ini, Anda secara otomatis menyetujui serta mengikuti syarat dan ketentuan yang berlaku. Berikut <a href="#">Syarat dan Ketentuan</a> 
                 </p>
                 
                 <br>
@@ -41,7 +41,7 @@
                                 </h4>
                             </div>
                             <div class="icon">
-                                <i class="fas fa-list"></i>
+                                <i class="fas fa-school"></i>
                             </div>
                             <a href="#" class="small-box-footer">
                                 @if (Auth::user()->status == 0)
@@ -75,7 +75,7 @@
                             </div>
                             <a href="#" class="small-box-footer">
                                 <a href="#" class="small-box-footer">
-                                    @if (Auth::user()->is_data_verified == 0)
+                                    @if (Auth::user()->is_data_verified == 0 || Auth::user()->is_data_verified == 3)
                                         <i class="fas fa-times my-1"></i>
                                     @elseif (Auth::user()->is_data_verified == 1)
                                         <i class="fas fa-clock my-1"></i>
@@ -129,11 +129,32 @@
             {{-- content card --}}
             <div class="col-sm-7 col-md-8">
                 <div class="card" style="height: 20rem">
+                    <div class="card-header">
+                        <h5>Inbox Masuk</h5>
+                    </div>
                     <div class="card-body">
-                        <div class="col-lg-3 col-6">
-
-
-                        </div>
+                        @if(DB::table('pesans')->where('to', '=', $id))
+                        <table class="table table-bordered">
+                            <thead class="thead-light">
+                                <tr>
+                                    <th>Dari</th>
+                                    <th>Kepada</th>
+                                    <th>Isi Pesan</th>
+                                    <th>Tgl</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                @foreach($pesan as $pesan)
+                                <tr>
+                                    <td>{{ $pesan->from }}</td>
+                                    <td>{{ $pesan->to }}</td>
+                                    <td>{{ $pesan->isi }}</td>
+                                    <td>{{ $pesan->created_at }}</td>
+                                </tr>
+                                @endforeach
+                            </tbody>
+                        </table>
+                        @endif
                     </div>
                 </div>
             </div>
@@ -141,9 +162,10 @@
             {{-- sidebar --}}
             <div class="col-sm col-md">
                 <div class="card" style="height: 20rem">
-                    <div class="card-body">
+                    <div class="card-header">
                         <h5>Pesan dan Bantuan</h5>
-                        <hr>
+                    </div>
+                    <div class="card-body">
                         <form action="" method="post">
                             <div class="form-group">
                                 <input type="text" name="name" class="form-control" value="{{ old('name') }}"

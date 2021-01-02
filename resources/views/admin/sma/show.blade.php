@@ -262,8 +262,7 @@
         </div>
     </div>
     <div class="card-footer">
-        @if($pesertadidik->is_data_verified == 3 || $pesertadidik->is_data_verified == 1)
-        <form action="/admin/tk/verifikasi-data/{{ $pesertadidik->id }}" method="POST">
+        <form action="/admin/tk/verifikasi-data/{{ $pesertadidik->csTk->user->id }}" method="POST">
         @csrf
         @method('PUT')
             <div class="d-flex justify-content-around">
@@ -271,9 +270,9 @@
                     <label for="is_data_verified" class="form-label">Jika data telah valid maka pilih 'Terverifikas'. Jika ada yang salah maka pilih 'Data salah' dan berikan pesan kepada calon.</label>
                     <div class="row">
                         <select name="is_data_verified" id="is_data_verified" class="form-control col-4">    
-                            <option @if($pesertadidik->is_data_verified == 1) selected @endif disabled value=1>Belum terverifikas</option>
-                            <option @if($pesertadidik->is_data_verified == 2) selected @endif value=2>Terverifikas</option>
-                            <option @if($pesertadidik->is_data_verified == 3) selected @endif value=3>Data salah</option>
+                            <option @if($pesertadidik->csTk->user->is_data_verified == 1) selected @endif disabled value=1>Belum terverifikas</option>
+                            <option @if($pesertadidik->csTk->user->is_data_verified == 2) selected @endif value=2>Terverifikas</option>
+                            <option @if($pesertadidik->csTk->user->is_data_verified == 3) selected @endif value=3>Data salah</option>
                         </select>
                         <textarea rows="1" placeholder="Batas 300 huruf" name="isi" id="isi" class="form-control col-8"></textarea>
                         <input value="{{ $user->id }}" id="from" name="from" hidden>
@@ -284,7 +283,6 @@
                 </div>
             </div>
         </form>
-        @endif
     </div>
 </div>
 @endsection

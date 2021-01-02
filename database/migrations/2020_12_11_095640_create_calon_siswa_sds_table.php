@@ -17,7 +17,7 @@ class CreateCalonSiswaSdsTable extends Migration
             //data registrasi
             $table->string('sekolah_asal', 20);
             $table->string('kecamatan_sekolah_asal', 20);
-            $table->string('tahun_ajaran');
+            $table->year('tahun_ajaran');
             
             //data anak
             $table->foreignId('user_id')->constrained()->cascadeOnUpdate;
@@ -41,10 +41,9 @@ class CreateCalonSiswaSdsTable extends Migration
             $table->char('kode_pos', 5);
             $table->string('lintang');
             $table->string('bujur');
-            $table->char('telp_rumah', 12)->nullable();
-            $table->char('telp_pd', 13);
+            $table->char('telp_rumah')->nullable();
+            $table->char('telp_pd', 15);
             $table->string('moda_transportasi');
-            $table->string('tempat_tinggal');
             $table->string('jenis_tinggal');
             $table->boolean('penerima_kks')->default(0);
             $table->boolean('penerima_kps')->default(0);
@@ -88,6 +87,7 @@ class CreateCalonSiswaSdsTable extends Migration
             $table->string('scan_kks')->nullable();
             $table->string('scan_kps')->nullable();
             $table->string('scan_kip')->nullable();
+            
             $table->timestamps();
         });
     }

@@ -30,7 +30,7 @@
                 </tr>
                 </thead>
                 <tbody>
-                @foreach ($calon_siswa_smps as $pesertadidik)
+                @foreach ($calon_siswa_smas as $pesertadidik)
                 @if($pesertadidik->user->is_data_verified == 3)
                 <tr>
                     <td>{{ $pesertadidik->user->no_registrasi }}</td>
@@ -302,18 +302,18 @@
                                         <div class="mb-3 ml-3 text-center"><b><h4>DOKUMEN</h4></b>
                                             
                                             <div class="text-left">Scan Akta Kelahiran</div>
-                                            <img class="d-flex mx-auto mb-3" src="{{ asset('dokumen/smp/' . $pesertadidik->scan_akta) }}" alt="{{ $pesertadidik->scan_akta }}">
+                                            <img class="d-flex mx-auto mb-3" src="{{ asset('dokumen/sma/' . $pesertadidik->scan_akta) }}" alt="{{ $pesertadidik->scan_akta }}">
                                         
                                             <div class="text-left">Scan Kartu Keluarga</div>
-                                            <img class="d-flex mx-auto mb-3" src="{{ asset('dokumen/smp/' . $pesertadidik->scan_kk) }}" alt="{{ $pesertadidik->scan_kk }}">
+                                            <img class="d-flex mx-auto mb-3" src="{{ asset('dokumen/sma/' . $pesertadidik->scan_kk) }}" alt="{{ $pesertadidik->scan_kk }}">
                                         
                                             <div class="text-left">Scan KTP Orangtua</div>
-                                            <img class="d-flex mx-auto mb-3" src="{{ asset('dokumen/smp/' . $pesertadidik->scan_ktp_ortu) }}" alt="{{ $pesertadidik->scan_ktp_ortu }}">
+                                            <img class="d-flex mx-auto mb-3" src="{{ asset('dokumen/sma/' . $pesertadidik->scan_ktp_ortu) }}" alt="{{ $pesertadidik->scan_ktp_ortu }}">
                                             
                                         </div>
                                     </div>
                                     <div class="modal-footer">
-                                        <form action="/admin/smp/verifikasi-data/{{ $pesertadidik->user->id }}" method="POST">
+                                        <form action="/admin/sma/verifikasi-data/{{ $pesertadidik->user->id }}" method="POST">
                                         @csrf
                                         @method('PUT')
                                         <select name="is_data_verified" id="is_data_verified">    
@@ -335,7 +335,7 @@
                 </tbody>
             </table>
             <div class="d-flex justify-content-center">
-            {{ $calon_siswa_smps->links() }}
+            {{ $calon_siswa_smas->links() }}
             </div>
         </div>
     </div>

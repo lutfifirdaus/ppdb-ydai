@@ -12,7 +12,7 @@
         </div>
     </div>
     
-    @if ($pesertadidik->user->billing->no_billing != null)
+    @if ($user->billing->no_billing != null)
         <hr>
         <div class="card">
             <div class="card-header text-center">
@@ -22,23 +22,23 @@
                 <div class="card-title mb-3">
                     <div class="row">
                         <div class="col-sm-4 col-md-3">Atas Nama</div>
-                        <div class="col-sm-4 col-md-3">: {{ $pesertadidik->nama_pd}}</div>
+                        <div class="col-sm-4 col-md-3">: {{ $user->csSd->nama_pd}}</div>
                     </div> 
                     <hr>
                 </div>
                 <div class="card-text">
                     <div class="row">
                         <div class="col-sm-4 col-md-3 border p-3">Nomor Registrasi</div>
-                        <div class="col-sm-8 col-md-3 border p-3">: {{ $pesertadidik->user->no_registrasi }}</div>
+                        <div class="col-sm-8 col-md-3 border p-3">: {{ $user->no_registrasi }}</div>
                         
                         <div class="col-sm-4 col-md-3 border p-3">Nomor Billing</div>
-                        <div class="col-sm-8 col-md-3 border p-3">: {{ $pesertadidik->user->billing->no_billing }}</div>
+                        <div class="col-sm-8 col-md-3 border p-3">: {{ $user->billing->no_billing }}</div>
 
                         <div class="col-sm-4 col-md-3 border p-3">Batas Tanggal Pembayaran</div>
-                        <div class="col-sm-8 col-md-3 border p-3">: {{ $pesertadidik->user->user_date_create }}</div>
+                        <div class="col-sm-8 col-md-3 border p-3">: {{ $user->user_date_create }}</div>
                         
                         <div class="col-sm-4 col-md-3 border p-3">Tanggal Pembayaran</div>
-                        <div class="col-sm-8 col-md-3 border p-3">: {{ $pesertadidik->user->billing->tanggal_bayar }}</div>
+                        <div class="col-sm-8 col-md-3 border p-3">: {{ $user->billing->tanggal_bayar }}</div>
                     </div>
                 </div>
             </div>

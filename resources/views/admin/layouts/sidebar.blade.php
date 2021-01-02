@@ -46,7 +46,8 @@
                 </li>
 
                 {{-- tk --}}
-                <li class="nav-item{{ request()->fullUrl() == route('index.tk')||route('verifikasi.tk')||route('pembayaran.tk') ? ' menu-is-opening menu-open' : '' }}">
+                @can('kelola data calon tk')
+                <li class="nav-item{{ request()->fullUrl() ? ' menu-is-opening menu-open' : '' }}">
                     <a href="#" class="nav-link">
                         <i class="nav-icon fas fa-user"></i>
                         <p>
@@ -58,13 +59,13 @@
                         <li class="nav-item">
                             <a href="{{ route('index.tk') }}" class="nav-link{{ request()->fullUrl() == route('index.tk') ? ' active' : '' }}">
                                 <i class="fas fa-database"></i>
-                                <p>Data PPDB</p>
+                                <p>Beranda PPDB</p>
                             </a>
                         </li>
                         <li class="nav-item">
                             <a href="{{ route('verifikasi.tk') }}" class="nav-link{{ request()->fullUrl() == route('verifikasi.tk') ? ' active' : '' }}">
                                 <i class="fas fa-table"></i>
-                                <p>Verifikasi</p>
+                                <p>Data Verifikasi</p>
                             </a>
                         </li>
                         <li class="nav-item">
@@ -82,18 +83,20 @@
                         <li class="nav-item">
                             <a href="{{ route('pembayaran.tk') }}" class="nav-link{{ request()->fullUrl() == route('pembayaran.tk') ? ' active' : '' }}">
                                 <i class="fas fa-money-check"></i>
-                                <p>Pembayaran</p>
+                                <p>Data Pembayaran</p>
                             </a>
                         </li>
                     </ul>
                 </li>
+                @endcan
 
                 {{-- sd --}}
-                <li class="nav-item{{ request()->fullUrl() == route('index.sd')||route('verifikasi.sd')||route('pembayaran.sd') ? ' menu-is-opening menu-open' : '' }}">
+                @can('kelola data calon sd')
+                <li class="nav-item{{ request()->fullUrl() ? ' menu-is-opening menu-open' : '' }}">
                     <a href="#" class="nav-link">
                         <i class="nav-icon fas fa-user"></i>
                         <p>
-                            SD Dharma Karya UT
+                            SD
                             <i class="right fas fa-angle-left"></i>
                         </p>
                     </a>
@@ -101,26 +104,40 @@
                         <li class="nav-item">
                             <a href="{{ route('index.sd') }}" class="nav-link{{ request()->fullUrl() == route('index.sd') ? ' active' : '' }}">
                                 <i class="fas fa-database"></i>
-                                <p>Data PPDB</p>
+                                <p>Beranda PPDB</p>
                             </a>
                         </li>
                         <li class="nav-item">
                             <a href="{{ route('verifikasi.sd') }}" class="nav-link{{ request()->fullUrl() == route('verifikasi.sd') ? ' active' : '' }}">
+                                <i class="fas fa-table"></i>
+                                <p>Data Verifikasi</p>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="{{ route('verifikasi.sd.valid') }}" class="nav-link{{ request()->fullUrl() == route('verifikasi.sd.valid') ? ' active' : '' }}">
                                 <i class="fas fa-check"></i>
-                                <p>Terverifikasi</p>
+                                <p>Terverifikasi Benar</p>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="{{ route('verifikasi.sd.takvalid') }}" class="nav-link{{ request()->fullUrl() == route('verifikasi.sd.takvalid') ? ' active' : '' }}">
+                                <i class="fas fa-times"></i>
+                                <p>Terverifikasi Salah</p>
                             </a>
                         </li>
                         <li class="nav-item">
                             <a href="{{ route('pembayaran.sd') }}" class="nav-link{{ request()->fullUrl() == route('pembayaran.sd') ? ' active' : '' }}">
                                 <i class="fas fa-money-check"></i>
-                                <p>Pembayaran</p>
+                                <p>Data Pembayaran</p>
                             </a>
                         </li>
                     </ul>
                 </li>
-                
+                @endcan
+
                 {{-- smp --}}
-                <li class="nav-item">
+                @can('kelola data calon smp')
+                <li class="nav-item{{ request()->fullUrl() ? ' menu-is-opening menu-open' : '' }}">
                     <a href="#" class="nav-link">
                         <i class="nav-icon fas fa-user"></i>
                         <p>
@@ -130,28 +147,42 @@
                     </a>
                     <ul class="nav nav-treeview">
                         <li class="nav-item">
-                            <a href="{{ route('index.smp') }}" class="nav-link">
+                            <a href="{{ route('index.smp') }}" class="nav-link{{ request()->fullUrl() == route('index.smp') ? ' active' : '' }}">
                                 <i class="fas fa-database"></i>
-                                <p>Data PPDB</p>
+                                <p>Beranda PPDB</p>
                             </a>
                         </li>
                         <li class="nav-item">
-                            <a href="{{ route('verifikasi.smp') }}" class="nav-link">
+                            <a href="{{ route('verifikasi.smp') }}" class="nav-link{{ request()->fullUrl() == route('verifikasi.smp') ? ' active' : '' }}">
+                                <i class="fas fa-table"></i>
+                                <p>Data Verifikasi</p>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="{{ route('verifikasi.smp.valid') }}" class="nav-link{{ request()->fullUrl() == route('verifikasi.smp.valid') ? ' active' : '' }}">
                                 <i class="fas fa-check"></i>
-                                <p>Terverifikasi</p>
+                                <p>Terverifikasi Benar</p>
                             </a>
                         </li>
                         <li class="nav-item">
-                            <a href="#" class="nav-link">
+                            <a href="{{ route('verifikasi.smp.takvalid') }}" class="nav-link{{ request()->fullUrl() == route('verifikasi.smp.takvalid') ? ' active' : '' }}">
+                                <i class="fas fa-times"></i>
+                                <p>Terverifikasi Salah</p>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="{{ route('pembayaran.smp') }}" class="nav-link{{ request()->fullUrl() == route('pembayaran.smp') ? ' active' : '' }}">
                                 <i class="fas fa-money-check"></i>
-                                <p>Pembayaran</p>
+                                <p>Data Pembayaran</p>
                             </a>
                         </li>
                     </ul>
                 </li>
+                @endcan
 
                 {{-- sma --}}
-                <li class="nav-item">
+                @can('kelola data calon sma')
+                <li class="nav-item{{ request()->fullUrl() ? ' menu-is-opening menu-open' : '' }}">
                     <a href="#" class="nav-link">
                         <i class="nav-icon fas fa-user"></i>
                         <p>
@@ -161,26 +192,38 @@
                     </a>
                     <ul class="nav nav-treeview">
                         <li class="nav-item">
-                            <a href="{{ route('index.sma') }}" class="nav-link">
+                            <a href="{{ route('index.sma') }}" class="nav-link{{ request()->fullUrl() == route('index.sma') ? ' active' : '' }}">
                                 <i class="fas fa-database"></i>
-                                <p>Data PPDB</p>
+                                <p>Beranda PPDB</p>
                             </a>
                         </li>
                         <li class="nav-item">
-                            <a href="{{ route('verifikasi.sma') }}" class="nav-link">
+                            <a href="{{ route('verifikasi.sma') }}" class="nav-link{{ request()->fullUrl() == route('verifikasi.sma') ? ' active' : '' }}">
+                                <i class="fas fa-table"></i>
+                                <p>Data Verifikasi</p>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="{{ route('verifikasi.sma.valid') }}" class="nav-link{{ request()->fullUrl() == route('verifikasi.sma.valid') ? ' active' : '' }}">
                                 <i class="fas fa-check"></i>
-                                <p>Terverifikasi</p>
+                                <p>Terverifikasi Benar</p>
                             </a>
                         </li>
                         <li class="nav-item">
-                            <a href="#" class="nav-link">
+                            <a href="{{ route('verifikasi.sma.takvalid') }}" class="nav-link{{ request()->fullUrl() == route('verifikasi.sma.takvalid') ? ' active' : '' }}">
+                                <i class="fas fa-times"></i>
+                                <p>Terverifikasi Salah</p>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="{{ route('pembayaran.sma') }}" class="nav-link{{ request()->fullUrl() == route('pembayaran.sma') ? ' active' : '' }}">
                                 <i class="fas fa-money-check"></i>
-                                <p>Pembayaran</p>
+                                <p>Data Pembayaran</p>
                             </a>
                         </li>
                     </ul>
                 </li>
-
+                @endcan
         </nav>
         <!-- /.sidebar-menu -->
     </div>

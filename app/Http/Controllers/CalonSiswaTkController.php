@@ -10,6 +10,7 @@ use Intervention\Image\Facades\Image;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\File;
 
 class CalonSiswaTkController extends Controller
 {
@@ -22,12 +23,10 @@ class CalonSiswaTkController extends Controller
 
     public function create()
     {
-        $calon_siswa_tks = DB::select('select * from calon_siswa_tks');
 
         return view('user.calon-tk.formulir', [
             'user' => Auth::user(),
             'prestasi' => PrestasiDanBeasiswa::get(),
-            'calon_siswa_tks' => $calon_siswa_tks,
             'agama' => Agama::getValues(),
             'kebutuhan_khusus' => KebutuhanKhusus::getValues(),
             'moda_transportasi' => ModaTransportasi::getValues(),
@@ -99,7 +98,7 @@ class CalonSiswaTkController extends Controller
             'alamat_kantor_no_telp_wali' => 'required_with:pekerjaan_wali',
             'gaji_perbulan' => 'required',
             'jemputan' => 'required',
-            'email' => 'required|email',
+            'email' => 'required|unique:calon_siswa_tks',
             'scan_akta' => 'required|mimes:jpg,png,jpeg',
             'scan_kk' => 'required|mimes:jpg,png,jpeg',
             'scan_ktp_ortu' => 'required|mimes:jpg,png,jpeg',
@@ -207,15 +206,18 @@ class CalonSiswaTkController extends Controller
             'gaji_perbulan' => 'required',
             'jemputan' => 'required',
             'email' => 'required|email',
-            'scan_akta' => 'required|mimes:jpg,png,jpeg',
-            'scan_kk' => 'required|mimes:jpg,png,jpeg',
-            'scan_ktp_ortu' => 'required|mimes:jpg,png,jpeg',
+            'scan_akta' => 'mimes:jpg,png,jpeg',
+            'scan_kk' => 'mimes:jpg,png,jpeg',
+            'scan_ktp_ortu' => 'mimes:jpg,png,jpeg',
         ]);
 
         $attr['penyakit'] = $request->penyakit;
         $attr['nama_wali'] = $request->nama_wali;
         
         if ($request->hasFile('scan_akta')) {
+            if(File::exists(public_path('dokumen/tk/' . $calon_siswa_tk->scan_akta))){
+                File::delete(public_path('dokumen/tk/' . $calon_siswa_tk->scan_akta));
+            }
             $akta = $request->file('scan_akta');
             $namaakta = $user->no_registrasi . "-scan-akta" . "." . $akta->extension();
             $location = public_path('dokumen/tk/' . $namaakta);
@@ -224,6 +226,10 @@ class CalonSiswaTkController extends Controller
         }
 
         if ($request->hasFile('scan_kk')) {
+            if(File::exists(public_path('dokumen/tk/' . $calon_siswa_tk->scan_kk))){
+                File::delete(public_path('dokumen/tk/' . $calon_siswa_tk->scan_kk));
+            }
+            File::delete($calon_siswa_tk->scan_kk);
             $kk = $request->file('scan_kk');
             $namakk = $user->no_registrasi . "-scan-kk" . "." . $kk->extension();
             $location = public_path('dokumen/tk/' . $namakk);
@@ -232,6 +238,10 @@ class CalonSiswaTkController extends Controller
         }        
         
         if ($request->hasFile('scan_ktp_ortu')) {
+            if(File::exists(public_path('dokumen/tk/' . $calon_siswa_tk->scan_ktp_ortu))){
+                File::delete(public_path('dokumen/tk/' . $calon_siswa_tk->scan_ktp_ortu));
+            }
+            File::delete($calon_siswa_tk->scan_ktp_ortu);
             $ktp = $request->file('scan_ktp_ortu');
             $namaktp = $user->no_registrasi . "-scan-ktp-ortu" . "." . $ktp->extension();
             $location = public_path('dokumen/tk/' . $namaktp);
@@ -241,8 +251,9 @@ class CalonSiswaTkController extends Controller
 
         $user->is_data_verified = $request->is_data_verified;
 
-        $user->save();
-        $user->csTk()->update($attr);
+        if($user->csTk()->update($attr) != null){
+            $user->save();
+        }
 
         session()->flash('edit', 'Tunggu ya! Data Anda akan kembali Kita cek.');
         return redirect()->route('calon.tk');
@@ -250,11 +261,8 @@ class CalonSiswaTkController extends Controller
 
     public function billing()
     {
-        $calon_siswa_tks = CalonSiswaTk::get();
-
         return view('user.calon-tk.cetakbilling', [
             'user' => Auth::user(),
-            'calon_siswa_tks' => $calon_siswa_tks
         ]);
     }
 }
