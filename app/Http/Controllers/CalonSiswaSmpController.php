@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers;
 
-use App\Enums\{Agama,KebutuhanKhusus,ModaTransportasi,Pekerjaan,Pendidikan,Penghasilan,TempatTiggal,Tingkat};
+use App\Enums\{Agama, KebutuhanKhusus, ModaTransportasi, Pekerjaan, Pendidikan, Penghasilan, TempatTiggal, Tingkat};
 use App\Models\CalonSiswaSmp;
 use App\Models\PrestasiDanBeasiswa;
 use App\Models\User;
@@ -48,7 +48,7 @@ class CalonSiswaSmpController extends Controller
             'nama_pd' => 'required',
             'nisn' => 'required|unique:calon_siswa_smps,nisn,except,id|digits:10',
             'nik' => 'required|unique:calon_siswa_smps,nik,except,id|digits:16',
-            'no_kk' => 'required', 
+            'no_kk' => 'required',
             'no_akta' => 'required|unique:calon_siswa_smps,no_akta,except,id',
             'tempat_lahir' => 'required',
             'tanggal_lahir' => 'required',
@@ -71,7 +71,7 @@ class CalonSiswaSmpController extends Controller
             'punya_kip' => 'required|boolean',
             'tetap_menerima_kip' => 'required|boolean',
             'alasan_menolak_pip' => ['required', Rule::in('Dilarang Pemda karena menerima bantuan serupa', 'Menolak', 'Sudah mampu')],
-            
+
             //validasi ayah
             'nama_ayah' => 'required',
             'nik_ayah' => 'required',
@@ -80,7 +80,7 @@ class CalonSiswaSmpController extends Controller
             'pekerjaan_ayah' => ['required', Rule::in(Pekerjaan::getValues())],
             'penghasilan_ayah' => ['required', Rule::in(Penghasilan::getValues())],
             'kebutuhan_khusus_ayah' => ['required', Rule::in(KebutuhanKhusus::getValues())],
-            
+
             //validasi ibu
             'nama_ibu' => 'required',
             'nik_ibu' => 'required',
@@ -89,7 +89,7 @@ class CalonSiswaSmpController extends Controller
             'pekerjaan_ibu' => ['required', Rule::in(Pekerjaan::getValues())],
             'penghasilan_ibu' => ['required', Rule::in(Penghasilan::getValues())],
             'kebutuhan_khusus_ibu' => ['required', Rule::in(KebutuhanKhusus::getValues())],
-            
+
             //validasi wali
             'nama_wali',
             'nik_wali' => 'required_with:nama_wali_with:nama_wali',
@@ -111,12 +111,12 @@ class CalonSiswaSmpController extends Controller
             'jarak_kesekolah' => ['required', Rule::in('Kurang dari 1 Km', 'Lebih dari 1 Km')],
             'rincian_jarak' => 'required|digits:3',
             'banyak_saudara_kandung' => 'required|digits:2|numeric',
-            
+
             //validasi kesejahteraan
-            'jenis_kartu' => [Rule::in('PKH','PIP','Kartu Perlindungan Sosial', 'Kartu Keluarga Sejahtera', 'Kartu Kesehatan')],
+            'jenis_kartu' => [Rule::in('PKH', 'PIP', 'Kartu Perlindungan Sosial', 'Kartu Keluarga Sejahtera', 'Kartu Kesehatan')],
             'no_kartu' => 'numeric|required_with:jenis_kartu',
             'nama_dikartu' => 'required_with:jenis_kartu',
-            
+
             //validasi registrasi
             'kompetensi_keahlian' => 'required',
             'jenis_pendaftaran' => ['required', Rule::in('Siswa baru', 'Pindahan', 'Kembali bersekolah')],
@@ -131,7 +131,7 @@ class CalonSiswaSmpController extends Controller
             'foto_pd' => 'required|mimes:jpg,jpeg,png,bmp',
             'scan_ijazah' => 'required|mimes:jpg,jpeg,png,bmp',
             'scan_skhun' => 'required|mimes:jpg,jpeg,png,bmp',
-            
+
         ]);
 
         if ($request->hasFile('foto_pd')) {
@@ -169,11 +169,11 @@ class CalonSiswaSmpController extends Controller
         $prestasi = new PrestasiDanBeasiswa($attr2);
         $form = new CalonSiswaSmp($attr);
 
-        if($user->csSmp()->save($form) != null){
+        if ($user->csSmp()->save($form) != null) {
             $user->prestasi()->save($prestasi);
             $user->save();
         }
-        
+
         session()->flash('masuk', 'Selamat! Data Anda telah ditambahkan ke dalam sistem dan akan diverifikasi');
         return redirect()->route('calon.smp');
     }
@@ -187,7 +187,7 @@ class CalonSiswaSmpController extends Controller
             'nama_pd' => 'required',
             'nisn' => 'required|unique:calon_siswa_smps,nisn,except,id|digits:10',
             'nik' => 'required|unique:calon_siswa_smps,nik,except,id|digits:16',
-            'no_kk' => 'required', 
+            'no_kk' => 'required',
             'no_akta' => 'required|unique:calon_siswa_smps,no_akta,except,id',
             'tempat_lahir' => 'required',
             'tanggal_lahir' => 'required',
@@ -210,7 +210,7 @@ class CalonSiswaSmpController extends Controller
             'punya_kip' => 'required|boolean',
             'tetap_menerima_kip' => 'required|boolean',
             'alasan_menolak_pip' => ['required', Rule::in('Dilarang Pemda karena menerima bantuan serupa', 'Menolak', 'Sudah mampu')],
-            
+
             //validasi ayah
             'nama_ayah' => 'required',
             'nik_ayah' => 'required',
@@ -219,7 +219,7 @@ class CalonSiswaSmpController extends Controller
             'pekerjaan_ayah' => ['required', Rule::in(Pekerjaan::getValues())],
             'penghasilan_ayah' => ['required', Rule::in(Penghasilan::getValues())],
             'kebutuhan_khusus_ayah' => ['required', Rule::in(KebutuhanKhusus::getValues())],
-            
+
             //validasi ibu
             'nama_ibu' => 'required',
             'nik_ibu' => 'required',
@@ -228,7 +228,7 @@ class CalonSiswaSmpController extends Controller
             'pekerjaan_ibu' => ['required', Rule::in(Pekerjaan::getValues())],
             'penghasilan_ibu' => ['required', Rule::in(Penghasilan::getValues())],
             'kebutuhan_khusus_ibu' => ['required', Rule::in(KebutuhanKhusus::getValues())],
-            
+
             //validasi wali
             'nama_wali',
             'nik_wali' => 'required_with:nama_wali_with:nama_wali',
@@ -250,12 +250,12 @@ class CalonSiswaSmpController extends Controller
             'jarak_kesekolah' => ['required', Rule::in('Kurang dari 1 Km', 'Lebih dari 1 Km')],
             'rincian_jarak' => 'required|digits:3',
             'banyak_saudara_kandung' => 'required|digits:2|numeric',
-            
+
             //validasi kesejahteraan
-            'jenis_kartu' => [Rule::in('PKH','PIP','Kartu Perlindungan Sosial', 'Kartu Keluarga Sejahtera', 'Kartu Kesehatan')],
+            'jenis_kartu' => [Rule::in('PKH', 'PIP', 'Kartu Perlindungan Sosial', 'Kartu Keluarga Sejahtera', 'Kartu Kesehatan')],
             'no_kartu' => 'numeric|required_with:jenis_kartu',
             'nama_dikartu' => 'required_with:jenis_kartu',
-            
+
             //validasi registrasi
             'kompetensi_keahlian' => 'required',
             'jenis_pendaftaran' => ['required', Rule::in('Siswa baru', 'Pindahan', 'Kembali bersekolah')],
@@ -270,14 +270,14 @@ class CalonSiswaSmpController extends Controller
             'foto_pd' => 'required|mimes:jpg,jpeg,png,bmp',
             'scan_ijazah' => 'required|mimes:jpg,jpeg,png,bmp',
             'scan_skhun' => 'required|mimes:jpg,jpeg,png,bmp',
-            
+
         ]);
 
         // $attr['nama_wali'] = $request->nama_wali;
         // $attr['pekerjaan_wali'] = $request->pekerjaan_wali;
 
         if ($request->hasFile('foto_pd')) {
-            if(File::exists(public_path('dokumen/smp/' . $calon_siswa_smp->foto_pd))){
+            if (File::exists(public_path('dokumen/smp/' . $calon_siswa_smp->foto_pd))) {
                 File::delete(public_path('dokumen/smp/' . $calon_siswa_smp->foto_pd));
             }
             $foto = $request->file('foto_pd');
@@ -288,7 +288,7 @@ class CalonSiswaSmpController extends Controller
         }
 
         if ($request->hasFile('scan_ijazah')) {
-            if(File::exists(public_path('dokumen/smp/' . $calon_siswa_smp->scan_ijazah))){
+            if (File::exists(public_path('dokumen/smp/' . $calon_siswa_smp->scan_ijazah))) {
                 File::delete(public_path('dokumen/smp/' . $calon_siswa_smp->scan_ijazah));
             }
             $ijazah = $request->file('scan_ijazah');
@@ -299,7 +299,7 @@ class CalonSiswaSmpController extends Controller
         }
 
         if ($request->hasFile('scan_skhun')) {
-            if(File::exists(public_path('dokumen/smp/' . $calon_siswa_smp->scan_skhun))){
+            if (File::exists(public_path('dokumen/smp/' . $calon_siswa_smp->scan_skhun))) {
                 File::delete(public_path('dokumen/smp/' . $calon_siswa_smp->scan_skhun));
             }
             $skhun = $request->file('scan_skhun');

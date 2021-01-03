@@ -151,7 +151,7 @@
                                             <label for="kebutuhan_khusus">Berkebutuhan Khusus</label>
                                             <select name="kebutuhan_khusus" id="kebutuhan_khusus" class="form-control @error('kebutuhan_khusus') is-invalid @enderror">
                                                     <option selected disabled>Pilih salah satu</option>
-                                                        @for ($i = 1; $i < 17; $i++)
+                                                        @for ($i = 0; $i < 17; $i++)
                                                         <option value="{{ $kebutuhan_khusus[$i] }}" @if(old('kebutuhan_khusus') == $kebutuhan_khusus[$i]) selected @endif>{{ $kebutuhan_khusus[$i] }}</option>
                                                         @endfor
                                             </select>
@@ -653,7 +653,7 @@
                                             <label for="kebutuhan_khusus_ayah">Berkebutuhan Khusus</label>
                                             <select name="kebutuhan_khusus_ayah" id="kebutuhan_khusus_ayah" class="form-control @error('kebutuhan_khusus_ayah') is-invalid @enderror">
                                                     <option selected disabled>Pilih salah satu</option>
-                                                    @for ($i = 1; $i < 10; $i++)
+                                                    @for ($i = 0; $i < 10; $i++)
                                                         <option value="{{ $kebutuhan_khusus[$i] }}" @if(old('kebutuhan_khusus_ayah') == $kebutuhan_khusus[$i]) selected @endif>{{ $kebutuhan_khusus[$i] }}</option>
                                                     @endfor
                                             </select>
@@ -753,7 +753,7 @@
                                             <label for="kebutuhan_khusus_ibu">Berkebutuhan Khusus</label>
                                             <select name="kebutuhan_khusus_ibu" id="kebutuhan_khusus_ibu" class="form-control @error('kebutuhan_khusus_ibu') is-invalid @enderror">
                                                     <option selected disabled>Pilih salah satu</option>
-                                                    @for ($i = 1; $i < 10; $i++)
+                                                    @for ($i = 0; $i < 10; $i++)
                                                         <option value="{{ $kebutuhan_khusus[$i] }}" @if(old('kebutuhan_khusus_ibu') == $kebutuhan_khusus[$i]) selected @endif>{{ $kebutuhan_khusus[$i] }}</option>
                                                     @endfor
                                             </select>
@@ -1211,7 +1211,7 @@
                                             <label for="kebutuhan_khusus">Berkebutuhan Khusus</label>
                                             <select name="kebutuhan_khusus" id="kebutuhan_khusus" class="form-control @error('kebutuhan_khusus') is-invalid @enderror">
                                                     <option selected disabled>Pilih salah satu</option>
-                                                        @for ($i = 1; $i < 17; $i++)
+                                                        @for ($i = 0; $i < 17; $i++)
                                                         <option value="{{ $kebutuhan_khusus[$i] }}" @if($user->csSmp->kebutuhan_khusus == $kebutuhan_khusus[$i]) selected @endif>{{ $kebutuhan_khusus[$i] }}</option>
                                                         @endfor
                                             </select>
@@ -1713,7 +1713,7 @@
                                             <label for="kebutuhan_khusus_ayah">Berkebutuhan Khusus</label>
                                             <select name="kebutuhan_khusus_ayah" id="kebutuhan_khusus_ayah" class="form-control @error('kebutuhan_khusus_ayah') is-invalid @enderror">
                                                     <option selected disabled>Pilih salah satu</option>
-                                                    @for ($i = 1; $i < 10; $i++)
+                                                    @for ($i = 0; $i < 10; $i++)
                                                         <option value="{{ $pekerjaan[$i] }}" @if($user->csSmp->kebutuhan_khusus_ayah == $pekerjaan[$i]) selected @endif>{{ $pekerjaan[$i] }}</option>
                                                     @endfor
                                             </select>
@@ -1813,7 +1813,7 @@
                                             <label for="kebutuhan_khusus_ibu">Berkebutuhan Khusus</label>
                                             <select name="kebutuhan_khusus_ibu" id="kebutuhan_khusus_ibu" class="form-control @error('kebutuhan_khusus_ibu') is-invalid @enderror">
                                                     <option selected disabled>Pilih salah satu</option>
-                                                    @for ($i = 1; $i < 10; $i++)
+                                                    @for ($i = 0; $i < 10; $i++)
                                                         <option value="{{ $pekerjaan[$i] }}" @if($user->csSmp->kebutuhan_khusus_ibu == $pekerjaan[$i]) selected @endif>{{ $pekerjaan[$i] }}</option>
                                                     @endfor
                                             </select>
