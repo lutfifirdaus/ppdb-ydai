@@ -14,8 +14,8 @@ class CreatePesansTable extends Migration
     public function up()
     {
         Schema::create('pesans', function (Blueprint $table) {
-            $table->foreignId('from')->constrained('users', 'name')->cascadeOnDelete()->cascadeOnUpdate();
-            $table->foreignId('to')->constrained('users', 'name')->cascadeOnDelete()->cascadeOnUpdate();
+            $table->foreignId('from')->constrained('users', 'id')->cascadeOnDelete()->cascadeOnUpdate();
+            $table->foreignId('to')->constrained('users', 'id')->cascadeOnDelete()->cascadeOnUpdate();
             $table->text('isi', 300);
             $table->timestamps();
         });
