@@ -16,6 +16,7 @@ class Billing extends Model
     public function user(){
         return $this->belongsTo(User::class, 'no_registrasi');
     }
+    
 }
 
 class Log extends EloquentUserProvider {
@@ -31,4 +32,5 @@ class Log extends EloquentUserProvider {
     {
         $this->attributes['ip_address'] = inet_pton($value);
     }
+
 }

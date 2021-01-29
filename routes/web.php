@@ -10,9 +10,15 @@ use App\Http\Controllers\CalonSiswaSdController;
 use App\Http\Controllers\CalonSiswaTkController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\UserController;
+use App\Http\Livewire\Admin\SuperAdmin\Users;
+use App\Http\Livewire\Admin\Users as AdminUsers;
+use App\Http\Livewire\SuperAdmin\MasterBiaya;
+use App\Http\Livewire\SuperAdmin\Permissions;
+use App\Models\admin\Berita;
 use App\Models\CalonSiswaTk;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
+use PHPUnit\TextUI\XmlConfiguration\Group;
 
 /*
 |--------------------------------------------------------------------------
@@ -26,15 +32,18 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', function () {
-    return view('welcome');
+    return view('website.landing', [
+        'beritas' => Berita::latest()->get()
+    ]);
 });
+
 
 Auth::routes(['verify' => true]);
 
 //alamat untuk website depan
-Route::view('/tk', 'tk.index')->name('tk.profil');
-Route::view('/tk-visi-dan-misi', 'tk.index')->name('tk.visimisi');
-Route::view('/tk/guru-dan-staff', 'tk.index')->name('tk.gurustaff');
+// Route::view('/tk', 'tk.index')->name('tk.profil');
+// Route::view('/tk-visi-dan-misi', 'tk.index')->name('tk.visimisi');
+// Route::view('/tk/guru-dan-staff', 'tk.index')->name('tk.gurustaff');
 
 //alamat untuk admin
 Route::group(['prefix' => 'admin', 'middleware' => 'role:admin|super-admin'], function () {
@@ -82,11 +91,16 @@ Route::group(['prefix' => 'admin', 'middleware' => 'role:admin|super-admin'], fu
         Route::put('/verifikasi-data/{user:id}', [KelolaTkController::class, 'verifikasiData']);
         Route::get('/pembayaran-data',[KelolaTkController::class, 'tabelBayar'])->name('pembayaran.tk');
     });
+
+    // alamat untuk super admin
+    Route::group(['prefix' => 'super-admin', 'middleware' =>'role:super-admin'], function () {
+        Route::get('/master-biaya', MasterBiaya::class);
+    });
 });
 
 //alamat untuk calon peserta didik
 Route::group(['prefix' => 'calon', 'middleware' => 'role:calon|super-admin'], function () {
-    Route::get('/', [HomeController::class, 'index'])->name('calon');
+    Route::get('ppdb', [HomeController::class, 'index'])->name('calon');
     Route::post('siswa/kirim-email', [UserController::class, 'kirimEmail'])->name('kirim.email');
 
 

@@ -243,7 +243,7 @@
 
                 <div class="col-md-6">
                     <img class="card-img-top rnd border shadow" src="{{ asset('/picture/siswa2-sd.jpg') }}" height="366"
-                        alt="foto TK Ananda UT">
+                        alt="foto siswa SD Dharma Karya UT">
                 </div>
 
             </div>
@@ -252,7 +252,7 @@
 
                 <div class="col-md-6">
                     <img class="card-img-top rnd border shadow" src="{{ asset('/picture/siswa2-smp.jpg') }}"
-                        alt="foto TK Ananda UT">
+                        alt="foto siswa SMP Dharma Karya UT">
                 </div>
 
                 <div class="col-md-6 m-auto p-3">
@@ -298,8 +298,7 @@
                 </div>
 
                 <div class="col-md-6">
-                    <img class="card-img-top rnd border shadow" src="{{ asset('/picture/siswa2-sma.jpg') }}"
-                        alt="foto TK Ananda UT">
+                    <img class="card-img-top rnd border shadow" src="{{ asset('/picture/siswa2-sma.jpg') }}" alt="foto siswa SMA Dharma Karya UT">
                 </div>
 
             </div>

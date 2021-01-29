@@ -1,16 +1,17 @@
 <?php
 
-namespace App\Models;
+namespace App\Models\admin;
 
+use App\Models\User;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Pesan extends Model
+class Berita extends Model
 {
     use HasFactory;
 
     public function user()
     {
-        return $this->belongsToMany(User::class, 'users');
+        return $this->belongsToMany(User::class);
     }
 }

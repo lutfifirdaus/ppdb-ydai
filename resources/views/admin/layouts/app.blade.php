@@ -1,3 +1,5 @@
+<!DOCTYPE html>
+<html lang="en">
 @include('admin.layouts.head')
 <body class="hold-transition sidebar-mini layout-fixed">
     <div class="wrapper">
@@ -33,7 +35,7 @@
             <!-- ./wrapper -->
         </main>
 
-        @include('admin.layouts.script')
     </div>
+    @include('admin.layouts.script')
 </body>
 </html>

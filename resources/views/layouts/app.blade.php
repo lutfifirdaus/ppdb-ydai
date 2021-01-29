@@ -1,4 +1,7 @@
+<!DOCTYPE html>
+<html lang="en">
 @include('layouts.head')
+</head>
 <body style="width: 100%; height:100%">
     <nav class="navbar navbar-expand-md navbar-dark bg-success shadow-sm">
         <a class="navbar-brand" @if(Auth::check() && auth()->user()->hasRole('calon')) href="{{ route('calon') }}" @elseif(Auth::check() && auth()->user()->hasRole('admin')) href="{{ route('admin.page') }}" @else href="/" @endif >

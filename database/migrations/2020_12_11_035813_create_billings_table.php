@@ -14,11 +14,10 @@ class CreateBillingsTable extends Migration
     public function up()
     {
         Schema::create('billings', function (Blueprint $table) {
-            $table->foreignId('user_id')->constrained()->cascadeOnDelete();
-            $table->char('no_registrasi');
+            $table->char('no_registrasi')->unique();
             $table->foreign('no_registrasi')->references('no_registrasi')->on('users');
             $table->char('no_billing', 20);
-            $table->char('biaya');
+            $table->integer('biaya');
             $table->char('kode_bank', 3)->nullable();
             $table->char('channel_bank', 150)->nullable();
             $table->timestamp('tanggal_bayar')->nullable();

@@ -14,7 +14,7 @@ class CreateCalonSiswaTksTable extends Migration
     public function up()
     {
         Schema::create('calon_siswa_tks', function (Blueprint $table) {
-            $table->foreignId('user_id')->constrained()->cascadeOnDelete;
+            $table->foreignId('user_id')->constrained()->cascadeOnDelete();
             $table->string('nama_pd');
             $table->string('nama');
             $table->enum('jenis_kelamin', ['Laki-laki', 'Perempuan']);
