@@ -1,4 +1,4 @@
-<?php
+`<?php
 
 namespace App\Http\Controllers;
 
@@ -27,10 +27,10 @@ class HomeController extends Controller
     public function index()
     {
         $id = Auth::user()->id;
-        $pesan = Pesan::orderBy('created_at', 'desc')->paginate(4);
+        // $pesan = Pesan::orderBy('created_at', 'desc')->paginate(4);
 
         return view('home',[
-            'pesan' => $pesan,
+            // 'pesan' => $pesan,
             'id' => $id,
         ]);
     }
