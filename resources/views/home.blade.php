@@ -128,35 +128,7 @@
 
             {{-- content card --}}
             <div class="col-sm-7 col-md-8">
-                <div class="card" style="height: 20rem">
-                    <div class="card-header">
-                        <h5>Inbox Masuk</h5>
-                    </div>
-                    <div class="card-body">
-                        @if(DB::table('pesans')->where('to', '=', $id))
-                        <table class="table table-bordered">
-                            <thead class="thead-light">
-                                <tr>
-                                    <th>Dari</th>
-                                    <th>Kepada</th>
-                                    <th>Isi Pesan</th>
-                                    <th>Tgl</th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                @foreach($pesan as $pesan)
-                                <tr>
-                                    <td>{{ $pesan->from }}</td>
-                                    <td>{{ $pesan->to }}</td>
-                                    <td>{{ $pesan->isi }}</td>
-                                    <td>{{ $pesan->created_at }}</td>
-                                </tr>
-                                @endforeach
-                            </tbody>
-                        </table>
-                        @endif
-                    </div>
-                </div>
+                
             </div>
 
             {{-- sidebar --}}
@@ -165,7 +137,7 @@
                     <div class="card-header">
                         <h5>Pesan dan Bantuan</h5>
                     </div>
-                    <div class="card-body">
+                    {{-- <div class="card-body">
                         <form action="" method="post">
                             <div class="form-group">
                                 <input type="text" name="name" class="form-control" value="{{ old('name') }}"
@@ -178,7 +150,7 @@
                                 <button type="submit" name="send" class="btn btn-primary" value="Send">Kirim</button>
                             </div>
                         </form>
-                    </div>
+                    </div> --}}
                 </div>
             </div>
 

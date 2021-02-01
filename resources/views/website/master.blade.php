@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+<title>{{ config('app.name') ?? $title }}</title>
 <link href="https://fonts.googleapis.com/css?family=Montserrat:500,700&display=swap&subset=latin-ext" rel="stylesheet">
 <link href="https://fonts.googleapis.com/css?family=Open+Sans:400,400i,600&display=swap&subset=latin-ext"
     rel="stylesheet">
