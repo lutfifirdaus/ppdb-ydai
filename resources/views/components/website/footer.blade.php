@@ -1,13 +1,12 @@
- <!-- Footer -->
- <div class="footer">
+<div class="footer">
     <div class="container">
         <div class="row">
             <div class="col-md-6">
                 <div class="text-container about">
                     <h4>Yayasan Dharma Ananda Indonesia UT</h4>
                     <p class="white">Copyright © {{ now()->format('Y') }} Yayasan Dharma Ananda Indonesia UT</p>
-                </div> <!-- end of text-container -->
-            </div> <!-- end of col -->
+                </div>
+            </div>
             
             <div class="col-md-3">
                 <div class="text-container">
@@ -26,8 +25,8 @@
                             <a class="white" href="#">SMA DHARMA ANANDA UT</a>
                         </li>
                     </ul>
-                </div> <!-- end of text-container -->
-            </div> <!-- end of col -->
+                </div>
+            </div>
             <div class="col-md-3">
                 <div class="text-container">
                     <h4>Kontak</h4>
@@ -45,9 +44,8 @@
                             <a class="white" href="#">SMP Dharma Karya UT</a>
                         </li>
                     </ul>
-                </div> <!-- end of text-container -->
-            </div> <!-- end of col -->
-        </div> <!-- end of row -->
-    </div> <!-- end of container -->
-</div> <!-- end of footer -->  
-<!-- end of footer -->
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

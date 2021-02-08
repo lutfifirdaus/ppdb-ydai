@@ -360,3 +360,49 @@
 	});
 
 })(jQuery);
+
+/* slideshow for akademik images*/
+
+$("#TK > div:gt(0)").hide();
+
+setInterval(function() {
+  $('#TK > div:first')
+    .fadeOut(1000)
+    .next()
+    .fadeIn(1000)
+    .end()
+    .appendTo('#TK');
+}, 3000);
+
+$("#SD > div:gt(0)").hide();
+
+setInterval(function() {
+  $('#SD > div:first')
+    .fadeOut(1000)
+    .next()
+    .fadeIn(1000)
+    .end()
+    .appendTo('#SD');
+}, 3000);
+
+$("#SMP > div:gt(0)").hide();
+
+setInterval(function() {
+  $('#SMP > div:first')
+    .fadeOut(1000)
+    .next()
+    .fadeIn(1000)
+    .end()
+    .appendTo('#SMP');
+}, 3000);
+
+$("#SMA > div:gt(0)").hide();
+
+setInterval(function() {
+  $('#SMA > div:first')
+    .fadeOut(1000)
+    .next()
+    .fadeIn(1000)
+    .end()
+    .appendTo('#SMA');
+}, 3000);

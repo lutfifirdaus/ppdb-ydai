@@ -1,5 +1,6 @@
 <nav class="navbar navbar-expand-lg navbar-dark navbar-custom fixed-top">
-    <a class="navbar-brand logo-text page-scroll" href="/landing">YDAI UT</a>
+
+    <a class="navbar-brand logo-text page-scroll" href="/">YDAI UT</a>
 
     {{-- <a class="navbar-brand logo-image" href="/landing"><img src="{{ asset('picture/logo-ydai.png') }}" alt="alternative"></a> --}}
     
@@ -11,13 +12,13 @@
     <div class="collapse navbar-collapse" id="navbarsExampleDefault">
         <ul class="navbar-nav ml-auto">
             <li class="nav-item">
-                <a class="nav-link page-scroll" href="#header">BERANDA<span class="sr-only">(current)</span></a>
+                <a class="nav-link page-scroll" href="{{ Request::is('/') ? '#header' : '/' }}">BERANDA<span class="sr-only">(current)</span></a>
             </li>
 
             <li class="nav-item dropdown">
-                <a class="nav-link page-scroll" href="#about" id="navbarDropdown" role="button" aria-haspopup="true" aria-expanded="false">PROFIL</a>
+                <a class="nav-link page-scroll" href="{{ Request::is('/tentang-kami') ? '#profil' : '/tentang-kami' }}" id="navbarDropdown" role="button" aria-haspopup="true" aria-expanded="false">PROFIL</a>
                 <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                    <a class="dropdown-item" href="#"><span class="item-text">TENTANG KAMI</span></a>
+                    <a class="dropdown-item" href="{{ route('tentang-kami') }}"><span class="item-text">TENTANG KAMI</span></a>
                     <div class="dropdown-items-divide-hr"></div>
                     <a class="dropdown-item" href="#"><span class="item-text">VISI MISI YDAI</span></a>
                     <div class="dropdown-items-divide-hr"></div>
@@ -43,7 +44,7 @@
             <li class="nav-item dropdown">
                 <a class="nav-link page-scroll" href="#" id="navbarDropdown" role="button" aria-haspopup="true" aria-expanded="false">INFORMASI</a>
                 <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                    <a class="dropdown-item" href="#"><span class="item-text">PENGUMUMAN</span></a>
+                    <a class="dropdown-item page-scroll" href="#pengumuman"><span class="item-text">PENGUMUMAN</span></a>
                     <div class="dropdown-items-divide-hr"></div>
                     <a class="dropdown-item page-scroll" href="#berita"><span class="item-text">BERITA</span></a>
                     <div class="dropdown-items-divide-hr"></div>

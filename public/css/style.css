@@ -137,6 +137,24 @@ strong {
     font: 500 0.8125rem/1.125rem "Montserrat", sans-serif;
 }
 
+.btn-solid-sm {
+    display: inline-block;
+    padding: 0.65rem;
+    border: 0.125rem solid #2c1fdf;
+    border-radius: 0.25rem;
+    background-color: #2c1fdf;
+    color: #fff;
+    font: 700 0.75rem/0 "Montserrat", sans-serif;
+    text-decoration: none;
+    transition: all 0.2s;
+}
+
+.btn-solid-sm:hover {
+    background-color: transparent;
+    color: #2c1fdf;
+    text-decoration: none;
+}
+
 .btn-solid-reg {
     display: inline-block;
     padding: 1.1875rem 1.875rem 1.1875rem 1.875rem;
@@ -1104,10 +1122,22 @@ screen and (-ms-high-contrast: none) {
 /*************************/
 /*     08. Details 1     */
 /*************************/
-.akademik .area-1 {
+.akademik .area-1 img {
     height: 27rem;
-    background: url('../images/details-1-background.jpg') center center no-repeat;
-    background-size: cover;
+    width: 100%;
+    object-fit: cover;
+    object-position:center;
+    display:inline;
+    box-shadow: 0 0.0625rem 0.375rem 0 rgba(0, 0, 0, 0.1);
+}
+
+ /* for akademik slideshow */
+#TK > div, #SD > div, #SMP > div, #SMA > div {
+    position: absolute;
+    top: 10px;
+    left: 10px;
+    right: 10px;
+    bottom: 10px;
 }
 
 .akademik .akademik-container {
@@ -1181,6 +1211,12 @@ screen and (-ms-high-contrast: none) {
 .akademik .akademik-body {
     margin-left: 3.125rem;
 }
+
+.akademik h2:hover {
+    color: #2c1fdf;
+}
+
+
 
 
 /*************************/
@@ -1845,6 +1881,7 @@ screen and (-ms-high-contrast: none) {
 /*     17. Footer     */
 /**********************/
 .footer {
+    margin-top: 5rem;
     padding-top: 5rem;
     background-color: rgb(70, 70, 70);
 }

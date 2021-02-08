@@ -13,6 +13,8 @@
 <body data-spy="scroll" data-target=".fixed-top">
 
     <x-website.preloader></x-website.preloader>
+    
+    <div class="bg-dark" style="height: 100px"></div>
 
     <x-website.navbar></x-website.navbar>
 

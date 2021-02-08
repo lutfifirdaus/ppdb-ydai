@@ -37,6 +37,9 @@ Route::get('/', function () {
     ]);
 });
 
+Route::get('/tentang-kami', function () {
+    return view('website.tentang-kami');
+})->name('tentang-kami');
 
 Auth::routes(['verify' => true]);
 
