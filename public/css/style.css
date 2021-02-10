@@ -841,12 +841,12 @@ screen and (-ms-high-contrast: none) {
 /*    04. Header     */
 /*********************/
 .header {
-    background: linear-gradient(rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.5)), url('../../picture/sma.jpeg') center center no-repeat;
+    background: linear-gradient(rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.5)), url('../../images/sma.jpeg') center center no-repeat;
     background-size: cover;
 }
 
 .header .header-content {
-    padding-top: 8rem;
+    padding-top: 4rem;
     padding-bottom: 2.125rem;
     text-align: center;
 }
@@ -858,6 +858,34 @@ screen and (-ms-high-contrast: none) {
 .header h1 {
     margin-bottom: 0.5rem;
     color: #fff;
+}
+
+.header span::before {
+    content: '';
+    animation: changeText infinite 20s;
+}
+
+@keyframes changeText {
+
+    0%{
+        content: 'MAJU';
+    }
+    
+    25% {
+        content: 'CERDAS';
+    }
+
+    50% {
+        content: 'BERPRESTASI';
+    }
+
+    75% {
+        content: 'BERAKHLAK';
+    }
+
+    100% {
+        content: 'MAJU';
+    }
 }
 
 .header .p-large {
@@ -884,6 +912,20 @@ screen and (-ms-high-contrast: none) {
     color: #FFF;
     min-height: 100px;
     min-width: 200px;
+}
+
+.glass input.search {
+    width: 300px;
+    background-color: rgba(0, 0, 0, 0.5);
+    transition: all ease-in-out 0.5s;
+    opacity: 0.8;
+}
+
+.glass input.search:focus,
+.glass input.search:hover {
+    background-color: #010101;
+    color: #b8b8b8;
+    border-color: #2c1fdf;
 }
 
 .announcement {
@@ -949,6 +991,18 @@ screen and (-ms-high-contrast: none) {
     }
 }
 
+/* custom separater */
+.separater {
+    height: 3rem;
+    margin-top: 3rem;
+    margin-bottom: 4rem;
+    text-align: center;
+}
+
+.separater h1 {
+    vertical-align: middle;
+    color: #2c1fdf;
+}
 
 /*********************/
 /*     05. Intro     */
@@ -1126,13 +1180,16 @@ screen and (-ms-high-contrast: none) {
     height: 27rem;
     width: 100%;
     object-fit: cover;
-    object-position:center;
-    display:inline;
+    object-position: center;
+    display: inline;
     box-shadow: 0 0.0625rem 0.375rem 0 rgba(0, 0, 0, 0.1);
 }
 
- /* for akademik slideshow */
-#TK > div, #SD > div, #SMP > div, #SMA > div {
+/* for akademik slideshow */
+#TK>div,
+#SD>div,
+#SMP>div,
+#SMA>div {
     position: absolute;
     top: 10px;
     left: 10px;
@@ -2093,7 +2150,7 @@ a:hover.back-to-top {
 
     /* Header */
     .header .header-content {
-        padding-top: 13rem;
+        padding-top: 12rem;
         padding-bottom: 7.5rem;
     }
 
@@ -2254,7 +2311,7 @@ a:hover.back-to-top {
 
     /* Header */
     .header .header-content {
-        padding-top: 14rem;
+        padding-top: 12rem;
         padding-bottom: 15rem;
     }
 
@@ -2475,7 +2532,7 @@ a:hover.back-to-top {
 
     /* Header */
     .header .header-content {
-        padding-top: 14.75rem;
+        padding-top: 12rem;
         padding-bottom: 17.5rem;
     }
 

@@ -41,6 +41,10 @@ Route::get('/tentang-kami', function () {
     return view('website.tentang-kami');
 })->name('tentang-kami');
 
+Route::get('/akademik', function () {
+    return view('website.akademik');
+})->name('akademik');
+
 Auth::routes(['verify' => true]);
 
 //alamat untuk website depan

@@ -14,12 +14,12 @@
 
     <x-website.preloader></x-website.preloader>
     
-    <div class="bg-dark" style="height: 100px"></div>
-
     <x-website.navbar></x-website.navbar>
 
     @yield('content')
 
+    <x-website.hubungi-kami></x-website.hubungi-kami>
+    
     <x-website.footer></x-website.footer>
 
     <script src="{{ asset('js/jquery.min.js') }}"></script>
