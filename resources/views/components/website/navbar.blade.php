@@ -12,11 +12,11 @@
     <div class="collapse navbar-collapse" id="navbarsExampleDefault">
         <ul class="navbar-nav ml-auto">
             <li class="nav-item">
-                <a class="nav-link page-scroll" href="{{ Request::is('/') ? '#header' : '/' }}">BERANDA<span class="sr-only">(current)</span></a>
+                <a class="nav-link page-scroll" href="{{ Request::is('/') ? '#header' : '/' }}">BERANDA</a>
             </li>
 
             <li class="nav-item dropdown">
-                <a class="nav-link page-scroll" href="{{ Request::is('/tentang-kami') ? '#profil' : '/tentang-kami' }}" id="navbarDropdown" role="button" aria-haspopup="true" aria-expanded="false">PROFIL</a>
+                <a class="nav-link page-scroll" href="{{ Request::is('tentang-kami') ? '#profil' : '/tentang-kami' }}" id="navbarDropdown" role="button" aria-haspopup="true" aria-expanded="false">PROFIL</a>
                 <div class="dropdown-menu" aria-labelledby="navbarDropdown">
                     <a class="dropdown-item" href="{{ route('tentang-kami') }}"><span class="item-text">TENTANG KAMI</span></a>
                     <div class="dropdown-items-divide-hr"></div>
@@ -29,7 +29,7 @@
             </li>
 
             <li class="nav-item dropdown">
-                <a class="nav-link page-scroll" href="#akademik" id="navbarDropdown" role="button" aria-haspopup="true" aria-expanded="false">AKADEMIK</a>
+                <a class="nav-link page-scroll" href="{{ Request::is('akademik') ? '#akademik' : '/akademik' }}" id="navbarDropdown" role="button" aria-haspopup="true" aria-expanded="false">AKADEMIK</a>
                 <div class="dropdown-menu" aria-labelledby="navbarDropdown">
                     <a class="dropdown-item" href="#"><span class="item-text">TK ANANDA UT</span></a>
                     <div class="dropdown-items-divide-hr"></div>
@@ -54,7 +54,7 @@
 
             
             <li class="nav-item">
-                <a class="nav-link page-scroll" href="#contact">HUBUNGI KAMI</a>
+                <a class="nav-link page-scroll" href="#hubungi-kami">HUBUNGI KAMI</a>
             </li>
 
             <span class="nav-item social-icons">
