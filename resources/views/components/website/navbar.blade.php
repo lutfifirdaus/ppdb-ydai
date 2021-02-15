@@ -59,7 +59,7 @@
 
             <span class="nav-item social-icons">
                 <span class="fa-stack">
-                    <a href="#" >
+                    <a href="https://portal.ydai-ut.org/login" >
                         <span class="circle"></span>
                         <i class="fas fa-sign-in-alt fa-stack-1x"></i>
                     </a>

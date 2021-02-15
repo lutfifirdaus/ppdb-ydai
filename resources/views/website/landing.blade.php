@@ -160,7 +160,7 @@
                         <div class="swiper-container card-slider">
                             <div class="swiper-wrapper">
 
-                                @if ($beritas != null)
+                                {{-- @if ($beritas != null)
                                     @for ($i = 0; $i < 7; $i++)
                                     <div class="swiper-slide">
                                         <div class="card">
@@ -176,7 +176,7 @@
                                     </div>
                                     @endfor
                                 
-                                @else
+                                @else --}}
                                     <div class="swiper-slide">
                                         <div class="card">
                                             <div class="card-body">
@@ -184,7 +184,7 @@
                                             </div>
                                         </div>
                                     </div>
-                                @endif
+                                {{-- @endif --}}
                                 
                                 </div>
                             </div>
